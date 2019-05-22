@@ -30,7 +30,13 @@ View(legenda)
 ```
 
 ```{r echo=FALSE, Univariate_Plots}
-
+# Distribuição dos dados da coluna LoanOriginalAmount
+g <- ggplot(df, aes(x = LoanOriginalAmount)) +
+  scale_x_continuous(breaks = seq(0, max(df$LoanOriginalAmount), 5000))
+g1 <- g + geom_histogram(binwidth = 1000)
+g2 <- g + geom_histogram(binwidth = 500)
+g3 <- g + geom_histogram(binwidth = 250)
+grid.arrange(g1, g2, g3, ncol = 1)
 ```
 
 ```{r echo=FALSE, Univariate_Plots}
