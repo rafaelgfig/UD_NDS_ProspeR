@@ -15,9 +15,27 @@ df <- read.csv('prosperLoanData.csv')
 
 # Seção de Gráficos Univariados
 ```{r echo=FALSE, Univariate_Plots}
+# Dimensão dos dados
+dim(df)
+```
+```{r echo=FALSE, Univariate_Plots}
+# Colunas e tipos de dados
+str(df, vec.len = 1)
+```
+
+```{r echo=FALSE, Univariate_Plots}
+# Dicionário dos dados
+legenda <- read.csv('legend.csv', sep=';', header = T)
+View(legenda)
+```
+
+```{r echo=FALSE, Univariate_Plots}
 
 ```
 
+```{r echo=FALSE, Univariate_Plots}
+
+```
 # Análise Univariada
 
 ### Qual é a estrutura do conjunto de dados?
