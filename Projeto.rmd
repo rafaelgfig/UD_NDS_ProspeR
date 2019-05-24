@@ -21,7 +21,7 @@ df <- read.csv('prosperLoanData.csv')
 dim(df)
 ```
 ```{r echo=FALSE, Univariate_Plots}
-# Filtrando em algumas colunas de interesse
+# Selecionando algumas colunas de interesse
 dff <- (subset(df, select = c('LoanKey',
                               'Term',
                               'LoanStatus',
