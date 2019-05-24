@@ -6,6 +6,8 @@ Explorando e resumindo dados de empréstimos da Prosper por Rafael G. Figueira
 library(dplyr)
 library(gridExtra)
 library(ggplot2)
+library(tidyr)
+library(purrr)
 ```
 
 ```{r echo=FALSE, Load_the_Data}
@@ -15,18 +17,53 @@ df <- read.csv('prosperLoanData.csv')
 
 # Seção de Gráficos Univariados
 ```{r echo=FALSE, Univariate_Plots}
-# Dimensão dos dados
+# Dimensão dos dados originais
 dim(df)
 ```
 ```{r echo=FALSE, Univariate_Plots}
+# Filtrando em algumas colunas de interesse
+dff <- (subset(df, select = c('LoanKey',
+                              'Term',
+                              'LoanStatus',
+                              'BorrowerAPR',
+                              'BorrowerRate',
+                              'ProsperScore',
+                              'ListingCategory..numeric.',
+                              'Occupation',
+                              'EmploymentStatus',
+                              'EmploymentStatusDuration',
+                              'StatedMonthlyIncome',
+                              'LoanOriginalAmount',
+                              'LoanOriginationDate',
+                              'MonthlyLoanPayment')
+            )
+     )
+```
+
+
+```{r echo=FALSE, Univariate_Plots}
 # Colunas e tipos de dados
-str(df, vec.len = 1)
+str(dff)
 ```
 
 ```{r echo=FALSE, Univariate_Plots}
-# Dicionário dos dados
-legenda <- read.csv('legend.csv', sep=';', header = T)
-View(legenda)
+# Histograma básico das colunas (1 à 7)
+dff[0:7] %>%
+  keep(is.numeric) %>%
+  gather() %>%
+  ggplot(aes(value)) +
+    facet_wrap(~key, scales = 'free', ncol = 1) +
+    geom_histogram()
+```
+
+```{r echo=FALSE, Univariate_Plots}
+# Histograma básico das colunas (8 à 14)
+dff[8:14] %>%
+  keep(is.numeric) %>%
+  gather() %>%
+  ggplot(aes(value)) +
+    facet_wrap(~key, scales = 'free', ncol = 1) +
+    geom_histogram()
 ```
 
 ```{r echo=FALSE, Univariate_Plots}
