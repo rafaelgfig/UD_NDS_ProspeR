@@ -146,13 +146,19 @@ ggplot(subset(dff, EmploymentStatus != ''), aes(x = reorder(EmploymentStatus, -t
   geom_bar() +
   xlab('EmploymentStatus')
 ```
-A grande maioria dos solicitantes de empréstimos está atualmente empregado de alguma forma.
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Porcentagem de mutuários declaradamente sem emprego
+round(sum(dff$EmploymentStatus == 'Not employed')/length(dff$EmploymentStatus),digits = 3)*100
+```
+
+<br/>A grande maioria dos solicitantes de empréstimos está atualmente empregado de alguma forma. Apenas 0.7% dos mutuários são declaradamente desempregados.
 
 # Análise Univariada
 
 ### Qual é a estrutura do conjunto de dados?
 
 ### Quais são os principais atributos de interesse deste conjunto de dados?
+
 
 ### Quais outros atributos você acha que podem lhe auxiliar na investigação destes atributos de interesse?
 
