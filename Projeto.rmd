@@ -139,6 +139,13 @@ ggplot(subset(dff, !is.na(EmploymentStatusDuration)), aes(x = floor(EmploymentSt
                      breaks = seq(0, 25, 1))
 ```
 
+Distribuição dos status do emprego:<br/>
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Distribuição dos status do emprego
+ggplot(subset(dff, EmploymentStatus != ''), aes(x = reorder(EmploymentStatus, -table(EmploymentStatus)[EmploymentStatus]))) +
+  geom_bar() +
+  xlab('EmploymentStatus')
+```
 
 # Análise Univariada
 
