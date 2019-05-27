@@ -88,6 +88,14 @@ ggplot(dff, aes(x = StatedMonthlyIncome)) +
   scale_x_continuous(limits = c(0, quantile(dff$StatedMonthlyIncome, .995)))
 ```
 
+```{r echo=FALSE, Univariate_Plots}
+# Plotagem removendo 5% das maiores rendas
+ggplot(dff, aes(x = StatedMonthlyIncome)) +
+  geom_histogram(binwidth = 250, color = 'black') +
+  scale_x_continuous(limits = c(0, quantile(dff$StatedMonthlyIncome, .95)),
+                     breaks = seq(0, 12500, 1000))
+```
+
 # Análise Univariada
 
 ### Qual é a estrutura do conjunto de dados?
