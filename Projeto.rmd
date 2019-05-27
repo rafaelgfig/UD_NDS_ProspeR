@@ -68,7 +68,7 @@ str(dff)
 # Resumo estatístico
 summary(dff)
 ```
-Visualizando distribuição das variáveis selecionadas.
+Visualizando distribuição das variáveis selecionadas.<br/>
 ```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=12}
 # Histograma básico das colunas
 dff %>%
@@ -109,7 +109,7 @@ ggplot(dff, aes(x = StatedMonthlyIncome)) +
                      breaks = seq(0, 12500, 1000))
 ```
 
-Nos gráficos abaixo podemos ver que a maioria dos empréstimo possuem valores arredondados, dando ênfase para empréstimos de 4.000, os posteriores tendem a ser múltiplos de 5.000.
+Nos gráficos abaixo podemos ver que a maioria dos empréstimo possuem valores arredondados, dando ênfase para empréstimos de 4.000, os posteriores tendem a ser múltiplos de 5.000.<br/>
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Distribuição dos dados da coluna LoanOriginalAmount
 g <- ggplot(df, aes(x = LoanOriginalAmount)) +
@@ -119,6 +119,26 @@ g2 <- g + geom_histogram(binwidth = 500)
 g3 <- g + geom_histogram(binwidth = 250)
 grid.arrange(g1, g2, g3, ncol = 1)
 ```
+
+<p>Abaixo é possível observar que é mais comum encontrar pessoas com poucos meses de emprego solicitando empréstimo do que em comparação com aqueles com muito tempo.</p>
+Tempo em meses:<br/>
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Distribuição do tempo de emprego omitindo 5%
+ggplot(subset(dff, !is.na(EmploymentStatusDuration)), aes(x = EmploymentStatusDuration)) +
+  geom_histogram(binwidth = 1) +
+  scale_x_continuous(limits = c(0, quantile(dff$EmploymentStatusDuration, .95, na.rm = T)),
+                     breaks = seq(0, 300, 25))
+```
+
+Tempo em anos:<br/>
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Distribuição do tempo de emprego em anos omitindo 5%
+ggplot(subset(dff, !is.na(EmploymentStatusDuration)), aes(x = floor(EmploymentStatusDuration/12))) +
+  geom_histogram(binwidth = 1, color = 'black') +
+  scale_x_continuous(limits = c(0, quantile(dff$EmploymentStatusDuration/12, .95, na.rm = T)),
+                     breaks = seq(0, 25, 1))
+```
+
 
 # Análise Univariada
 
