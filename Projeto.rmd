@@ -146,6 +146,7 @@ ggplot(subset(dff, EmploymentStatus != ''), aes(x = reorder(EmploymentStatus, -t
   geom_bar() +
   xlab('EmploymentStatus')
 ```
+A grande maioria dos solicitantes de empréstimos está atualmente empregado de alguma forma.
 
 # Análise Univariada
 
