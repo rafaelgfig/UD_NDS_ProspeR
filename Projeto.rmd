@@ -1,6 +1,6 @@
 Explorando e resumindo dados de empréstimos da Prosper por Rafael G. Figueira
 ========================================================
-
+<p>Esse relatório explora um conjunto de dados de empréstimos da Prosper, possuindo 113.937 empréstimos com 81 variáveis em cada um, incluindo valor, taxa de juros, status do pagamento, receita do mutuário, seu emprego atual, histórico do cartão de crédito, informações sobre seu último pagamento, entre outras.</p>
 ```{r echo=FALSE, message=FALSE, warning=FALSE, packages}
 # Carregamento das bibliotécas
 library(dplyr)
@@ -15,11 +15,29 @@ library(purrr)
 df <- read.csv('prosperLoanData.csv')
 ```
 
-# Seção de Gráficos Univariados
+## Seção de Gráficos Univariados
+<p>O conjunto de dados original possui 81 variáveis</p>
 ```{r echo=FALSE, Univariate_Plots}
 # Dimensão dos dados originais
 dim(df)
 ```
+<p>Foram escolhidas 14 variáveis julgadas mais interessantes para a minha análise.<br/> Sendo elas:</p>
+* LoanKey
+* Term
+* LoanStatus
+* BorrowerAPR
+* BorrowerRate
+* ProsperScore
+* ListingCategory..numeric.
+* Occupation
+* EmploymentStatus
+* EmploymentStatusDuration
+* StatedMonthlyIncome
+* LoanOriginalAmount
+* LoanOriginationDate
+* MonthlyLoanPayment
+
+Abaixo seguem algumas informações úteis sobre os dados.<br/>
 ```{r echo=FALSE}
 # Selecionando algumas colunas de interesse
 dff <- (subset(df, select = c('LoanKey',
