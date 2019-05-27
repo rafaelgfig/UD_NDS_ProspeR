@@ -109,6 +109,7 @@ ggplot(dff, aes(x = StatedMonthlyIncome)) +
                      breaks = seq(0, 12500, 1000))
 ```
 
+Nos gráficos abaixo podemos ver que a maioria dos empréstimo possuem valores arredondados, dando ênfase para empréstimos de 4.000, os posteriores tendem a ser múltiplos de 5.000.
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Distribuição dos dados da coluna LoanOriginalAmount
 g <- ggplot(df, aes(x = LoanOriginalAmount)) +
