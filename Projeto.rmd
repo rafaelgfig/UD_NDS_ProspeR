@@ -159,7 +159,7 @@ Categorias mais selecionadas pelo mutuário:<br/>
 dff$ListingCategory..numeric. <- factor(dff$ListingCategory..numeric.)
 # Distribuição dos status do emprego
 ggplot(dff, aes(x = reorder(ListingCategory..numeric., -table(ListingCategory..numeric.)[ListingCategory..numeric.]))) +
-  geom_bar() +
+  geom_bar(width = .8) +
   scale_y_continuous(breaks = scales::trans_breaks('log10', function(x) 10^x),
                      labels = scales::trans_format('log10', scales::math_format(10^.x)),
                      trans = 'log10')+
@@ -185,8 +185,8 @@ ggplot(dff, aes(x = reorder(ListingCategory..numeric., -table(ListingCategory..n
 16. Motocicleta
 17. VD
 18. Impostos
-19. férias
-20. empréstimos do casamento
+19. Férias
+20. Empréstimos do casamento
 
 
 # Análise Univariada
@@ -194,7 +194,6 @@ ggplot(dff, aes(x = reorder(ListingCategory..numeric., -table(ListingCategory..n
 ### Qual é a estrutura do conjunto de dados?
 
 ### Quais são os principais atributos de interesse deste conjunto de dados?
-
 
 ### Quais outros atributos você acha que podem lhe auxiliar na investigação destes atributos de interesse?
 
