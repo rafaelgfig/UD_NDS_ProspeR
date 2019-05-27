@@ -154,7 +154,7 @@ round(sum(dff$EmploymentStatus == 'Not employed')/length(dff$EmploymentStatus),d
 <br/>A grande maioria dos solicitantes de empréstimos está atualmente empregado de alguma forma. Apenas 0.7% dos mutuários são declaradamente desempregados.
 
 Categorias mais selecionadas pelo mutuário:<br/>
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3, fi}
 # Alterando variável ListingCategory..numeric. para categórica
 dff$ListingCategory..numeric. <- factor(dff$ListingCategory..numeric.)
 # Distribuição dos status do emprego
