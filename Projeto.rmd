@@ -77,8 +77,14 @@ grid.arrange(g1, g2, g3, ncol = 1)
 ```
 
 ```{r echo=FALSE, Univariate_Plots}
+# Verificando que plotagem da renda mensal está enviesada por conta de outlier
+summary(dff$StatedMonthlyIncome)
+```
+
+```{r echo=FALSE, Univariate_Plots}
 
 ```
+
 # Análise Univariada
 
 ### Qual é a estrutura do conjunto de dados?
