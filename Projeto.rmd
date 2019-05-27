@@ -68,10 +68,10 @@ str(dff)
 # Resumo estatístico
 summary(dff)
 ```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-# Histograma básico das colunas (1 à 7)
-dff[0:7] %>%
+Visualizando distribuição das variáveis selecionadas.
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=12}
+# Histograma básico das colunas
+dff %>%
   keep(is.numeric) %>%
   gather() %>%
   ggplot(aes(value)) +
@@ -79,15 +79,6 @@ dff[0:7] %>%
     geom_histogram()
 ```
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-# Histograma básico das colunas (8 à 14)
-dff[8:14] %>%
-  keep(is.numeric) %>%
-  gather() %>%
-  ggplot(aes(value)) +
-    facet_wrap(~key, scales = 'free', ncol = 1) +
-    geom_histogram()
-```
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Distribuição dos dados da coluna LoanOriginalAmount
