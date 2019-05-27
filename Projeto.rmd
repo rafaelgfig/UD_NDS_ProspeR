@@ -153,6 +153,42 @@ round(sum(dff$EmploymentStatus == 'Not employed')/length(dff$EmploymentStatus),d
 
 <br/>A grande maioria dos solicitantes de empréstimos está atualmente empregado de alguma forma. Apenas 0.7% dos mutuários são declaradamente desempregados.
 
+Categorias mais selecionadas pelo mutuário:<br/>
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Alterando variável ListingCategory..numeric. para categórica
+dff$ListingCategory..numeric. <- factor(dff$ListingCategory..numeric.)
+# Distribuição dos status do emprego
+ggplot(dff, aes(x = reorder(ListingCategory..numeric., -table(ListingCategory..numeric.)[ListingCategory..numeric.]))) +
+  geom_bar() +
+  scale_y_continuous(breaks = scales::trans_breaks('log10', function(x) 10^x),
+                     labels = scales::trans_format('log10', scales::math_format(10^.x)),
+                     trans = 'log10')+
+  xlab('ListingCategory')
+```
+<br/> Legenda das categorias:
+
+0. Não disponível
+1. Consolidação da dívida
+2. Melhoria da casa
+3. Negócios
+4. Empréstimo pessoal
+5. Uso do aluno
+6. Automático
+7- Outros 8. Bebê e Adoção
+9. Barco
+10. Procedimento Cosmético
+11. Anel de Noivado
+12. Empréstimos Verdes
+13. Gastos Domésticos
+14. Grandes Compras
+15. Médico / Odontológico
+16. Motocicleta
+17. VD
+18. Impostos
+19. férias
+20. empréstimos do casamento
+
+
 # Análise Univariada
 
 ### Qual é a estrutura do conjunto de dados?
@@ -192,7 +228,7 @@ round(sum(dff$EmploymentStatus == 'Not employed')/length(dff$EmploymentStatus),d
 
 # Análise Multivariada
 
-### Discuta sobre os relacionamentos observados nesta parte da investigaÃ§Ã£o. Quais atributos que fortaleceram os demais na observação das variáveis de interesse?
+### Discuta sobre os relacionamentos observados nesta parte da investigação. Quais atributos que fortaleceram os demais na observação das variáveis de interesse?
 
 ### Interações surpreendentes e/ou interessantes foram encontradas entre os atributos?
 
