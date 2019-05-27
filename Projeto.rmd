@@ -82,6 +82,11 @@ summary(dff$StatedMonthlyIncome)
 ```
 
 ```{r echo=FALSE, Univariate_Plots}
+# Visualizando as 10 maiores rendas declaradas
+sort(tail(sort(dff$StatedMonthlyIncome), 10), decreasing = T)
+```
+
+```{r echo=FALSE, Univariate_Plots}
 # Plotagem removendo 0.5% das maiores rendas
 ggplot(dff, aes(x = StatedMonthlyIncome)) +
   geom_histogram(binwidth = 250) +
