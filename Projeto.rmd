@@ -20,7 +20,7 @@ df <- read.csv('prosperLoanData.csv')
 # Dimensão dos dados originais
 dim(df)
 ```
-```{r echo=FALSE, Univariate_Plots}
+```{r echo=FALSE}
 # Selecionando algumas colunas de interesse
 dff <- (subset(df, select = c('LoanKey',
                               'Term',
@@ -41,17 +41,17 @@ dff <- (subset(df, select = c('LoanKey',
 ```
 
 
-```{r echo=FALSE, Univariate_Plots}
+```{r echo=FALSE}
 # Colunas e tipos de dados
 str(dff)
 ```
 
-```{r echo=FALSE, Univariate_Plots}
+```{r echo=FALSE}
 # Resumo estatístico
 summary(dff)
 ```
 
-```{r echo=FALSE, Univariate_Plots}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Histograma básico das colunas (1 à 7)
 dff[0:7] %>%
   keep(is.numeric) %>%
@@ -61,7 +61,7 @@ dff[0:7] %>%
     geom_histogram()
 ```
 
-```{r echo=FALSE, Univariate_Plots}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Histograma básico das colunas (8 à 14)
 dff[8:14] %>%
   keep(is.numeric) %>%
@@ -71,7 +71,7 @@ dff[8:14] %>%
     geom_histogram()
 ```
 
-```{r echo=FALSE, Univariate_Plots}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Distribuição dos dados da coluna LoanOriginalAmount
 g <- ggplot(df, aes(x = LoanOriginalAmount)) +
   scale_x_continuous(breaks = seq(0, max(df$LoanOriginalAmount), 5000))
@@ -81,24 +81,24 @@ g3 <- g + geom_histogram(binwidth = 250)
 grid.arrange(g1, g2, g3, ncol = 1)
 ```
 
-```{r echo=FALSE, Univariate_Plots}
+```{r echo=FALSE}
 # Verificando que plotagem da renda mensal está enviesada por conta de outlier
 summary(dff$StatedMonthlyIncome)
 ```
 
-```{r echo=FALSE, Univariate_Plots}
+```{r echo=FALSE}
 # Visualizando as 10 maiores rendas declaradas
 sort(tail(sort(dff$StatedMonthlyIncome), 10), decreasing = T)
 ```
 
-```{r echo=FALSE, Univariate_Plots}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Plotagem removendo 0.5% das maiores rendas
 ggplot(dff, aes(x = StatedMonthlyIncome)) +
   geom_histogram(binwidth = 250) +
   scale_x_continuous(limits = c(0, quantile(dff$StatedMonthlyIncome, .995)))
 ```
 
-```{r echo=FALSE, Univariate_Plots}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Plotagem removendo 5% das maiores rendas
 ggplot(dff, aes(x = StatedMonthlyIncome)) +
   geom_histogram(binwidth = 250, color = 'black') +
