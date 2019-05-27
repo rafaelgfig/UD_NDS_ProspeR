@@ -16,7 +16,7 @@ df <- read.csv('prosperLoanData.csv')
 ```
 
 ## Seção de Gráficos Univariados
-<p>O conjunto de dados original possui 81 variáveis</p>
+<p>O conjunto de dados original possui 113937 linhas e 81 colunas.</p>
 ```{r echo=FALSE, Univariate_Plots}
 # Dimensão dos dados originais
 dim(df)
@@ -79,6 +79,35 @@ dff %>%
     geom_histogram()
 ```
 
+<p>É possível ver que o histograma da variável <em>StatedMonthlyIncome</em> está totalmente concentrado em zero.</p>
+Analizando o resumo estatístico é possível ver que a variável contém alguns dados discrepantes.
+```{r echo=FALSE}
+# Verificando que plotagem da renda mensal está enviesada por conta de outlier
+summary(dff$StatedMonthlyIncome)
+```
+
+<p>Os 10 valores mais altos da variável são:</p>
+```{r echo=FALSE}
+# Visualizando as 10 maiores rendas declaradas
+sort(tail(sort(dff$StatedMonthlyIncome), 10), decreasing = T)
+```
+
+<p>Visualizando os dados sem 0.5% dos maiores valores.</p>
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Plotagem removendo 0.5% das maiores rendas
+ggplot(dff, aes(x = StatedMonthlyIncome)) +
+  geom_histogram(binwidth = 250) +
+  scale_x_continuous(limits = c(0, quantile(dff$StatedMonthlyIncome, .995)))
+```
+
+<p>Omitindo 5% dos maiores valores:</p>
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Plotagem removendo 5% das maiores rendas
+ggplot(dff, aes(x = StatedMonthlyIncome)) +
+  geom_histogram(binwidth = 250, color = 'black') +
+  scale_x_continuous(limits = c(0, quantile(dff$StatedMonthlyIncome, .95)),
+                     breaks = seq(0, 12500, 1000))
+```
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Distribuição dos dados da coluna LoanOriginalAmount
@@ -88,31 +117,6 @@ g1 <- g + geom_histogram(binwidth = 1000)
 g2 <- g + geom_histogram(binwidth = 500)
 g3 <- g + geom_histogram(binwidth = 250)
 grid.arrange(g1, g2, g3, ncol = 1)
-```
-
-```{r echo=FALSE}
-# Verificando que plotagem da renda mensal está enviesada por conta de outlier
-summary(dff$StatedMonthlyIncome)
-```
-
-```{r echo=FALSE}
-# Visualizando as 10 maiores rendas declaradas
-sort(tail(sort(dff$StatedMonthlyIncome), 10), decreasing = T)
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-# Plotagem removendo 0.5% das maiores rendas
-ggplot(dff, aes(x = StatedMonthlyIncome)) +
-  geom_histogram(binwidth = 250) +
-  scale_x_continuous(limits = c(0, quantile(dff$StatedMonthlyIncome, .995)))
-```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-# Plotagem removendo 5% das maiores rendas
-ggplot(dff, aes(x = StatedMonthlyIncome)) +
-  geom_histogram(binwidth = 250, color = 'black') +
-  scale_x_continuous(limits = c(0, quantile(dff$StatedMonthlyIncome, .95)),
-                     breaks = seq(0, 12500, 1000))
 ```
 
 # Análise Univariada
