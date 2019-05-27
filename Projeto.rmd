@@ -47,6 +47,11 @@ str(dff)
 ```
 
 ```{r echo=FALSE, Univariate_Plots}
+# Resumo estatístico
+summary(dff)
+```
+
+```{r echo=FALSE, Univariate_Plots}
 # Histograma básico das colunas (1 à 7)
 dff[0:7] %>%
   keep(is.numeric) %>%
