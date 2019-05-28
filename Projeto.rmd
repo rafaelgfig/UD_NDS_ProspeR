@@ -70,6 +70,12 @@ str(dff)
 # Resumo estatístico
 summary(dff)
 ```
+<br/>Quantidade de NA's:
+```{r echo=FALSE}
+# Verificando quantidade de NA's
+colSums(is.na(dff))
+```
+
 Visualizando distribuição das variáveis selecionadas.<br/>
 ```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=12}
 # Histograma básico das colunas
