@@ -201,6 +201,22 @@ ggplot(dff, aes(x = reorder(Occupation, +table(Occupation)[Occupation]))) +
 ```
 <br/>A grande maioria não declarou uma ocupação ou declarou apenas como ocupação profissional, não sendo possível afirmar corretamente qual a ocupação mais comum. Das ocupações declaradas o programador de computador ficou em destaque.
 
+<br/>
+Distribuição dos valores das parcelas:<br/>
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=12}
+# Distribuição das parcelas
+g <- ggplot(dff, aes(x = MonthlyLoanPayment)) +
+  scale_x_continuous(limits = c(0, quantile(dff$MonthlyLoanPayment, .99)),
+                     breaks = seq(25, 1000, 50))
+g1 <- g + geom_histogram(binwidth = 25, color='black')
+g2 <- g + geom_histogram(binwidth = 10, color='black')
+g3 <- g + geom_histogram(binwidth = 5)
+g4 <- g + geom_histogram(binwidth = 1)
+
+grid.arrange(g1, g2, g3, g4, ncol = 1)
+```
+
+
 # Análise Univariada
 
 ### Qual é a estrutura do conjunto de dados?
