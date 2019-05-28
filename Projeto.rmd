@@ -234,6 +234,8 @@ subset(dff, MonthlyLoanPayment == 173.71) %>%
   select(MemberKey, Term, LoanOriginalAmount, MonthlyLoanPayment, BorrowerAPR, ProsperScore) %>%
   summary()
 ```
+Todos aqueles que solicitaram empréstimo de 4.000 para ser pago em 36 meses com APR de 0.358 tem o mesmo valor de parcela.<br/>
+Foi verificado anteiormente que o valor mais solicitado é de 4.000 e a duração mais popular também é a de 36 meses, justificando a concentração anormal do valor da parcela com essa taxa de júros.
 
 
 # Análise Univariada
