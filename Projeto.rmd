@@ -229,13 +229,24 @@ Verificado que 2423 parcelas de mutuários têm exatamente 173.71 como valor. Repr
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Verificando os dados com parcela de 173.71
-names(dff)
+#names(dff)
 subset(dff, MonthlyLoanPayment == 173.71) %>% 
   select(MemberKey, Term, LoanOriginalAmount, MonthlyLoanPayment, BorrowerAPR, ProsperScore) %>%
   summary()
 ```
 Todos aqueles que solicitaram empréstimo de 4.000 para ser pago em 36 meses com APR de 0.358 tem o mesmo valor de parcela.<br/>
-Foi verificado anteiormente que o valor mais solicitado é de 4.000 e a duração mais popular também é a de 36 meses, justificando a concentração anormal do valor da parcela com essa taxa de júros.
+Foi verificado anteiormente que o valor mais solicitado é de 4.000 e a duração mais popular também é a de 36 meses, justificando a concentração anormal do valor da parcela com essa APR.
+
+<br/>
+Foi verificado também alguns empréstimos com pagamento mensal programado com valor zerado, podendo ser erro no conjunto de dados ou existe a possibilidade do mutuário simplesmente não programar um valor para o pagamento mensal, obtendo assim o valor zero.<br/>
+Nesse caso foi considerado a segunda possibilidade e os dados foram mantidos.
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Verificando os dados com parcela de 0
+names(dff)
+subset(dff, MonthlyLoanPayment == 0) %>% 
+  select(MemberKey, Term, LoanOriginalAmount, MonthlyLoanPayment, BorrowerAPR, ProsperScore) %>%
+  summary()
+```
 
 
 # Análise Univariada
