@@ -158,9 +158,19 @@ ggplot(subset(dff, EmploymentStatus != ''), aes(x = reorder(EmploymentStatus, -t
 # Porcentagem de mutuários declaradamente sem emprego
 round(sum(dff$EmploymentStatus == 'Not employed')/length(dff$EmploymentStatus),digits = 3)*100
 ```
+A grande maioria dos solicitantes de empréstimos está atualmente empregado de alguma forma. Apenas 0.7% dos mutuários são declaradamente desempregados.
 
-<br/>A grande maioria dos solicitantes de empréstimos está atualmente empregado de alguma forma. Apenas 0.7% dos mutuários são declaradamente desempregados.
+<br/>
+O histograma da duração do empréstimo ficou muito espaçado por conta da coluna estar como tipo de valor inteiro, e como só há 3 variações de duração (12, 36 ou 60) dentro dessa coluna, é possível assumí-la como dado categórico e plotar como tal. <br/>
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=4, fig.width=2}
+# Alterando variável para o tipo categórica, já que só há 3 tipos de valores
+dff$Term <- factor(dff$Term)
+# Distribuição da duração do empréstimo
+ggplot(dff, aes(x = Term)) + 
+  geom_bar()
+```
 
+<br/>
 Categorias mais selecionadas pelo mutuário:<br/>
 ```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3}
 # Alterando variável ListingCategory..numeric. para categórica
@@ -248,12 +258,11 @@ Foi verificado também alguns empréstimos com pagamento mensal programado com val
 Nesse caso foi considerado a segunda possibilidade e os dados foram mantidos.
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Verificando os dados com parcela de 0
-names(dff)
+#names(dff)
 subset(dff, MonthlyLoanPayment == 0) %>% 
   select(MemberKey, Term, LoanOriginalAmount, MonthlyLoanPayment, BorrowerAPR, ProsperScore) %>%
   summary()
 ```
-
 
 # Análise Univariada
 
