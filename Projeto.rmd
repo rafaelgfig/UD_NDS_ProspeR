@@ -217,11 +217,15 @@ g4 <- g + geom_histogram(binwidth = 1)
 
 grid.arrange(g1, g2, g3, g4, ncol = 1)
 ```
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=12}
+<br/> Vemos uma frequência altíssima de mutuários com valor de parcela próximo da casa dos 175, mas pelo gráfico não é possível ter muita precisão, por mais que seja determinado 1 de binwidth.
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Valor com maior ocorrência no conjunto de dados
 head(sort(table(dff$MonthlyLoanPayment),decreasing = T), 1)
 ```
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+round(sum(dff$MonthlyLoanPayment == 173.71) / length(dff$MonthlyLoanPayment) * 100, 2)
+```
+Verificado que 2423 parcelas de mutuários têm exatamente 173.71 como valor. Representando 2.13% de todos os dados.
 
 # Análise Univariada
 
