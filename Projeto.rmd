@@ -216,6 +216,10 @@ g4 <- g + geom_histogram(binwidth = 1)
 grid.arrange(g1, g2, g3, g4, ncol = 1)
 ```
 
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=12}
+# Valor com maior ocorrência no conjunto de dados
+head(sort(table(dff$MonthlyLoanPayment),decreasing = T), 1)
+```
 
 # Análise Univariada
 
