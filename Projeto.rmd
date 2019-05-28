@@ -267,8 +267,16 @@ subset(dff, MonthlyLoanPayment == 0) %>%
 # Análise Univariada
 
 ### Qual é a estrutura do conjunto de dados?
+São 113.937 empréstimos com 81 variáveis em cada um.<br/>
+Visando uma exploração mais sucinta, foram escolhidas 15 variáveis de interesse, sendo elas:
+
+* Duas variáveis identificadoras (MemberKey e LoanKey);
+* Sete variáveis numéricas (BorrowerAPR, BorrowerRate, ProsperScore, EmploymentStatusDuration, StatedMonthlyIncome, LoanOriginalAmount e MonthlyLoanPayment);
+* Uma variável cronológica (LoanOriginationDate);
+* E cinco variáveis categóricas (Term, LoanStatus, ListingCategory..numeric., Occupation e EmploymentStatus)
 
 ### Quais são os principais atributos de interesse deste conjunto de dados?
+Os principais atributos são o montante original do empréstimo, renda declarada e razão pela qual solicitou o empréstimo. Quero entender quais são os perfís mais comuns de mutuários e suas motivações para solicitar os respectivos valores. Imagino que há uma correlação positiva de valor solicitado com a renda declarada ou talvez tempo de serviço.
 
 ### Quais outros atributos você acha que podem lhe auxiliar na investigação destes atributos de interesse?
 
