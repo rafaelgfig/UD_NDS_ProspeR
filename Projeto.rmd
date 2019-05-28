@@ -217,7 +217,7 @@ ggplot(dff, aes(x = reorder(Occupation, +table(Occupation)[Occupation]))) +
 #  scale_y_log10() +
   coord_flip()
 ```
-<br/>A grande maioria não declarou uma ocupação ou declarou apenas como ocupação profissional, não sendo possível afirmar corretamente qual a ocupação mais comum. Das ocupações declaradas o programador de computador ficou em destaque.
+<br/>A grande maioria declarou como "Outra" a ocupação ou declarou apenas como ocupação profissional, não sendo possível afirmar corretamente qual a ocupação mais comum. Das ocupações especificamente declaradas o programador de computador ficou em destaque.
 
 <br/>
 Distribuição dos valores das parcelas:<br/>
