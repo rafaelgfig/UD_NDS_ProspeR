@@ -188,6 +188,18 @@ ggplot(dff, aes(x = reorder(ListingCategory..numeric., -table(ListingCategory..n
 19. Férias
 20. Empréstimos do casamento
 
+<p/>
+<br/>
+Distribuição das ocupações declaradas:<br/>
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=20}
+# Distribuição dos status do emprego
+ggplot(dff, aes(x = reorder(Occupation, +table(Occupation)[Occupation]))) +
+  geom_bar() +
+  xlab('Occupation') +
+#  scale_y_log10() +
+  coord_flip()
+```
+<br/>A grande maioria não declarou uma ocupação ou declarou apenas como ocupação profissional, não sendo possível afirmar corretamente qual a ocupação mais comum. Das ocupações declaradas o programador de computador ficou em destaque.
 
 # Análise Univariada
 
