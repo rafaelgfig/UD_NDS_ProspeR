@@ -21,7 +21,8 @@ df <- read.csv('prosperLoanData.csv')
 # Dimensão dos dados originais
 dim(df)
 ```
-<p>Foram escolhidas 14 variáveis julgadas mais interessantes para a minha análise.<br/> Sendo elas:</p>
+<p>Foram escolhidas 15 variáveis julgadas mais interessantes para a minha análise.<br/> Sendo elas:</p>
+* MemberKey
 * LoanKey
 * Term
 * LoanStatus
@@ -40,7 +41,8 @@ dim(df)
 Abaixo seguem algumas informações úteis sobre os dados.<br/>
 ```{r echo=FALSE}
 # Selecionando algumas colunas de interesse
-dff <- (subset(df, select = c('LoanKey',
+dff <- (subset(df, select = c('MemberKey',
+                              'LoanKey',
                               'Term',
                               'LoanStatus',
                               'BorrowerAPR',
