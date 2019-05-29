@@ -273,7 +273,7 @@ ggplot(dff, aes(x = LoanOriginationDate)) +
   geom_histogram(binwidth = 30, color='black') +
   scale_x_date(breaks = '1 year', date_labels = '%Y')
 ```
-
+<br/>Ocorreu um aumento considerável de empréstimo a partir de 2013 e por alguma razão não há nenhum registro no começo de 2009 e final de 2008.
 
 # Análise Univariada
 
