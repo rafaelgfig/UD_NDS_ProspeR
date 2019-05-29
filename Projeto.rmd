@@ -268,7 +268,7 @@ subset(dff, MonthlyLoanPayment == 0) %>%
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Convertendo a variável cronológica em data
 dff$LoanOriginationDate <- as.Date(dff$LoanOriginationDate)
-# Convertendo a variável cronológica em data
+# Distribuição dos dados cronológicos
 ggplot(dff, aes(x = LoanOriginationDate)) + 
   geom_histogram(binwidth = 30, color='black') +
   scale_x_date(breaks = '1 year', date_labels = '%Y')
@@ -318,6 +318,7 @@ Outras observações:
 * Existem mutuários empregados por mais de 62 anos e os que não estão empregados. Em média estão 8 anos empregados.
 * Apenas 0.7% dos mutuários são declaradamente desempregados.
 * A duração do empréstimo mais solicitada é de 36 meses, em seguida de 60 meses e muito raramente 12 meses.
+* Não há registros de empréstimos no final de 2008 e começo de 2009.
 
 ### Quais são os principais atributos de interesse deste conjunto de dados?
 Os principais atributos de interesse são o montante original do empréstimo, renda declarada e razão pela qual solicitou o empréstimo. Quero entender quais são os perfís mais comuns de mutuários e suas motivações para solicitar os respectivos valores. Imagino que há uma correlação positiva de valor solicitado com a renda declarada ou talvez tempo de serviço.
