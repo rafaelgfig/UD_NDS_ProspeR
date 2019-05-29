@@ -265,6 +265,12 @@ subset(dff, MonthlyLoanPayment == 0) %>%
   summary()
 ```
 
+```{r echo=FALSE}
+# Convertendo a variável cronológica em data
+dff$LoanOriginationDate <- as.Date(dff$LoanOriginationDate)
+```
+
+
 # Análise Univariada
 
 ### Qual é a estrutura do conjunto de dados?
