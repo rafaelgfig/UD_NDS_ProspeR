@@ -265,9 +265,13 @@ subset(dff, MonthlyLoanPayment == 0) %>%
   summary()
 ```
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 # Convertendo a variável cronológica em data
 dff$LoanOriginationDate <- as.Date(dff$LoanOriginationDate)
+# Convertendo a variável cronológica em data
+ggplot(dff, aes(x = LoanOriginationDate)) + 
+  geom_histogram(binwidth = 30, color='black') +
+  scale_x_date(breaks = '1 year', date_labels = '%Y')
 ```
 
 
