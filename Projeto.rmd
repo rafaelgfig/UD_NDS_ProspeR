@@ -192,7 +192,8 @@ ggplot(dff, aes(x = reorder(ListingCategory..numeric., -table(ListingCategory..n
 4. Empréstimo pessoal
 5. Uso do aluno
 6. Automático
-7- Outros 8. Bebê e Adoção
+7. Outros 
+8. Bebê e Adoção
 9. Barco
 10. Procedimento Cosmético
 11. Anel de Noivado
@@ -275,8 +276,41 @@ Visando uma exploração mais sucinta, foram escolhidas 15 variáveis de interesse,
 * Uma variável cronológica (LoanOriginationDate);
 * E cinco variáveis categóricas (Term, LoanStatus, ListingCategory..numeric., Occupation e EmploymentStatus)
 
+A variável <em>ListingCategory..numeric.</em> está representada numéricamente, com a seguinte relação:
+
+0. Não disponível
+1. Consolidação da dívida
+2. Melhoria da casa
+3. Negócios
+4. Empréstimo pessoal
+5. Uso do aluno
+6. Automático
+7. Outros 
+8. Bebê e Adoção
+9. Barco
+10. Procedimento Cosmético
+11. Anel de Noivado
+12. Empréstimos Verdes
+13. Gastos Domésticos
+14. Grandes Compras
+15. Médico / Odontológico
+16. Motocicleta
+17. VD
+18. Impostos
+19. Férias
+20. Empréstimos do casamento
+
+Outras observações:
+
+* A maioria dos empréstimos solicitados são menos de 12000.
+* Menos de 0.5% dos mutuários têm renda mensal acima de 25000, o mais comum é ganharem de 3200 a 6800.
+* Normalmente os valores solicitados são múltiplos de 5000, com exceção aos empréstimos de 4000 que são os mais numerosos.
+* Existem mutuários empregados por mais de 62 anos e os que não estão empregados. Em média estão 8 anos empregados.
+* Apenas 0.7% dos mutuários são declaradamente desempregados.
+* A duração do empréstimo mais solicitada é de 36 meses, em seguida de 60 meses e muito raramente 12 meses.
+
 ### Quais são os principais atributos de interesse deste conjunto de dados?
-Os principais atributos são o montante original do empréstimo, renda declarada e razão pela qual solicitou o empréstimo. Quero entender quais são os perfís mais comuns de mutuários e suas motivações para solicitar os respectivos valores. Imagino que há uma correlação positiva de valor solicitado com a renda declarada ou talvez tempo de serviço.
+Os principais atributos de interesse são o montante original do empréstimo, renda declarada e razão pela qual solicitou o empréstimo. Quero entender quais são os perfís mais comuns de mutuários e suas motivações para solicitar os respectivos valores. Imagino que há uma correlação positiva de valor solicitado com a renda declarada ou talvez tempo de serviço.
 
 ### Quais outros atributos você acha que podem lhe auxiliar na investigação destes atributos de interesse?
 
