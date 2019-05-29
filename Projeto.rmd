@@ -324,12 +324,18 @@ Outras observações:
 Os principais atributos de interesse são o montante original do empréstimo, renda declarada e razão pela qual solicitou o empréstimo. Quero entender quais são os perfís mais comuns de mutuários e suas motivações para solicitar os respectivos valores. Imagino que há uma correlação positiva de valor solicitado com a renda declarada ou talvez tempo de serviço.
 
 ### Quais outros atributos você acha que podem lhe auxiliar na investigação destes atributos de interesse?
+Acho que todos os atributos selecionados apresentam certa importância, talvez as taxas de juros nem tanto, mas os demais certamente possuem valor para a análise, por conta disso que foram selecionados dentre os 81 possíveis.
 
 ### Você criou novas variáveis a partir dos atributos existentes no conjunto de dados?
+Por enquanto não.
 
 ### Dos atributos investigados, distribuições incomuns foram encontradas? Você aplicou operações nos dados para limpá-los, ajustá-los ou mudar a forma dos dados? Se sim, por quê?
-
-
+<p>As distribuições das variáveis <em>EmploymentStatusDuration</em>, <em>MonthlyLoanPayment</em> e <em>StatedMonthlyIncome</em> são assimétricas positivas com longas caudas.</p>
+<p>Para <em>StatedMonthlyIncome</em> só foram omitidos os valores mais altos (0.5% à 5%) para que a distribuição ficasse mais normal.</p>
+<p>A <em>MonthlyLoanPayment</em> mesmo omitido os valores mais altos ainda continua bastante assimétrica, ainda assim não achei necessário redimenssioná-la, já que estava interessado em ver a concentração incomum dos dados próximos ao 175.</p>
+<p>Já <em>EmploymentStatusDuration</em> é uma distribuição totalmente assimétrica positivamente. Com uma escala logarítmica ou de raiz ela normalizaria, mas não julguei necessário normalizá-la, apenas omiti 5% dos maiores valores para conseguir visualizar melhor os dados, e por ser um dado de tempo preferi que cada coluna representasse 1 mês ou 1 ano.<p/>
+<p>Na <em>ListingCategory</em> há uma grande concentração dos dados da categoria 1, seguida da 0 e 7, ficando muito assimétrica a direita. Nessa distribuição foi usada uma escala logarítmica com base 10 no eixo <em>Y</em> para visualizar melhor os dados. Por mais que eles tenham se aproximado, a distribuição ainda segue assimétrica, uma vez que foi escalonado o eixo <em>Y</em> e não o <em>X</em>, já que está sendo contado os dados categóricos e não numéricos de fato.</p>
+<p>Os dados da <em>LoanOriginationDate</em> criam duas distribuições assimétricas negativamente por conta de terem dados faltantes em certo período, ainda que houvessem esses dados a distribuição certamente permaneceria assimétrica para a esquerda. Nesse caso também não foi escalonado por se tratar de dados cronológicos, então preferi manter a escala normal para visualizar melhor.
 
 # Seção de Gráficos Bivariados
 ```{r echo=FALSE, Bivariate_Plots}
