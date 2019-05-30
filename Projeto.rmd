@@ -359,6 +359,21 @@ ggplot(melted, aes(x = Var1, y = Var2, fill = value)) +
         axis.title = element_blank()) +
   geom_text(aes(label = value))
 ```
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=12, fig.width=12}
+# Selecionando variáveis numéricas
+library(GGally)
+dff.numeric <- na.omit(subset(dff, select = c('BorrowerAPR',
+                                              'ProsperScore',
+                                              'EmploymentStatusDuration',
+                                              'StatedMonthlyIncome',
+                                              'LoanOriginalAmount',
+                                              'MonthlyLoanPayment'
+                                              )
+                              )
+                       )
+# Criado matrix de correlação e remodelando os dados
+ggpairs(dff.numeric)
+```
 
 # Análise Bivariada
 
