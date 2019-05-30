@@ -376,7 +376,20 @@ Por fim o *tempo empregado* não se relaciona com praticamente nenhum das demais,
 ggpairs(dff.numeric)
 ```
 
-Os gráficos de dispersão estão em geral bem poluídos, menos os do Score por ser inteiro de 1 à 11 e do valor original do empréstimo com o valor pago mensalmente por terem forte correlação.<br/> É necessário olhar mais de perto para tentar entender as relações.
+Os gráficos de dispersão estão em geral bem poluídos, menos do valor original do empréstimo com o valor pago mensalmente por terem forte correlação.<br/> É necessário olhar mais de perto para tentar entender as relações.
+
+```{r Densidade LoanOriginalAmount por Score, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=12}
+# Gráficos de dispersão do LoanOriginalAmount pelo ProsperScore
+cc <- scales::seq_gradient_pal('red','blue')(seq(0,1, length.out = 11))
+ggplot(dff.numeric, aes(x = LoanOriginalAmount, fill = factor(ProsperScore))) +
+  geom_density(kernel = 'gaussian') +
+  scale_y_continuous(trans = 'sqrt', breaks = c(10, 100, 500, 1000, 2000, 3000)) +
+  #scale_x_log10() +
+  facet_wrap(~ProsperScore) +
+  scale_fill_manual(values = cc)
+```
+<br/> Com os gráficos de densidade é possível ver com mais clareza a relação do Score com o valor original do empréstimo. <br/>
+Mutuários com pouca pontuação dificilmente conseguem solicitar empréstimos com valores mais altos, se concentrando nos valores mais baixos, na medida que a pontuação aumenta a distribuição fica mais uniforme, indicando que mutuários com alto Score conseguem solicitar com mais facilidade valores altos.
 
 # Análise Bivariada
 
