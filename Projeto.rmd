@@ -9,6 +9,7 @@ library(ggplot2)
 library(tidyr)
 library(purrr)
 library(reshape2)
+library(GGally)
 ```
 
 ```{r echo=FALSE, Load_the_Data}
@@ -360,18 +361,7 @@ ggplot(melted, aes(x = Var1, y = Var2, fill = value)) +
   geom_text(aes(label = value))
 ```
 ```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=12, fig.width=12}
-# Selecionando variáveis numéricas
-library(GGally)
-dff.numeric <- na.omit(subset(dff, select = c('BorrowerAPR',
-                                              'ProsperScore',
-                                              'EmploymentStatusDuration',
-                                              'StatedMonthlyIncome',
-                                              'LoanOriginalAmount',
-                                              'MonthlyLoanPayment'
-                                              )
-                              )
-                       )
-# Criado matrix de correlação e remodelando os dados
+# Visão geral das variáveis numéricas
 ggpairs(dff.numeric)
 ```
 
