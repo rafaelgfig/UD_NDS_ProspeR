@@ -1,7 +1,7 @@
 Explorando e resumindo dados de empréstimos da Prosper por Rafael G. Figueira
 ========================================================
 <p>Esse relatório explora um conjunto de dados de empréstimos da Prosper, possuindo 113.937 empréstimos com 81 variáveis em cada um, incluindo valor, taxa de juros, status do pagamento, receita do mutuário, seu emprego atual, histórico do cartão de crédito, informações sobre seu último pagamento, entre outras.</p>
-```{r echo=FALSE, message=FALSE, warning=FALSE, packages}
+```{r Librarys, echo=FALSE, message=FALSE, warning=FALSE}
 # Carregamento das bibliotécas
 library(dplyr)
 library(gridExtra)
@@ -12,14 +12,14 @@ library(reshape2)
 library(GGally)
 ```
 
-```{r echo=FALSE, Load_the_Data}
+```{r Read CSV, echo=FALSE}
 # Carregamento dos dados
 df <- read.csv('prosperLoanData.csv')
 ```
 
 ## Seção de Gráficos Univariados
 <p>O conjunto de dados original possui 113937 linhas e 81 colunas.</p>
-```{r echo=FALSE, Univariate_Plots}
+```{r Dimensao dos dados, echo=FALSE}
 # Dimensão dos dados originais
 dim(df)
 ```
@@ -41,7 +41,7 @@ dim(df)
 * MonthlyLoanPayment
 
 Abaixo seguem algumas informações úteis sobre os dados.<br/>
-```{r echo=FALSE}
+```{r Selecionado colunas de interesse, echo=FALSE}
 # Selecionando algumas colunas de interesse
 dff <- (subset(df, select = c('MemberKey',
                               'LoanKey',
@@ -63,23 +63,23 @@ dff <- (subset(df, select = c('MemberKey',
 ```
 
 
-```{r echo=FALSE}
+```{r Tipos dos dados, echo=FALSE}
 # Colunas e tipos de dados
 str(dff)
 ```
 
-```{r echo=FALSE}
+```{r Resumo estatistico, echo=FALSE}
 # Resumo estatístico
 summary(dff)
 ```
 <br/>Quantidade de NA's:
-```{r echo=FALSE}
+```{r Verificando quantidade de NAs, echo=FALSE}
 # Verificando quantidade de NA's
 colSums(is.na(dff))
 ```
 
 Visualizando distribuição das variáveis selecionadas.<br/>
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=12}
+```{r Histograma basico das colunas, echo=FALSE, fig.height=12, message=FALSE, warning=FALSE}
 # Histograma básico das colunas
 dff %>%
   keep(is.numeric) %>%
@@ -89,21 +89,21 @@ dff %>%
     geom_histogram()
 ```
 
-<p>É possível ver que o histograma da variável <em>StatedMonthlyIncome</em> está totalmente concentrado em zero.</p>
+<p>É possível ver que o histograma da variável *StatedMonthlyIncome* está totalmente concentrado em zero.</p>
 Analizando o resumo estatístico é possível ver que a variável contém alguns dados discrepantes.
-```{r echo=FALSE}
+```{r Resumo estatistico StatedMonthlyIncome, echo=FALSE}
 # Verificando que plotagem da renda mensal está enviesada por conta de outlier
 summary(dff$StatedMonthlyIncome)
 ```
 
 <p>Os 10 valores mais altos da variável são:</p>
-```{r echo=FALSE}
+```{r Top 10 StatedMonthlyIncome, echo=FALSE}
 # Visualizando as 10 maiores rendas declaradas
 sort(tail(sort(dff$StatedMonthlyIncome), 10), decreasing = T)
 ```
 
 <p>Visualizando os dados sem 0.5% dos maiores valores.</p>
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r Histograma StatedMonthlyIncome sem 0.5 porcento, echo=FALSE, message=FALSE, warning=FALSE}
 # Plotagem removendo 0.5% das maiores rendas
 ggplot(dff, aes(x = StatedMonthlyIncome)) +
   geom_histogram(binwidth = 250) +
@@ -111,7 +111,7 @@ ggplot(dff, aes(x = StatedMonthlyIncome)) +
 ```
 
 <p>Omitindo 5% dos maiores valores:</p>
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r Histograma StatedMonthlyIncome sem 5 porcento, echo=FALSE, message=FALSE, warning=FALSE}
 # Plotagem removendo 5% das maiores rendas
 ggplot(dff, aes(x = StatedMonthlyIncome)) +
   geom_histogram(binwidth = 250, color = 'black') +
@@ -120,7 +120,7 @@ ggplot(dff, aes(x = StatedMonthlyIncome)) +
 ```
 
 Nos gráficos abaixo podemos ver que a maioria dos empréstimo possuem valores arredondados, dando ênfase para empréstimos de 4.000, os posteriores tendem a ser múltiplos de 5.000.<br/>
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r Histogramas LoanOriginalAmount, echo=FALSE, message=FALSE, warning=FALSE}
 # Distribuição dos dados da coluna LoanOriginalAmount
 g <- ggplot(df, aes(x = LoanOriginalAmount)) +
   scale_x_continuous(breaks = seq(0, max(df$LoanOriginalAmount), 5000))
@@ -132,7 +132,7 @@ grid.arrange(g1, g2, g3, ncol = 1)
 
 <p>Abaixo é possível observar que é mais comum encontrar pessoas com poucos meses de emprego solicitando empréstimo do que em comparação com aqueles com muito tempo.</p>
 Tempo em meses:<br/>
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r Histograma EmploymentStatusDuration sem 5 porcento, echo=FALSE, message=FALSE, warning=FALSE}
 # Distribuição do tempo de emprego omitindo 5%
 ggplot(subset(dff, !is.na(EmploymentStatusDuration)), aes(x = EmploymentStatusDuration)) +
   geom_histogram(binwidth = 1) +
@@ -141,7 +141,7 @@ ggplot(subset(dff, !is.na(EmploymentStatusDuration)), aes(x = EmploymentStatusDu
 ```
 
 Tempo em anos:<br/>
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r Histograma EmploymentStatusDuration sem 5 porcento em anos, echo=FALSE, message=FALSE, warning=FALSE}
 # Distribuição do tempo de emprego em anos omitindo 5%
 ggplot(subset(dff, !is.na(EmploymentStatusDuration)), aes(x = floor(EmploymentStatusDuration/12))) +
   geom_histogram(binwidth = 1, color = 'black') +
@@ -150,13 +150,13 @@ ggplot(subset(dff, !is.na(EmploymentStatusDuration)), aes(x = floor(EmploymentSt
 ```
 
 Distribuição dos status do emprego:<br/>
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r Distribuicao EmploymentStatus, echo=FALSE, message=FALSE, warning=FALSE}
 # Distribuição dos status do emprego
 ggplot(subset(dff, EmploymentStatus != ''), aes(x = reorder(EmploymentStatus, -table(EmploymentStatus)[EmploymentStatus]))) +
   geom_bar() +
   xlab('EmploymentStatus')
 ```
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r Porcentagem EmploymentStatus desempregado, echo=FALSE, message=FALSE, warning=FALSE}
 # Porcentagem de mutuários declaradamente sem emprego
 round(sum(dff$EmploymentStatus == 'Not employed')/length(dff$EmploymentStatus),digits = 3)*100
 ```
@@ -164,7 +164,7 @@ A grande maioria dos solicitantes de empréstimos está atualmente empregado de al
 
 <br/>
 O histograma da duração do empréstimo ficou muito espaçado por conta da coluna estar como tipo de valor inteiro, e como só há 3 variações de duração (12, 36 ou 60) dentro dessa coluna, é possível assumí-la como dado categórico e plotar como tal. <br/>
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=4, fig.width=2}
+```{r Alterado Term para categorico e plotado, echo=FALSE, fig.height=4, fig.width=2, message=FALSE, warning=FALSE}
 # Alterando variável para o tipo categórica, já que só há 3 tipos de valores
 dff$Term <- factor(dff$Term)
 # Distribuição da duração do empréstimo
@@ -174,7 +174,7 @@ ggplot(dff, aes(x = Term)) +
 
 <br/>
 Categorias mais selecionadas pelo mutuário:<br/>
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=3}
+```{r Alterado ListingCategory para categorico e plotado, echo=FALSE, fig.height=3, message=FALSE, warning=FALSE}
 # Alterando variável ListingCategory..numeric. para categórica
 dff$ListingCategory..numeric. <- factor(dff$ListingCategory..numeric.)
 # Distribuição dos status do emprego
@@ -212,7 +212,7 @@ ggplot(dff, aes(x = reorder(ListingCategory..numeric., -table(ListingCategory..n
 <p/>
 <br/>
 Distribuição das ocupações declaradas:<br/>
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=20}
+```{r Distribuição Occupation, echo=FALSE, fig.height=20, message=FALSE, warning=FALSE}
 # Distribuição dos status do emprego
 ggplot(dff, aes(x = reorder(Occupation, +table(Occupation)[Occupation]))) +
   geom_bar() +
@@ -224,7 +224,7 @@ ggplot(dff, aes(x = reorder(Occupation, +table(Occupation)[Occupation]))) +
 
 <br/>
 Distribuição dos valores das parcelas:<br/>
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=12}
+```{r Histogramas MonthlyLoanPayment, echo=FALSE, fig.height=12, message=FALSE, warning=FALSE}
 # Distribuição das parcelas
 g <- ggplot(dff, aes(x = MonthlyLoanPayment)) +
   scale_x_continuous(limits = c(0, quantile(dff$MonthlyLoanPayment, .99)),
@@ -237,16 +237,16 @@ g4 <- g + geom_histogram(binwidth = 1)
 grid.arrange(g1, g2, g3, g4, ncol = 1)
 ```
 <br/> Vemos uma frequência altíssima de mutuários com valor de parcela próximo da casa dos 175, mas pelo gráfico não é possível ter muita precisão, por mais que seja determinado 1 de binwidth.
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r Top 3 MonthlyLoanPayment, echo=FALSE, message=FALSE, warning=FALSE}
 # Valor com maior ocorrência no conjunto de dados
 head(sort(table(dff$MonthlyLoanPayment),decreasing = T), 3)
 ```
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r Porcentagem da parcela 173.71, echo=FALSE, message=FALSE, warning=FALSE}
 round(sum(dff$MonthlyLoanPayment == 173.71) / length(dff$MonthlyLoanPayment) * 100, 2)
 ```
 Verificado que 2423 parcelas de mutuários têm exatamente 173.71 como valor. Representando 2.13% de todos os dados.
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r Resumo estatistico das parcelas 173.71, echo=FALSE, message=FALSE, warning=FALSE}
 # Verificando os dados com parcela de 173.71
 #names(dff)
 subset(dff, MonthlyLoanPayment == 173.71) %>% 
@@ -259,7 +259,7 @@ Foi verificado anteiormente que o valor mais solicitado é de 4.000 e a duração m
 <br/>
 Foi verificado também alguns empréstimos com pagamento mensal programado com valor zerado, podendo ser erro no conjunto de dados ou existe a possibilidade do mutuário simplesmente não programar um valor para o pagamento mensal, obtendo assim o valor zero.<br/>
 Nesse caso foi considerado a segunda possibilidade e os dados foram mantidos.
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r Resumo estatistico das parcelas 0, echo=FALSE, message=FALSE, warning=FALSE}
 # Verificando os dados com parcela de 0
 #names(dff)
 subset(dff, MonthlyLoanPayment == 0) %>% 
@@ -267,7 +267,7 @@ subset(dff, MonthlyLoanPayment == 0) %>%
   summary()
 ```
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r Alterado LoanOriginationDate para data e plotado, echo=FALSE, message=FALSE, warning=FALSE}
 # Convertendo a variável cronológica em data
 dff$LoanOriginationDate <- as.Date(dff$LoanOriginationDate)
 # Distribuição dos dados cronológicos
@@ -288,7 +288,7 @@ Visando uma exploração mais sucinta, foram escolhidas 15 variáveis de interesse,
 * Uma variável cronológica (LoanOriginationDate);
 * E cinco variáveis categóricas (Term, LoanStatus, ListingCategory..numeric., Occupation e EmploymentStatus)
 
-A variável <em>ListingCategory..numeric.</em> está representada numéricamente, com a seguinte relação:
+A variável *ListingCategory..numeric.* está representada numéricamente, com a seguinte relação:
 
 0. Não disponível
 1. Consolidação da dívida
@@ -332,15 +332,15 @@ Acho que todos os atributos selecionados apresentam certa importância, talvez as
 Por enquanto não.
 
 ### Dos atributos investigados, distribuições incomuns foram encontradas? Você aplicou operações nos dados para limpá-los, ajustá-los ou mudar a forma dos dados? Se sim, por quê?
-<p>As distribuições das variáveis <em>EmploymentStatusDuration</em>, <em>MonthlyLoanPayment</em> e <em>StatedMonthlyIncome</em> são assimétricas positivas com longas caudas.</p>
-<p>Para <em>StatedMonthlyIncome</em> só foram omitidos os valores mais altos (0.5% à 5%) para que a distribuição ficasse mais normal. Na análise bivariada foram removidos os 0.5% por distorcer muito as correlações e dispersões.</p>
-<p>A <em>MonthlyLoanPayment</em> mesmo omitido os valores mais altos ainda continua bastante assimétrica, ainda assim não achei necessário redimenssioná-la, já que estava interessado em ver a concentração incomum dos dados próximos ao 175.</p>
-<p>Já <em>EmploymentStatusDuration</em> é uma distribuição totalmente assimétrica positivamente. Com uma escala logarítmica ou de raiz ela normalizaria, mas não julguei necessário normalizá-la, apenas omiti 5% dos maiores valores para conseguir visualizar melhor os dados, e por ser um dado de tempo preferi que cada coluna representasse 1 mês ou 1 ano.<p/>
-<p>Na <em>ListingCategory</em> há uma grande concentração dos dados da categoria 1, seguida da 0 e 7, ficando muito assimétrica a direita. Nessa distribuição foi usada uma escala logarítmica com base 10 no eixo <em>Y</em> para visualizar melhor os dados. Por mais que eles tenham se aproximado, a distribuição ainda segue assimétrica, uma vez que foi escalonado o eixo <em>Y</em> e não o <em>X</em>, já que está sendo contado os dados categóricos e não numéricos de fato.</p>
-<p>Os dados da <em>LoanOriginationDate</em> criam duas distribuições assimétricas negativamente por conta de terem dados faltantes em certo período, ainda que houvessem esses dados a distribuição certamente permaneceria assimétrica para a esquerda. Nesse caso também não foi escalonado por se tratar de dados cronológicos, então preferi manter a escala normal para visualizar melhor.
+<p>As distribuições das variáveis *EmploymentStatusDuration*, *MonthlyLoanPayment* e *StatedMonthlyIncome* são assimétricas positivas com longas caudas.</p>
+<p>Para *StatedMonthlyIncome* só foram omitidos os valores mais altos (0.5% à 5%) para que a distribuição ficasse mais normal. Na análise bivariada foram removidos os 0.5% por distorcer muito as correlações e dispersões.</p>
+<p>A *MonthlyLoanPayment* mesmo omitido os valores mais altos ainda continua bastante assimétrica, ainda assim não achei necessário redimenssioná-la, já que estava interessado em ver a concentração incomum dos dados próximos ao 175.</p>
+<p>Já *EmploymentStatusDuration* é uma distribuição totalmente assimétrica positivamente. Com uma escala logarítmica ou de raiz ela normalizaria, mas não julguei necessário normalizá-la, apenas omiti 5% dos maiores valores para conseguir visualizar melhor os dados, e por ser um dado de tempo preferi que cada coluna representasse 1 mês ou 1 ano.<p/>
+<p>Na *ListingCategory* há uma grande concentração dos dados da categoria 1, seguida da 0 e 7, ficando muito assimétrica a direita. Nessa distribuição foi usada uma escala logarítmica com base 10 no eixo *Y* para visualizar melhor os dados. Por mais que eles tenham se aproximado, a distribuição ainda segue assimétrica, uma vez que foi escalonado o eixo *Y* e não o *X*, já que está sendo contado os dados categóricos e não numéricos de fato.</p>
+<p>Os dados da *LoanOriginationDate* criam duas distribuições assimétricas negativamente por conta de terem dados faltantes em certo período, ainda que houvessem esses dados a distribuição certamente permaneceria assimétrica para a esquerda. Nesse caso também não foi escalonado por se tratar de dados cronológicos, então preferi manter a escala normal para visualizar melhor.
 
 # Seção de Gráficos Bivariados
-```{r echo=FALSE, Bivariate_Plots}
+```{r Removido 0.5 porcento do StatedMonthlyIncome e criado heatmap de corr, echo=FALSE}
 # Removendo os 0.5% de outlier do StatedMonthlyIncome
 dff <- subset(dff, StatedMonthlyIncome <= quantile(dff$StatedMonthlyIncome, .995))
 # Selecionando variáveis numéricas
@@ -362,7 +362,8 @@ ggplot(melted, aes(x = Var1, y = Var2, fill = value)) +
         axis.title = element_blank()) +
   geom_text(aes(label = value))
 ```
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=12, fig.width=12}
+
+```{r Pairsplot das variaveis numericas, echo=FALSE, fig.height=12, fig.width=12, message=FALSE, warning=FALSE}
 # Visão geral das variáveis numéricas
 ggpairs(dff.numeric)
 ```
