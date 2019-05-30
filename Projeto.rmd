@@ -363,6 +363,14 @@ ggplot(melted, aes(x = Var1, y = Var2, fill = value)) +
   geom_text(aes(label = value))
 ```
 
+Vemos que a *taxa APR* se relaciona com as demais colunas, salvo o *tempo empregado*. Ao que tudo indica, quanto maior o *Score*, menores são as *taxas APR*, e o mesmo ocorre com o *valor original do empréstimo*.
+
+Assim como a *taxa APR*, o *Score* se relaciona com as demais, salvo o *tempo empregado*, mas no caso do *Score*, apenas a relação com a *taxa APR* que é negativa, o restante é positiva, por mais que sejam fracas, possivelmente uma é usada para a criação da outra.
+
+O *valor original do empréstimo* tem forte relação com o *valor pago mensalmente*, uma vez que quanto maior o valor solicitado, maior será o valor da parcela, uma é praticamente derivada da outra.
+
+Por fim o *tempo empregado* não se relaciona com praticamente nenhum das demais, apenas possuindo uma relação muito fraca com a *renda declarada*.
+
 ```{r Pairsplot das variaveis numericas, echo=FALSE, fig.height=12, fig.width=12, message=FALSE, warning=FALSE}
 # Visão geral das variáveis numéricas
 ggpairs(dff.numeric)
