@@ -376,6 +376,8 @@ Por fim o *tempo empregado* não se relaciona com praticamente nenhum das demais,
 ggpairs(dff.numeric)
 ```
 
+Os gráficos de dispersão estão em geral bem poluídos, menos os do Score por ser inteiro de 1 à 11 e do valor original do empréstimo com o valor pago mensalmente por terem forte correlação.<br/> É necessário olhar mais de perto para tentar entender as relações.
+
 # Análise Bivariada
 
 ### Discuta sobre alguns dos relacionamentos observados nesta parte da investigação. Como os atributos de interesse variaram no conjunto de dados?
