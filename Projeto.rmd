@@ -462,6 +462,15 @@ ggplot(dff, aes(x = EmploymentStatusDuration/12, y = StatedMonthlyIncome)) +
 <br/> Achei que houvesse uma leve correlação entre o tempo de serviço e a renda mensal, mas vendo a dispersão desses dados não parece haver. <br/>
 A correlação de Pearson entre as duas variáveis resultou em 0.11, o que já seria bem fraco, agora com o gráfico é visível que o tempo de serviço não se relaciona com ela.
 
+```{r Boxplot ListingCategory..numeric. por LoanOriginalAmount, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=12}
+# Boxplot das categorias declaradas pelo valor do empréstimo
+ggplot(dff, aes(x = reorder(ListingCategory..numeric., LoanOriginalAmount, function(x) -median(x)), y = LoanOriginalAmount)) +
+  geom_boxplot() +
+  stat_summary(fun.y = function(y) ( median(y) + quantile(y, .75) ) / 2,
+               geom = 'text',
+               label = as.vector( table(dff$ListingCategory..numeric.) )
+               )
+```
 
 
 # Análise Bivariada
