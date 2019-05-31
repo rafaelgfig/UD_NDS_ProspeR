@@ -388,8 +388,17 @@ ggplot(dff.numeric, aes(x = LoanOriginalAmount, fill = factor(ProsperScore))) +
   facet_wrap(~ProsperScore) +
   scale_fill_manual(values = cc)
 ```
-<br/> Com os gráficos de densidade é possível ver com mais clareza a relação do Score com o valor original do empréstimo. <br/>
-Mutuários com pouca pontuação dificilmente conseguem solicitar empréstimos com valores mais altos, se concentrando nos valores mais baixos, na medida que a pontuação aumenta a distribuição fica mais uniforme, indicando que mutuários com alto Score conseguem solicitar com mais facilidade valores altos.
+
+```{r Densidade LoanOriginalAmount por Score, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=12}
+# Boxplot LoanOriginalAmount pelo ProsperScore
+cc <- scales::seq_gradient_pal('red','blue')(seq(0,1, length.out = 11))
+ggplot(dff.numeric, aes(x = factor(ProsperScore), y = LoanOriginalAmount, fill = factor(ProsperScore))) +
+  geom_boxplot() +
+  scale_fill_manual(values = cc)
+```
+
+<br/> Com os gráficos de densidade e boxplot é possível ver com mais clareza a relação do Score com o valor original do empréstimo. <br/>
+Mutuários com pouca pontuação dificilmente conseguem solicitar empréstimos com valores mais altos, se concentrando nos valores mais baixos, na medida que a pontuação aumenta, a distribuição fica mais uniforme, indicando que mutuários com alto Score conseguem solicitar com mais facilidade valores altos. Por mais que o valor mediano oscile, é possível observar que a maioria dos valores solicitados cresce junto ao Score.
 
 # Análise Bivariada
 
