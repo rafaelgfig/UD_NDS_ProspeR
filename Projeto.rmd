@@ -443,7 +443,15 @@ ggplot(subset(dff, !is.na(StatedMonthlyIncome.bucket)), aes(x = StatedMonthlyInc
   geom_boxplot() +
   scale_fill_manual(values = cc2)
 ```
+
+```{r Resumo estatistico StatedMonthlyIncome por LoanOriginalAmount, echo=FALSE, message=FALSE, warning=FALSE}
+# Resumo estatístico
+by(dff$LoanOriginalAmount, dff$StatedMonthlyIncome.bucket, summary)
+```
 <br/> Com o gráfico de dispersão é possível ver a correlação entre a renda declarada e o valor do empréstimo, mas ainda é muito poluido, por conta disso optei pelo boxplot com fatiamento de 2.500 das rendas, assim ficou muito mais claro a relação das duas e como rendas baixas de fato têm em sua maioria empréstimos menores.
+
+Através dos resumos estatísticos observamos que rendas inferiores à 7.500 realizaram empréstimos de no máximo 25.000. A média também vai aumentando gradativamente conforme a renda sobe, demonstrando assim a relação entre as duas variáveis.
+
 
 # Análise Bivariada
 
