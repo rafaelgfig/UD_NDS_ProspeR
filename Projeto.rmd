@@ -407,12 +407,12 @@ ggplot(dff, aes(x = reorder(EmploymentStatus, LoanOriginalAmount, function(x) -m
 ```
 <br/> Como esperado pessoas empregadas tendem a ter maiores valores de empréstimo, já as aposentadas, desempregadas, não declaradas e que trabalham parcialmente, tendem a ter empréstimos menores.
 
-```{r Boxplot LoanOriginalAmount por EmploymentStatus, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=12}
-# Resumo estatístico LoanOriginalAmount pelo EmploymentStatus
-ggplot(dff.numeric, aes(x = ))
-
+```{r Dispersao LoanOriginalAmount por BorrowerAPR, echo=FALSE, message=FALSE, warning=FALSE}
+# Resumo estatístico LoanOriginalAmount pelo BorrowerAPR
+ggplot(dff.numeric, aes(x = BorrowerAPR, y = LoanOriginalAmount)) +
+  geom_point(alpha = 1/20)
 ```
-
+<br/> Empréstimos mais altos normalmente tem taxa APR menor, acho que ninguém quer pedir um valor alto com altas taxas ainda.
 
 # Análise Bivariada
 
