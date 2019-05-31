@@ -380,7 +380,7 @@ Os gráficos de dispersão estão em geral bem poluídos, menos do valor original do
 
 ```{r Densidade LoanOriginalAmount por Score, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=12}
 # Gráficos de dispersão do LoanOriginalAmount pelo ProsperScore
-cc <- scales::seq_gradient_pal('red','blue')(seq(0,1, length.out = 11))
+cc <- scales::seq_gradient_pal('red','green')(seq(0,1, length.out = 11))
 ggplot(dff.numeric, aes(x = LoanOriginalAmount, fill = factor(ProsperScore))) +
   geom_density(kernel = 'gaussian') +
   scale_y_continuous(trans = 'sqrt', breaks = c(10, 100, 500, 1000, 2000, 3000)) +
@@ -391,7 +391,6 @@ ggplot(dff.numeric, aes(x = LoanOriginalAmount, fill = factor(ProsperScore))) +
 
 ```{r Boxplot LoanOriginalAmount por Score, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=12}
 # Boxplot LoanOriginalAmount pelo ProsperScore
-cc <- scales::seq_gradient_pal('red','blue')(seq(0,1, length.out = 11))
 ggplot(dff.numeric, aes(x = factor(ProsperScore), y = LoanOriginalAmount, fill = factor(ProsperScore))) +
   geom_boxplot() +
   scale_fill_manual(values = cc)
@@ -413,6 +412,13 @@ ggplot(dff.numeric, aes(x = BorrowerAPR, y = LoanOriginalAmount)) +
   geom_point(alpha = 1/20)
 ```
 <br/> Empréstimos mais altos normalmente tem taxa APR menor, acho que ninguém quer pedir um valor alto com altas taxas ainda.
+
+```{r Boxplot ProsperScore por BorrowerAPR, echo=FALSE, message=FALSE, warning=FALSE}
+# Boxplot ProsperScore pelo BorrowerAPR
+ggplot(dff.numeric, aes(x = factor(ProsperScore), y = BorrowerAPR, fill = factor(ProsperScore))) +
+  geom_boxplot() +
+  scale_fill_manual(values = cc)
+```
 
 # Análise Bivariada
 
