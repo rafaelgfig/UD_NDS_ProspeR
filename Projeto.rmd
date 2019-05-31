@@ -388,6 +388,7 @@ ggplot(dff.numeric, aes(x = LoanOriginalAmount, fill = factor(ProsperScore))) +
   facet_wrap(~ProsperScore) +
   scale_fill_manual(values = cc)
 ```
+<br/>
 
 ```{r Boxplot LoanOriginalAmount por Score, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=12}
 # Boxplot LoanOriginalAmount pelo ProsperScore
@@ -395,7 +396,6 @@ ggplot(dff.numeric, aes(x = factor(ProsperScore), y = LoanOriginalAmount, fill =
   geom_boxplot() +
   scale_fill_manual(values = cc)
 ```
-
 <br/> Com os gráficos de densidade e boxplot é possível ver com mais clareza a relação do Score com o valor original do empréstimo. <br/>
 Mutuários com pouca pontuação dificilmente conseguem solicitar empréstimos com valores mais altos, se concentrando nos valores mais baixos, na medida que a pontuação aumenta, a distribuição fica mais uniforme, indicando que mutuários com alto Score conseguem solicitar com mais facilidade valores altos. Por mais que o valor mediano oscile, é possível observar que a maioria dos valores solicitados cresce junto ao Score.
 
@@ -406,6 +406,7 @@ ggplot(dff, aes(x = reorder(EmploymentStatus, LoanOriginalAmount, function(x) -m
 ```
 <br/> Como esperado pessoas empregadas tendem a ter maiores valores de empréstimo, já as aposentadas, desempregadas, não declaradas e que trabalham parcialmente, tendem a ter empréstimos menores.
 
+<br/>
 ```{r Dispersao LoanOriginalAmount por BorrowerAPR, echo=FALSE, message=FALSE, warning=FALSE}
 # Resumo estatístico LoanOriginalAmount pelo BorrowerAPR
 ggplot(dff.numeric, aes(x = BorrowerAPR, y = LoanOriginalAmount)) +
@@ -413,12 +414,20 @@ ggplot(dff.numeric, aes(x = BorrowerAPR, y = LoanOriginalAmount)) +
 ```
 <br/> Empréstimos mais altos normalmente tem taxa APR menor, acho que ninguém quer pedir um valor alto com altas taxas ainda.
 
+```{r Dispersao ProsperScore por BorrowerAPR, echo=FALSE, message=FALSE, warning=FALSE}
+# Dispersao ProsperScore pelo BorrowerAPR
+ggplot(dff.numeric, aes(x = ProsperScore, y = BorrowerAPR, color = factor(ProsperScore))) +
+  geom_count() +
+  scale_color_manual(values = cc)
+```
 ```{r Boxplot ProsperScore por BorrowerAPR, echo=FALSE, message=FALSE, warning=FALSE}
 # Boxplot ProsperScore pelo BorrowerAPR
 ggplot(dff.numeric, aes(x = factor(ProsperScore), y = BorrowerAPR, fill = factor(ProsperScore))) +
   geom_boxplot() +
   scale_fill_manual(values = cc)
 ```
+<br/> A correlação entre a taxa APR e o Score fica clara no boxplot, mutuários com baixa pontuação precisam de taxas maiores para compensar o risco do empréstimo, o que não ocorre com quem tem alta pontuação, obtendo assim as melhores taxas.  
+
 
 # Análise Bivariada
 
