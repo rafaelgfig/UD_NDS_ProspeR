@@ -428,6 +428,22 @@ ggplot(dff.numeric, aes(x = factor(ProsperScore), y = BorrowerAPR, fill = factor
 ```
 <br/> A correlação entre a taxa APR e o Score fica clara no boxplot, mutuários com baixa pontuação precisam de taxas maiores para compensar o risco do empréstimo, o que não ocorre com quem tem alta pontuação, obtendo assim as melhores taxas.  
 
+```{r Dispersao StatedMonthlyIncome por LoanOriginalAmount, echo=FALSE, message=FALSE, warning=FALSE}
+# Dispersão StatedMonthlyIncome por LoanOriginalAmount
+ggplot(dff, aes(x = StatedMonthlyIncome, y = LoanOriginalAmount)) +
+  geom_point(alpha = 1/10)
+```
+
+```{r Boxplot StatedMonthlyIncome por LoanOriginalAmount, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=12}
+# Criação do bucket
+dff$StatedMonthlyIncome.bucket <- cut(dff$StatedMonthlyIncome/1000,breaks = seq(0, 25, 2.5))
+# Boxplot StatedMonthlyIncome.bucket por LoanOriginalAmount
+cc2 <- scales::seq_gradient_pal('light green','dark green')(seq(0,1, length.out = length(levels(dff$StatedMonthlyIncome.bucket))))
+ggplot(subset(dff, !is.na(StatedMonthlyIncome.bucket)), aes(x = StatedMonthlyIncome.bucket, y = LoanOriginalAmount, fill = StatedMonthlyIncome.bucket)) +
+  geom_boxplot() +
+  scale_fill_manual(values = cc2)
+```
+<br/> Com o gráfico de dispersão é possível ver a correlação entre a renda declarada e o valor do empréstimo, mas ainda é muito poluido, por conta disso optei pelo boxplot com fatiamento de 2.500 das rendas, assim ficou muito mais claro a relação das duas e como rendas baixas de fato têm em sua maioria empréstimos menores.
 
 # Análise Bivariada
 
