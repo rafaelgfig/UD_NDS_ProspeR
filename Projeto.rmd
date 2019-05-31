@@ -452,6 +452,17 @@ by(dff$LoanOriginalAmount, dff$StatedMonthlyIncome.bucket, summary)
 
 Através dos resumos estatísticos observamos que rendas inferiores à 7.500 realizaram empréstimos de no máximo 25.000. A média também vai aumentando gradativamente conforme a renda sobe, demonstrando assim a relação entre as duas variáveis.
 
+```{r Distribuicao EmploymentStatusDuration por StatedMonthlyIncome, echo=FALSE, message=FALSE, warning=FALSE}
+# Scatterplot do tempo de serviço para o salário
+ggplot(dff, aes(x = EmploymentStatusDuration/12, y = StatedMonthlyIncome)) +
+  geom_point(alpha = 1/20) +
+  coord_flip() +
+  scale_y_continuous(breaks = seq(0, 25000, 2500))
+```
+<br/> Achei que houvesse uma leve correlação entre o tempo de serviço e a renda mensal, mas vendo a dispersão desses dados não parece haver. <br/>
+A correlação de Pearson entre as duas variáveis resultou em 0.11, o que já seria bem fraco, agora com o gráfico é visível que o tempo de serviço não se relaciona com ela.
+
+
 
 # Análise Bivariada
 
