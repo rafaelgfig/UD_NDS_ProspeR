@@ -389,7 +389,7 @@ ggplot(dff.numeric, aes(x = LoanOriginalAmount, fill = factor(ProsperScore))) +
   scale_fill_manual(values = cc)
 ```
 
-```{r Densidade LoanOriginalAmount por Score, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=12}
+```{r Boxplot LoanOriginalAmount por Score, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=12}
 # Boxplot LoanOriginalAmount pelo ProsperScore
 cc <- scales::seq_gradient_pal('red','blue')(seq(0,1, length.out = 11))
 ggplot(dff.numeric, aes(x = factor(ProsperScore), y = LoanOriginalAmount, fill = factor(ProsperScore))) +
@@ -399,6 +399,20 @@ ggplot(dff.numeric, aes(x = factor(ProsperScore), y = LoanOriginalAmount, fill =
 
 <br/> Com os gráficos de densidade e boxplot é possível ver com mais clareza a relação do Score com o valor original do empréstimo. <br/>
 Mutuários com pouca pontuação dificilmente conseguem solicitar empréstimos com valores mais altos, se concentrando nos valores mais baixos, na medida que a pontuação aumenta, a distribuição fica mais uniforme, indicando que mutuários com alto Score conseguem solicitar com mais facilidade valores altos. Por mais que o valor mediano oscile, é possível observar que a maioria dos valores solicitados cresce junto ao Score.
+
+```{r Boxplot LoanOriginalAmount por EmploymentStatus, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=12}
+# Boxplot LoanOriginalAmount pelo EmploymentStatus
+ggplot(dff, aes(x = reorder(EmploymentStatus, LoanOriginalAmount, function(x) -mean(x)), y = LoanOriginalAmount)) +
+  geom_boxplot() 
+```
+<br/> Como esperado pessoas empregadas tendem a ter maiores valores de empréstimo, já as aposentadas, desempregadas, não declaradas e que trabalham parcialmente, tendem a ter empréstimos menores.
+
+```{r Boxplot LoanOriginalAmount por EmploymentStatus, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=12}
+# Resumo estatístico LoanOriginalAmount pelo EmploymentStatus
+ggplot(dff.numeric, aes(x = ))
+
+```
+
 
 # Análise Bivariada
 
