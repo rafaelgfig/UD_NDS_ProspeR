@@ -471,7 +471,7 @@ ggplot(dff, aes(x = ListingCategory..numeric., y = LoanOriginalAmount)) +
                label = as.vector( table(dff$ListingCategory..numeric.) )
                )
 ```
-
+<br/> Vemos que algumas categorias contêm empréstimos menores do que outras, como por exemplo a 13 (gastos domésticos) em comparação com a 1 (consolidação de dívida). Empréstimos com procedimentos cosméticos (número 10) além de serem poucos, não ultrapassam 15 mil.
 
 
 # Análise Bivariada
