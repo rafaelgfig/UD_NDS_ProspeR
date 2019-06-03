@@ -465,12 +465,19 @@ A correlação de Pearson entre as duas variáveis resultou em 0.11, o que já seria
 ```{r Boxplot ListingCategory..numeric. por LoanOriginalAmount, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=12}
 # Boxplot das categorias declaradas pelo valor do empréstimo
 ggplot(dff, aes(x = reorder(ListingCategory..numeric., LoanOriginalAmount, function(x) -median(x)), y = LoanOriginalAmount)) +
+  geom_boxplot() 
+```
+
+```{r Boxplot ListingCategory..numeric. por LoanOriginalAmount COUNT, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=12}
+# Boxplot com numero de observações das categorias declaradas pelo valor do empréstimo
+ggplot(dff, aes(x = ListingCategory..numeric., y = LoanOriginalAmount)) +
   geom_boxplot() +
   stat_summary(fun.y = function(y) ( median(y) + quantile(y, .75) ) / 2,
                geom = 'text',
                label = as.vector( table(dff$ListingCategory..numeric.) )
                )
 ```
+
 
 
 # Análise Bivariada
