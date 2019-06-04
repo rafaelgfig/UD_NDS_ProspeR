@@ -482,6 +482,14 @@ ggplot(dff, aes(x = reorder(Occupation, LoanOriginalAmount, function(x) +median(
   scale_y_continuous(position = 'right', breaks = seq(0, 35000, 5000))
 ```
 
+```{r Boxplot Occupation por StatedMonthlyIncome, echo=FALSE, message=FALSE, warning=FALSE, fig.height=14, fig.width=6}
+# Boxplot horizontal Occupation por StatedMonthlyIncome
+ggplot(dff, aes(x = reorder(Occupation, StatedMonthlyIncome, function(x) +median(x)), y = StatedMonthlyIncome)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 0)) +
+  coord_flip() +
+  scale_y_continuous(position = 'right', breaks = seq(0, 25000, 5000))
+```
 
 # Análise Bivariada
 
