@@ -518,6 +518,13 @@ ggplot(dff, aes(x = LoanOriginationDate, y = LoanOriginalAmount)) +
 É interessante visualizar as linhas horizontais, demonstrando que realizam mais empréstimos com valores redondos do que quebrados, nesse caso sendo mais comum de 500 em 500. <br>
 Além disso ainda é ver novamente o período curiosiamente sem empréstimos.
 
+```{r Boxplot LoanOriginalAmount por Term, echo=FALSE, message=FALSE, warning=FALSE}
+# Boxplot de LoanOriginalAmount por Term
+ggplot(dff, aes(x = Term, y = LoanOriginalAmount)) +
+  geom_boxplot()
+```
+<br/> Por último um boxplot da quantidade de parcelas com o valor solicitado, só para ter certeza que mais parcelas são para os empréstimos maiores e o inverso para empréstimos menores.
+
 # Análise Bivariada
 
 ### Discuta sobre alguns dos relacionamentos observados nesta parte da investigação. Como os atributos de interesse variaram no conjunto de dados?
