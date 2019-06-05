@@ -490,6 +490,8 @@ ggplot(dff, aes(x = reorder(Occupation, StatedMonthlyIncome, function(x) +median
   coord_flip() +
   scale_y_continuous(position = 'right', breaks = seq(0, 25000, 5000))
 ```
+<br/> Fiquei curioso quanto a distribuição de salários e valor do empréstimo solicitado das profissões declaradas.<br/>
+Como demonstrado acima, pessoas que ganham mais tendem a solicitar um valor maior de empréstimo, e agora podemos ver também que estudantes normalmente são os que têm as menores rendas mensais e consequentemente os menores empréstimos.
 
 # Análise Bivariada
 
