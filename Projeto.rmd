@@ -493,6 +493,31 @@ ggplot(dff, aes(x = reorder(Occupation, StatedMonthlyIncome, function(x) +median
 <br/> Fiquei curioso quanto a distribuição de salários e valor do empréstimo solicitado das profissões declaradas.<br/>
 Como demonstrado acima, pessoas que ganham mais tendem a solicitar um valor maior de empréstimo, e agora podemos ver também que estudantes normalmente são os que têm as menores rendas mensais e consequentemente os menores empréstimos.
 
+```{r Dispersao LoanOriginationDate por LoanOriginalAmount, echo=FALSE, message=FALSE, warning=FALSE}
+# Dispersao de LoanOriginationDate por LoanOriginalAmount
+ggplot(dff, aes(x = LoanOriginationDate, y = LoanOriginalAmount)) +
+  geom_point(alpha = 1/20) +
+  scale_x_date(breaks = '1 year', date_labels = '%Y') +
+  scale_y_continuous(breaks = seq(0, 35000, 5000))
+```
+```{r Diespersao LoanOriginationDate por LoanOriginalAmount c corte alto, echo=FALSE, message=FALSE, warning=FALSE}
+# Dispersao do LoanOriginationDate por LoanOriginalAmount c corte alto
+ggplot(dff, aes(x = LoanOriginationDate, y = LoanOriginalAmount)) +
+  geom_point(alpha = 1/3) +
+  scale_x_date(breaks = '1 year', date_labels = '%Y') +
+  scale_y_continuous(limits = c(25000, 35000), breaks = seq(25000, 35000, 1000))
+```
+```{r Dispersao LoanOriginationDate por LoanOriginalAmount c corte baixo, echo=FALSE, message=FALSE, warning=FALSE}
+# Dispersao de LoanOriginationDate por LoanOriginalAmount c corte baixo
+ggplot(dff, aes(x = LoanOriginationDate, y = LoanOriginalAmount)) +
+  geom_point(alpha = 1/10) +
+  scale_x_date(breaks = '1 year', date_labels = '%Y') +
+  scale_y_continuous(limits = c(1000, 4000), breaks = seq(1000, 4000, 500))
+```
+<br/> Vemos que o tempo não é um fator determinante para o valor do empréstimo, todavia, a partir de 2011 não foram mais realizados empréstimos menores que 2000, e somente depois de 2013 que foram realizados empréstimos acima de 25000.<br/> 
+É interessante visualizar as linhas horizontais, demonstrando que realizam mais empréstimos com valores redondos do que quebrados, nesse caso sendo mais comum de 500 em 500. <br>
+Além disso ainda é ver novamente o período curiosiamente sem empréstimos.
+
 # Análise Bivariada
 
 ### Discuta sobre alguns dos relacionamentos observados nesta parte da investigação. Como os atributos de interesse variaram no conjunto de dados?
