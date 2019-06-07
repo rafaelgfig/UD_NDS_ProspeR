@@ -555,6 +555,15 @@ ggplot(subset(dff, !is.na(ProsperScore)), aes(x = LoanOriginalAmount, y = Borrow
   theme_dark()
 ```
 
+```{r Distribuicao LoanAmount APR e MonthlyIncome, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
+# Scatterplot do valor do empréstimo pelas taxas com coloração da renda
+cc2 <- scales::seq_gradient_pal('light green','black')(seq(0,1, length.out = length(levels(dff$StatedMonthlyIncome.bucket))))
+ggplot(subset(dff, !is.na(StatedMonthlyIncome.bucket)), aes(x = LoanOriginalAmount, y = BorrowerAPR, color = StatedMonthlyIncome.bucket)) +
+  geom_point(alpha = 1/2, shape = 18) +
+  scale_color_manual(values = cc2) +
+  theme_dark()
+```
+
 # Análise Multivariada
 
 ### Discuta sobre os relacionamentos observados nesta parte da investigação. Quais atributos que fortaleceram os demais na observação das variáveis de interesse?
