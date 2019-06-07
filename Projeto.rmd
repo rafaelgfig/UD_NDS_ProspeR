@@ -528,13 +528,21 @@ ggplot(dff, aes(x = Term, y = LoanOriginalAmount)) +
 # Análise Bivariada
 
 ### Discuta sobre alguns dos relacionamentos observados nesta parte da investigação. Como os atributos de interesse variaram no conjunto de dados?
+Um dos pontos mais importante - se não o mais importante - é a pontuaçao do mutuário. Mutuários com alta pontuação conseguem empréstimos com menores juros, e menores juros possibilitam empréstimos maiores.
+
+Pessoas com rendas maiores tendem a ter empréstimos maiores, assim como pessoas desempregadas, apostentadas ou com trabalho parcial tendem a ter empréstimos menores, isso é algo intuitivo, mas que se mostrou ser verdade através da análise gráfica.
+
+Os estudantes são os que conseguem os menores empréstimos, porque também são os que têm as menores rendas. Vida de estudante não é fácil.
+
+Existe um furo nos dados ao redor do começo de 2009 em que não foram realizados empréstimos, mas não sei se é um erro dos dados ou um período sem operação da empresa. Ademais, a partir de 2011 a Prosper não realizou mais empréstimos abaixo de 2.000 e foi só depois de 2013 que foram realizados empréstimos acima de 25.000, talvez a demanda tenha sido grande a ponto deles possibilitarem tais valores.
+
+Achava que o tempo empregado iria se relacionar com alguma outra variável, mas analisando graficamente e pela correlação de pearson, o tempo de serviço não tem peso para entender os perfis dos mutuários.
 
 ### Você observou algum relacionamento interessante entre os outros atributos (os que não são de interesse)?
+Não tinha tanto interesse nas taxas do empréstimo, mas foi demonstrado que ela se relaciona bem com as outras variáveis, o que faz sentido, uma vez que os mutuários não vão solicitar grandes empréstimos com altas taxas, a tendencia é que se tiverem boas taxas eles vão solicitar valores maiores.
 
 ### Qual foi o relacionamento mais forte encontrado?
-
-
-
+O relacionamento mais forte - tirando é claro o valor das parcelas com o valor do empréstimo - foi o da pontuação com as taxas APR. Entendo que pessoas com baixa pontuação são um investimento mais arriscado, o que acaba elevando as taxas para compensar o risco, o que não ocorre com pessoas de alta pontuação. Pessoas com 11 de pontuação conseguem empréstimos com taxas de 0.1, enquanto que os que tem 1 de pontuação conseguem empréstimos na faixa de 0.35 de taxa.
 
 # Seção de Gráficos Multivariados
 
