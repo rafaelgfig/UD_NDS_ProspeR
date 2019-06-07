@@ -564,6 +564,17 @@ ggplot(subset(dff, !is.na(StatedMonthlyIncome.bucket)), aes(x = LoanOriginalAmou
   theme_dark()
 ```
 
+```{r Distribuicao LoanDate LoanAmount e Score, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
+# Scatterplot da data do empréstimo pelos valores com coloração do score
+cc <- scales::seq_gradient_pal('red','green')(seq(0,1, length.out = 11))
+ggplot(dff, aes(x = LoanOriginationDate, y = LoanOriginalAmount, color = factor(ProsperScore))) +
+  geom_point(alpha = 1/2) +
+  scale_x_date(breaks = '1 year', date_labels = '%Y') +
+  scale_y_continuous(breaks = seq(0, 35000, 5000)) +
+  scale_color_manual(values = cc, na.value = 'dark gray') +
+  theme_dark()
+```
+
 # Análise Multivariada
 
 ### Discuta sobre os relacionamentos observados nesta parte da investigação. Quais atributos que fortaleceram os demais na observação das variáveis de interesse?
