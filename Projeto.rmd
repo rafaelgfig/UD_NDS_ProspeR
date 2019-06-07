@@ -546,8 +546,13 @@ O relacionamento mais forte - tirando é claro o valor das parcelas com o valor d
 
 # Seção de Gráficos Multivariados
 
-```{r echo=FALSE, Multivariate_Plots}
-
+```{r Distribuicao LoanAmount APR e Score, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
+# Scatterplot do valor do empréstimo pelas taxas com coloração do score
+cc <- scales::seq_gradient_pal('red','green')(seq(0,1, length.out = 11))
+ggplot(subset(dff, !is.na(ProsperScore)), aes(x = LoanOriginalAmount, y = BorrowerAPR, color = factor(ProsperScore))) +
+  geom_point(shape = 18) +
+  scale_color_manual(values = cc) +
+  theme_dark()
 ```
 
 # Análise Multivariada
