@@ -523,7 +523,7 @@ Além disso ainda é ver novamente o período curiosiamente sem empréstimos.
 ggplot(dff, aes(x = Term, y = LoanOriginalAmount)) +
   geom_boxplot()
 ```
-<br/> Por último um boxplot da quantidade de parcelas com o valor solicitado, só para ter certeza que mais parcelas são para os empréstimos maiores e o inverso para empréstimos menores.
+<br/> Por último um boxplot da quantidade de parcelas com o valor solicitado para confirmar que mais parcelas são para os empréstimos maiores e o inverso para empréstimos menores.
 
 # Análise Bivariada
 
