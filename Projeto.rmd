@@ -314,7 +314,7 @@ A variável *ListingCategory..numeric.* está representada numéricamente, com a se
 
 Outras observações:
 
-* A maioria dos empréstimos solicitados são menos de 12000.
+* A maioria dos empréstimos solicitados são de menos de 12000.
 * Menos de 0.5% dos mutuários têm renda mensal acima de 25000, o mais comum é ganharem de 3200 a 6800.
 * Normalmente os valores solicitados são múltiplos de 5000, com exceção aos empréstimos de 4000 que são os mais numerosos.
 * Existem mutuários empregados por mais de 62 anos e os que não estão empregados. Em média estão 8 anos empregados.
@@ -329,7 +329,7 @@ Os principais atributos de interesse são o montante original do empréstimo, rend
 Acho que todos os atributos selecionados apresentam certa importância, talvez as taxas de juros nem tanto, mas os demais certamente possuem valor para a análise, por conta disso que foram selecionados dentre os 81 possíveis.
 
 ### Você criou novas variáveis a partir dos atributos existentes no conjunto de dados?
-Por enquanto não.
+Por enquanto, não.
 
 ### Dos atributos investigados, distribuições incomuns foram encontradas? Você aplicou operações nos dados para limpá-los, ajustá-los ou mudar a forma dos dados? Se sim, por quê?
 <p>As distribuições das variáveis *EmploymentStatusDuration*, *MonthlyLoanPayment* e *StatedMonthlyIncome* são assimétricas positivas com longas caudas.</p>
