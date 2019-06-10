@@ -590,6 +590,18 @@ ggplot(dff, aes(x = LoanOriginationDate, y = BorrowerAPR, color = factor(Prosper
 <br/>Nesse gráfico ficou claro os ajustes do sistema de pontuação. No começo houveram poucas pontuações baixas, com o passar do tempo ele foi ajustando, até mesmo ocorrendo saltos maiores de taxas, um exemplo disso são as linhas horizontais na mesma cor do nível, esse provavelmente foi o período que mais se basearam no score para estimar as taxas. <br/>
 Depois o algorítmo ficou mais uniforme, sem grandes saltos, só que ainda assim é evidente que pontuações baixas possuem maiores taxas.
 
+```{r Densidade LoanOriginalAmount StatedMonthlyIncome e EmploymentStatus, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
+# Density LoanOriginalAmount, StatedMonthlyIncome e colorido pelo EmploymentStatus
+ggplot(dff, aes(x = StatedMonthlyIncome, colour = EmploymentStatus)) +
+  geom_density(adjust = 2) +
+  theme_dark() +
+  scale_x_continuous(trans = 'sqrt', breaks = c(100, 1000, 2500, 5000, 10000, 15000, 20000)) -> g1
+ggplot(dff, aes(x = LoanOriginalAmount, colour = EmploymentStatus)) +
+  geom_density(adjust = 2) +
+  theme_dark() +
+  scale_x_continuous(trans = 'sqrt', breaks = c(1000, 2500, 5000, 10000, 15000, 20000, 30000)) -> g2
+grid.arrange(g1, g2, ncol = 1)
+```
 ```{r Distribuicao LoanOriginalAmount StatedMonthlyIncome e EmploymentStatus, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
 # Scatterplot LoanOriginalAmount, StatedMonthlyIncome e colorido pelo EmploymentStatus
 ggplot(dff, aes(x = StatedMonthlyIncome, y = LoanOriginalAmount, color = EmploymentStatus)) +
@@ -598,7 +610,7 @@ ggplot(dff, aes(x = StatedMonthlyIncome, y = LoanOriginalAmount, color = Employm
   scale_y_continuous(trans = 'sqrt', breaks = c(1000, 2500, 5000, 10000, 15000, 20000, 30000)) +
   scale_x_continuous(trans = 'sqrt', breaks = c(100, 1000, 2500, 5000, 10000, 15000, 20000))
 ```
-<br/>Intuitivamente o gráfico mostra - apesar de muito poluido - que mutuários normalmente possuem rendas altas e grandes empréstimos quando estão empregados, seja o tempo todo ou meio período.
+<br/>Intuitivamente o gráfico mostra - apesar de muito poluido - que mutuários normalmente possuem rendas altas e grandes empréstimos quando estão empregados, seja o tempo todo ou meio período. Ainda assim vemos que mutuários com baixa renda ainda conseguem realizar empréstimos relativamente alto, obtendo um gráfico de densidade mais uniforme do que em comparação com o das rendas.
 
 # Análise Multivariada
 
