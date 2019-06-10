@@ -576,6 +576,7 @@ ggplot(dff, aes(x = LoanOriginationDate, y = LoanOriginalAmount, color = factor(
   scale_color_manual(values = cc, na.value = 'dark gray') +
   theme_dark()
 ```
+<br/>Aqui temos um gráfico curioso que mostra o período em que foi implementado o sistema de Score, talvez essa lacuna seja o intervalo necessário para implementar o novo mecanismo. É possível ver um pequeno ajuste do algorítmo em relação as pontuações,os scores mais baixos se concentraram na parte mais baixa.
 
 ```{r Distribuicao LoanDate APR e Score, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
 # Scatterplot da data do empréstimo pelas taxas com coloração do score
