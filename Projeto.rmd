@@ -587,6 +587,8 @@ ggplot(dff, aes(x = LoanOriginationDate, y = BorrowerAPR, color = factor(Prosper
   scale_color_manual(values = cc, na.value = 'dark gray') +
   theme_dark()
 ```
+<br/>Nesse gráfico ficou claro os ajustes do sistema de pontuação. No começo houveram poucas pontuações baixas, com o passar do tempo ele foi ajustando, até mesmo ocorrendo saltos maiores de taxas, um exemplo disso são as linhas horizontais na mesma cor do nível, esse provavelmente foi o período que mais se basearam no score para estimar as taxas. <br/>
+Depois o algorítmo ficou mais uniforme, sem grandes saltos, só que ainda assim é evidente que pontuações baixas possuem maiores taxas.
 
 # Análise Multivariada
 
