@@ -554,6 +554,7 @@ ggplot(subset(dff, !is.na(ProsperScore)), aes(x = LoanOriginalAmount, y = Borrow
   scale_color_manual(values = cc) +
   theme_dark()
 ```
+<br/>Podemos ver a distribuição do Score baixo nas taxas mais altas, enquanto que no eixo do valor isso não ocorre, mas na medida que os juros ficam mais altos, o valor tende a diminuir.
 
 ```{r Distribuicao LoanAmount APR e MonthlyIncome, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
 # Scatterplot do valor do empréstimo pelas taxas com coloração da renda
