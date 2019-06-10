@@ -564,6 +564,7 @@ ggplot(subset(dff, !is.na(StatedMonthlyIncome.bucket)), aes(x = LoanOriginalAmou
   scale_color_manual(values = cc2) +
   theme_dark()
 ```
+<br/>Interessante visualizar que pessoas com rendas altas não necessariamente solicitam empréstimos altos, mas as com rendas baixas certamente não solicitam altos empréstimos.
 
 ```{r Distribuicao LoanDate LoanAmount e Score, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
 # Scatterplot da data do empréstimo pelos valores com coloração do score
