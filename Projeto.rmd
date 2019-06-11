@@ -622,6 +622,19 @@ ggplot(dff, aes(x = StatedMonthlyIncome, y = LoanOriginalAmount, color = Employm
   facet_wrap(~ProsperScore) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
+```{r Distribuicao LoanDate LoanAmount e EmploymentStatus, echo=FALSE, message=FALSE, warning=FALSE, fig.height=10, fig.width=10}
+# Scatterplot da data do empréstimo pelos valores com coloração do status do emprego
+ggplot(dff, aes(x = LoanOriginationDate, y = LoanOriginalAmount, color = EmploymentStatus)) +
+  geom_point(alpha = 1/2) +
+  scale_x_date(breaks = '1 year', date_labels = '%Y') +
+  theme_dark() -> g1
+ggplot(subset(dff, !(EmploymentStatus %in% c('Employed','Full-time','','Not available'))), aes(x = LoanOriginationDate, y = LoanOriginalAmount, color = EmploymentStatus)) +
+  geom_point(alpha = 1/2) +
+  scale_x_date(breaks = '1 year', date_labels = '%Y', limits = c(min(dff$LoanOriginationDate), max(dff$LoanOriginationDate))) +
+  theme_dark() -> g2
+grid.arrange(g1, g2, ncol=1)
+```
+<br/>Com o gráfico dividido em score dá pra ver que existem muitos casos sem Score. Como já tinha visto anteriormente que o Score foi implementado após a lacuna, decidi ver como está distribuido os status do emprego ao longo do tempo. Para minha surpresa vi que houve período sem categoria, outro indisponível e depois o uso do termo "Full-time" que posteriormente foi substituido pelo "Employed". O termo "Other" também parece ter sido utilizado de fato só após 2011.
 
 # Análise Multivariada
 
