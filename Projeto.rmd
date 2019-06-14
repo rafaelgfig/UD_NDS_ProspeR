@@ -329,7 +329,7 @@ Os principais atributos de interesse são o montante original do empréstimo, rend
 Acho que todos os atributos selecionados apresentam certa importância, talvez as taxas de juros nem tanto, mas os demais certamente possuem valor para a análise, por conta disso que foram selecionados dentre os 81 possíveis.
 
 ### Você criou novas variáveis a partir dos atributos existentes no conjunto de dados?
-Por enquanto, não.
+Realizei apenas a criação de faixas de renda para conseguir expressar categoricamente as rendas dos mutuários.
 
 ### Dos atributos investigados, distribuições incomuns foram encontradas? Você aplicou operações nos dados para limpá-los, ajustá-los ou mudar a forma dos dados? Se sim, por quê?
 <p>As distribuições das variáveis *EmploymentStatusDuration*, *MonthlyLoanPayment* e *StatedMonthlyIncome* são assimétricas positivas com longas caudas.</p>
