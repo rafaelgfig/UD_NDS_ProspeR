@@ -1,3 +1,6 @@
+---
+output: html_document
+---
 Explorando e resumindo dados de empréstimos da Prosper por Rafael G. Figueira
 ========================================================
 <p>Esse relatório explora um conjunto de dados de empréstimos da Prosper, possuindo 113.937 empréstimos com 81 variáveis em cada um, incluindo valor, taxa de juros, status do pagamento, receita do mutuário, seu emprego atual, histórico do cartão de crédito, informações sobre seu último pagamento, entre outras.</p>
@@ -635,6 +638,21 @@ ggplot(subset(dff, !(EmploymentStatus %in% c('Employed','Full-time','','Not avai
 grid.arrange(g1, g2, ncol=1)
 ```
 <br/>Com o gráfico dividido em score dá pra ver que existem muitos casos sem Score. Como já tinha visto anteriormente que o Score foi implementado após a lacuna, decidi ver como está distribuido os status do emprego ao longo do tempo. Para minha surpresa vi que houve período sem categoria, outro indisponível e depois o uso do termo "Full-time" que posteriormente foi substituido pelo "Employed". O termo "Other" também parece ter sido utilizado de fato só após 2011.
+
+```{r Densidade LoanOriginalAmount StatedMonthlyIncome e ListingCategory, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
+# Density LoanOriginalAmount, StatedMonthlyIncome e colorido pelo ListingCategory..numeric.
+ggplot(dff, aes(x = StatedMonthlyIncome, colour = dff$ListingCategory..numeric.)) +
+  geom_density(adjust = 1.5, size = .60, alpha = 1/2) +
+  theme_dark() +
+  scale_x_continuous(trans = 'sqrt', breaks = c(100, 1000, 2500, 5000, 10000, 15000, 20000)) -> g1
+ggplot(dff, aes(x = LoanOriginalAmount, colour = ListingCategory..numeric.)) +
+  geom_density(adjust = 1.5, size = .60, alpha = 1/2) +
+  theme_dark() +
+  scale_x_continuous(trans = 'sqrt', breaks = c(1000, 2500, 5000, 10000, 15000, 20000, 30000)) -> g2
+grid.arrange(g1, g2, ncol = 1)
+```
+<br/>A linha 5 está mais a esquerda do que as demais, o que faz sentido uma vez que corresponda aos empréstimos dos estudantes - anteriormente verificados como menores rendas -, os valores dos empréstimos dessa categoria também estão concentrados nos valores mais baixos, não seguindo a tendencia das outras categorias. Mais uma vez vemos a tendencia dos dados demonstrando que vida de estudante não é fácil.<br/>
+A linha 1 (consolidação de dívida) segue sobressalente no gráfico de valor do empréstimos, pois é a categoria mais popular para empréstimos altos, com a concentração nos valores redondos.
 
 # Análise Multivariada
 
