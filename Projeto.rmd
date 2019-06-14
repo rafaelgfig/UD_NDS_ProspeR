@@ -710,8 +710,17 @@ grid.arrange(g21, g22, ncol=1)
 
 
 ### Terceiro Gráfico
-```{r echo=FALSE, Plot_Three}
-
+```{r Terceiro Grafico, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
+# Density LoanOriginalAmount, StatedMonthlyIncome e colorido pelo EmploymentStatus
+ggplot(dff, aes(x = StatedMonthlyIncome, colour = EmploymentStatus)) +
+  geom_density(adjust = 2, size = .65) +
+  theme_dark() +
+  scale_x_continuous(trans = 'sqrt', breaks = c(100, 1000, 2500, 5000, 10000, 15000, 20000)) -> g31
+ggplot(dff, aes(x = LoanOriginalAmount, colour = EmploymentStatus)) +
+  geom_density(adjust = 2, size = .65) +
+  theme_dark() +
+  scale_x_continuous(trans = 'sqrt', breaks = c(1000, 2500, 5000, 10000, 15000, 20000, 30000)) -> g32
+grid.arrange(g31, g32, ncol = 1)
 ```
 
 ### Descrição do Terceiro Gráfico
