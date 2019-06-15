@@ -667,21 +667,8 @@ A linha 1 (consolidação de dívida) segue sobressalente no gráfico de valor do em
 # Gráficos Finais e Sumário
 
 ### Primeiro Gráfico
-```{r Primeiro Grafico, echo=FALSE, message=FALSE, warning=FALSE, fig.height=12, fig.width=12}
-# Boxplot LoanOriginalAmount pelo ProsperScore
-ggplot(dff.numeric, aes(x = factor(ProsperScore), y = LoanOriginalAmount, fill = factor(ProsperScore))) +
-  geom_boxplot() +
-  scale_fill_manual(values = cc) -> g11
-# Boxplot ProsperScore pelo BorrowerAPR
-ggplot(dff.numeric, aes(x = factor(ProsperScore), y = BorrowerAPR, fill = factor(ProsperScore))) +
-  geom_boxplot() +
-  scale_fill_manual(values = cc) -> g12
-# Boxplot StatedMonthlyIncome.bucket por LoanOriginalAmount
-cc2 <- scales::seq_gradient_pal('light green','dark green')(seq(0,1, length.out = length(levels(dff$StatedMonthlyIncome.bucket))))
-ggplot(subset(dff, !is.na(StatedMonthlyIncome.bucket)), aes(x = StatedMonthlyIncome.bucket, y = LoanOriginalAmount, fill = StatedMonthlyIncome.bucket)) +
-  geom_boxplot() +
-  scale_fill_manual(values = cc2) -> g13
-grid.arrange(g11, g12, g13, ncol=1)
+```{r echo=FALSE, Plot_One}
+
 ```
 
 ### Descrição do Primeiro Gráfico
