@@ -667,8 +667,12 @@ A linha 1 (consolidação de dívida) segue sobressalente no gráfico de valor do em
 # Gráficos Finais e Sumário
 
 ### Primeiro Gráfico
-```{r echo=FALSE, Plot_One}
-
+```{r Primeiro Grafico, echo=FALSE, message=FALSE, warning=FALSE, fig.height=8, fig.width=12}
+# Boxplot dos valores de empréstimos divididos entre os Scores e fatiado pelas faixas de renda
+ggplot(subset(dff, !is.na(StatedMonthlyIncome.bucket) & !is.na(ProsperScore) ), aes(x = factor(ProsperScore), y = LoanOriginalAmount, fill = factor(ProsperScore))) +
+  geom_boxplot() +
+  scale_fill_manual(values = cc) +
+  facet_wrap(~StatedMonthlyIncome.bucket)
 ```
 
 ### Descrição do Primeiro Gráfico
