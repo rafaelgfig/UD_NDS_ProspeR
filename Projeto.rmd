@@ -590,7 +590,7 @@ ggplot(dff, aes(x = LoanOriginationDate, y = BorrowerAPR, color = factor(Prosper
   scale_color_manual(values = cc, na.value = 'dark gray') +
   theme_dark()
 ```
-<br/>Nesse gráfico ficou claro os ajustes do sistema de pontuação. No começo houveram poucas pontuações baixas, com o passar do tempo ele foi ajustando, até mesmo ocorrendo saltos maiores de taxas, um exemplo disso são as linhas horizontais na mesma cor do nível, esse provavelmente foi o período que mais se basearam no score para estimar as taxas. <br/>
+<br/>Nesse gráfico ficou claro os ajustes do sistema de pontuação. No começo houveram poucas pontuações baixas, com o passar do tempo ele foi ajustando, até mesmo ocorrendo saltos maiores de taxas, um exemplo disso são as linhas horizontais na mesma cor de Score, esse provavelmente foi o período que mais se basearam no score para estimar as taxas. <br/>
 Depois o algorítmo ficou mais uniforme, sem grandes saltos, só que ainda assim é evidente que pontuações baixas possuem maiores taxas.
 
 ```{r Densidade LoanOriginalAmount StatedMonthlyIncome e EmploymentStatus, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
@@ -653,6 +653,24 @@ grid.arrange(g1, g2, ncol = 1)
 ```
 <br/>A linha 5 está mais a esquerda do que as demais, o que faz sentido uma vez que corresponda aos empréstimos dos estudantes - anteriormente verificados como menores rendas -, os valores dos empréstimos dessa categoria também estão concentrados nos valores mais baixos, não seguindo a tendencia das outras categorias. Mais uma vez vemos a tendencia dos dados demonstrando que vida de estudante não é fácil.<br/>
 A linha 1 (consolidação de dívida) segue sobressalente no gráfico de valor do empréstimos, pois é a categoria mais popular para empréstimos altos, com a concentração nos valores redondos.
+
+```{r Boxplot APR StatedMonthlyIncome.bucket e Score, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
+# Boxplot APR, StatedMonthlyIncome e colorido pelo Score
+ggplot(subset(dff, !is.na(StatedMonthlyIncome.bucket) & !is.na(ProsperScore) ), aes(x = factor(ProsperScore), y = BorrowerAPR, fill = factor(ProsperScore))) +
+  geom_boxplot() +
+  scale_fill_manual(values = cc) +
+  facet_wrap(~StatedMonthlyIncome.bucket)
+```
+```{r Boxplot LoanOriginalAmount StatedMonthlyIncome.bucket e Score, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
+# Boxplot LoanOriginalAmount, StatedMonthlyIncome e colorido pelo Score
+ggplot(subset(dff, !is.na(StatedMonthlyIncome.bucket) & !is.na(ProsperScore) ), aes(x = factor(ProsperScore), y = LoanOriginalAmount, fill = factor(ProsperScore))) +
+  geom_boxplot() +
+  scale_fill_manual(values = cc) +
+  facet_wrap(~StatedMonthlyIncome.bucket)
+```
+<br/>Esse ficou interessante, pois as taxas pelo score seguem a mesma tendência ao longo das faixas de rendas, mas isso não ocorre com o valor do empréstimo. Por mais que já tenha sido visto que a renda tenha correlação com o valor solicitado, não esperava que o score tivesse essa tendencia nas rendas de até 2.500.<br/>
+Ao que pude interpretar do gráfico, mutuários com renda baixa dificilmente têm empréstimos acima de 7.000, independente do score, ou seja, mutuários com grande pontuação tendem a fazer grandes empréstimos, salvo aqueles com renda inferiror à 2.500.<br/>
+Conforme a renda vai subindo, o score tende a se relacionar mais com o valor do empréstimo.
 
 # Análise Multivariada
 
