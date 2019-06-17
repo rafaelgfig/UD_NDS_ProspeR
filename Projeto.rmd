@@ -751,6 +751,7 @@ grid.arrange(g31, g32, ncol = 1)
 ```
 
 ### Descrição do Terceiro Gráfico
+Mutuários desempregados possuem uma concentração bem maior nas rendas baixas - o que é esperado - mas isso não os impede de realizar empréstimos como os demais, ainda que eles fiquem concentrados nos empréstimos inferiores à 7.500.
 
 ------
 
