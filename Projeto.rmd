@@ -676,9 +676,21 @@ Conforme a renda vai subindo, o score tende a se relacionar mais com o valor do 
 
 ### Discuta sobre os relacionamentos observados nesta parte da investigação. Quais atributos que fortaleceram os demais na observação das variáveis de interesse?
 
+Ficou bem mais evidente com a coloração do Score nos gráficos a relação das taxas com os valores dos empréstimos. Comprovando novamente que baixos scores estão associados a altas taxas e aos empréstimos menores.
+
+Podemos ver também que pessoas desempregadas e/ou com baixas rendas ainda solicitam empréstimos normalmente, claro, sendo limitados aos valores mais baixos em comparação daqueles com alta renda, todavia, o fato de estar desempregado não impede que façam empréstimos como os demais.
+
+Na análise de densidade dos tipos de empréstimos com os valores, a gente observa novamente que vida de estudante não é fácil, pois empréstimos com a categorização de alunos possuem as menores rendas e os menores valores.
+
 ### Interações surpreendentes e/ou interessantes foram encontradas entre os atributos?
 
+Acho que os gráficos mais interessantes são os cronológicos, pois é possível observar a variação do sistema ao longo do tempo, as mudanças de terminologia do status do emprego, a implementação do sistema do score assim como seu ajuste em relação as taxas e valores.
+
+O que me surpreendeu bastante foi a última plotagem, demonstrando que nas rendas até 2.500 o score não se relaciona com o valor solicitado - ainda que as taxas se comportem igual as demais faixas de renda -, o score começa a se relacionar mais na medida que as rendas vão subindo.
+
 ### OPCIONAL: Modelos foram criados usando este conjunto de dados? Discuta sobre os pontos fortes e as limitações do seu modelo.
+
+Não realizei criação de modelo até o momento, talvez no futuro o faça, ainda que não haja muitas relações lineares.
 
 ------
 
