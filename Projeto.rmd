@@ -709,8 +709,9 @@ ggplot(subset(dff, !is.na(StatedMonthlyIncome.bucket) & !is.na(ProsperScore) ), 
 ```
 
 ### Descrição do Primeiro Gráfico
-
-
+Existe uma clara relação entre o Score e o valor solicitado, sendo possível observar que empréstimos altos normalmente são obtidos pelos scores mais altos. <br/>
+Na primeira faixa de renda o score não se relaciona com o valor solicitado, mas também não há grandes empréstimos nessa faixa, na medida em que a renda e o valor do empréstimo aumentam, o score se relaciona mais.<br/>
+Ainda que sutíl, nesse gráfico é possível ver os valores dos quartis concentrados nos empréstimos redondos, normalmente de 5.000 em 5.000. Também há concentração incomum nos valores de 4.000, principalmente na primeira faixa de renda.
 
 ### Segundo Gráfico
 ```{r Segundo Grafico, echo=FALSE, message=FALSE, warning=FALSE, fig.height=8, fig.width=10}
