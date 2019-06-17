@@ -702,10 +702,14 @@ Não realizei criação de modelo até o momento, talvez no futuro o faça, ainda que
 ggplot(subset(dff, !is.na(StatedMonthlyIncome.bucket) & !is.na(ProsperScore) ), aes(x = factor(ProsperScore), y = LoanOriginalAmount, fill = factor(ProsperScore))) +
   geom_boxplot() +
   scale_fill_manual(values = cc) +
+  scale_y_continuous(breaks = seq(0, 35000, 5000)) +
+  geom_hline(yintercept = seq(0, 35000, 5000), alpha = 1/3, color = 'white') +
+  geom_hline(yintercept = 4000, alpha = 1/3) +
   facet_wrap(~StatedMonthlyIncome.bucket)
 ```
 
 ### Descrição do Primeiro Gráfico
+
 
 
 ### Segundo Gráfico
