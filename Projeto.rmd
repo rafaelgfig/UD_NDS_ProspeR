@@ -733,7 +733,8 @@ grid.arrange(g21, g22, ncol=1)
 ```
 
 ### Descrição do Segundo Gráfico
-
+Existe o período sem o sistema de Score, a lacuna sem empréstimos seguida de alguns pouquíssimos e depois a implementação inicial do sistema. Fica claro os ajustes realizados ao longo do tempo, chegando a 2014 com uma relação mais suave entre os scores e as taxas. <br/>
+Após esses ajustes, o valor do empréstimo ficou mais relacionado com o score e também foram permitidos os empréstimos acima de 25.000 no mesmo período.
 
 ### Terceiro Gráfico
 ```{r Terceiro Grafico, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
