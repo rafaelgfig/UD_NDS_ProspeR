@@ -696,7 +696,12 @@ Não realizei criação de modelo até o momento, talvez no futuro o faça, ainda que
 # Gráficos Finais e Sumário
 
 ### Primeiro Gráfico
-```{r Primeiro Grafico, echo=FALSE, message=FALSE, warning=FALSE, fig.height=8, fig.width=12}
+```{r Primeiro Grafico, echo=FALSE, message=FALSE, warning=FALSE, fig.height=8, fig.width=10}
+# Valores dos buckets por extenso
+labs = c('$0  até  $2,499', '$2,500  até  $4,999', '$5,000  até  $7,499', '$7,500  até  $9,999',
+         '$10,000  até  $12,499', '$12,500  até  $14,999', '$15,000  até  $17,499', '$17,500  até  $19,999',
+         '$20,000  até  $22,499', '$22,500  até  $24,499')
+dff$StatedMonthlyIncome.bucket.labs <- factor(dff$StatedMonthlyIncome.bucket, labels = labs)
 # Boxplot dos valores de empréstimos divididos entre os Scores e fatiado pelas faixas de renda
 ggplot(subset(dff, !is.na(StatedMonthlyIncome.bucket) & !is.na(ProsperScore) ), aes(x = factor(ProsperScore), y = LoanOriginalAmount, fill = factor(ProsperScore))) +
   geom_boxplot() +
@@ -704,7 +709,12 @@ ggplot(subset(dff, !is.na(StatedMonthlyIncome.bucket) & !is.na(ProsperScore) ), 
   scale_y_continuous(breaks = seq(0, 35000, 5000)) +
   geom_hline(yintercept = seq(0, 35000, 5000), alpha = 1/3, color = 'white') +
   geom_hline(yintercept = 4000, alpha = 1/3) +
-  facet_wrap(~StatedMonthlyIncome.bucket)
+  facet_wrap(~StatedMonthlyIncome.bucket.labs) +
+    labs(title = 'Valores Origináis dos Empréstimos sobre os Scores dos Mutuários nas Faixas de Renda', 
+         x = 'Score do Mutuário', 
+         y = 'Valor Original do Empréstimo') +
+  theme(legend.position = 'none',
+        plot.title = element_text(hjust = 0.5))
 ```
 
 ### Descrição do Primeiro Gráfico
@@ -721,13 +731,15 @@ ggplot(dff, aes(x = LoanOriginationDate, y = LoanOriginalAmount, color = factor(
   scale_x_date(breaks = '1 year', date_labels = '%Y') +
   scale_y_continuous(breaks = seq(0, 35000, 5000)) +
   scale_color_manual(values = cc, na.value = 'dark gray') +
-  theme_dark() -> g21
+  theme_dark() +
+  labs(title = 'primeiro grafico', x = 'x', y = 'y') -> g21
 # Scatterplot da data do empréstimo pelas taxas com coloração do score
 ggplot(dff, aes(x = LoanOriginationDate, y = BorrowerAPR, color = factor(ProsperScore))) +
   geom_point(alpha = 1/2) +
   scale_x_date(breaks = '1 year', date_labels = '%Y') +
   scale_color_manual(values = cc, na.value = 'dark gray') +
-  theme_dark() -> g22
+  theme_dark() +
+  labs(title = 'primeiro grafico', x = 'x', y = 'y') -> g22
 grid.arrange(g21, g22, ncol=1)
 ```
 
@@ -741,11 +753,13 @@ Após esses ajustes, o valor do empréstimo ficou mais relacionado com o score e t
 ggplot(dff, aes(x = StatedMonthlyIncome, colour = EmploymentStatus)) +
   geom_density(adjust = 2, size = .65) +
   theme_dark() +
-  scale_x_continuous(trans = 'sqrt', breaks = c(100, 1000, 2500, 5000, 10000, 15000, 20000)) -> g31
+  scale_x_continuous(trans = 'sqrt', breaks = c(100, 1000, 2500, 5000, 10000, 15000, 20000)) +
+  labs(title = 'primeiro grafico', x = 'x', y = 'y') -> g31
 ggplot(dff, aes(x = LoanOriginalAmount, colour = EmploymentStatus)) +
   geom_density(adjust = 2, size = .65) +
   theme_dark() +
-  scale_x_continuous(trans = 'sqrt', breaks = c(1000, 2500, 5000, 10000, 15000, 20000, 30000)) -> g32
+  scale_x_continuous(trans = 'sqrt', breaks = c(1000, 2500, 5000, 10000, 15000, 20000, 30000)) +
+  labs(title = 'primeiro grafico', x = 'x', y = 'y') -> g32
 grid.arrange(g31, g32, ncol = 1)
 ```
 
