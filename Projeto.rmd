@@ -712,7 +712,7 @@ ggplot(subset(dff, !is.na(StatedMonthlyIncome.bucket) & !is.na(ProsperScore) ), 
   facet_wrap(~StatedMonthlyIncome.bucket.labs) +
     labs(title = 'Valores Origináis dos Empréstimos sobre os Scores dos Mutuários nas Faixas de Renda', 
          x = 'Score', 
-         y = 'Valor') +
+         y = 'Valor (em dólares)') +
   theme(legend.position = 'none',
         plot.title = element_text(hjust = 0.5))
 ```
@@ -734,7 +734,7 @@ ggplot(dff, aes(x = LoanOriginationDate, y = LoanOriginalAmount, color = factor(
   theme_dark() +
     labs(title = 'Valores Origináis dos Empréstimos pela Data em que foi Realizado e colorido pelo Score', 
          x = 'Data', 
-         y = 'Valor',
+         y = 'Valor (em dólares)',
          color = 'Score') +
   theme(plot.title = element_text(hjust = 0.5)) -> g21
 # Scatterplot da data do empréstimo pelas taxas com coloração do score
@@ -757,17 +757,26 @@ Após esses ajustes, o valor do empréstimo ficou mais relacionado com o score e t
 
 ### Terceiro Gráfico
 ```{r Terceiro Grafico, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
-# Density LoanOriginalAmount, StatedMonthlyIncome e colorido pelo EmploymentStatus
-ggplot(dff, aes(x = StatedMonthlyIncome, colour = EmploymentStatus)) +
+# Densityplot StatedMonthlyIncome e colorido pelo EmploymentStatus
+ggplot(subset(dff, EmploymentStatus != ''), aes(x = StatedMonthlyIncome, colour = EmploymentStatus)) +
   geom_density(adjust = 2, size = .65) +
   theme_dark() +
   scale_x_continuous(trans = 'sqrt', breaks = c(100, 1000, 2500, 5000, 10000, 15000, 20000)) +
-  labs(title = 'primeiro grafico', x = 'x', y = 'y') -> g31
-ggplot(dff, aes(x = LoanOriginalAmount, colour = EmploymentStatus)) +
+    labs(title = 'Densidades das Rendas coloridas pelo Status do Emprego', 
+         x = 'Renda (em dólares)', 
+         y = 'Densidade',
+         color = 'Status') +
+  theme(plot.title = element_text(hjust = 0.5)) -> g31
+# Densityplot LoanOriginalAmount e colorido pelo EmploymentStatus
+ggplot(subset(dff, EmploymentStatus != ''), aes(x = LoanOriginalAmount, colour = EmploymentStatus)) +
   geom_density(adjust = 2, size = .65) +
   theme_dark() +
   scale_x_continuous(trans = 'sqrt', breaks = c(1000, 2500, 5000, 10000, 15000, 20000, 30000)) +
-  labs(title = 'primeiro grafico', x = 'x', y = 'y') -> g32
+    labs(title = 'Densidades dos Valores Origináis dos Empréstimos coloridas pelo Status do Emprego', 
+         x = 'Valor (em dólares)', 
+         y = 'Densidade',
+         color = 'Status') +
+  theme(plot.title = element_text(hjust = 0.5)) -> g32
 grid.arrange(g31, g32, ncol = 1)
 ```
 
