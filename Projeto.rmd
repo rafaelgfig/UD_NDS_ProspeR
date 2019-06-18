@@ -711,8 +711,8 @@ ggplot(subset(dff, !is.na(StatedMonthlyIncome.bucket) & !is.na(ProsperScore) ), 
   geom_hline(yintercept = 4000, alpha = 1/3) +
   facet_wrap(~StatedMonthlyIncome.bucket.labs) +
     labs(title = 'Valores Origináis dos Empréstimos sobre os Scores dos Mutuários nas Faixas de Renda', 
-         x = 'Score do Mutuário', 
-         y = 'Valor Original do Empréstimo') +
+         x = 'Score', 
+         y = 'Valor') +
   theme(legend.position = 'none',
         plot.title = element_text(hjust = 0.5))
 ```
@@ -732,14 +732,22 @@ ggplot(dff, aes(x = LoanOriginationDate, y = LoanOriginalAmount, color = factor(
   scale_y_continuous(breaks = seq(0, 35000, 5000)) +
   scale_color_manual(values = cc, na.value = 'dark gray') +
   theme_dark() +
-  labs(title = 'primeiro grafico', x = 'x', y = 'y') -> g21
+    labs(title = 'Valores Origináis dos Empréstimos pela Data em que foi Realizado e colorido pelo Score', 
+         x = 'Data', 
+         y = 'Valor',
+         color = 'Score') +
+  theme(plot.title = element_text(hjust = 0.5)) -> g21
 # Scatterplot da data do empréstimo pelas taxas com coloração do score
 ggplot(dff, aes(x = LoanOriginationDate, y = BorrowerAPR, color = factor(ProsperScore))) +
   geom_point(alpha = 1/2) +
   scale_x_date(breaks = '1 year', date_labels = '%Y') +
   scale_color_manual(values = cc, na.value = 'dark gray') +
   theme_dark() +
-  labs(title = 'primeiro grafico', x = 'x', y = 'y') -> g22
+    labs(title = 'Taxa APR do Mutuário pela Data em que foi Realizado e colorido pelo Score', 
+         x = 'Data', 
+         y = 'Taxa',
+         color = 'Score') +
+  theme(plot.title = element_text(hjust = 0.5)) -> g22
 grid.arrange(g21, g22, ncol=1)
 ```
 
