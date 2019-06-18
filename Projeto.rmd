@@ -590,7 +590,9 @@ ggplot(dff, aes(x = LoanOriginationDate, y = BorrowerAPR, color = factor(Prosper
   scale_color_manual(values = cc, na.value = 'dark gray') +
   theme_dark()
 ```
-<br/>Nesse gráfico ficou claro os ajustes do sistema de pontuação. No começo houveram poucas pontuações baixas, com o passar do tempo ele foi ajustando, até mesmo ocorrendo saltos maiores de taxas, um exemplo disso são as linhas horizontais na mesma cor de Score, esse provavelmente foi o período que mais se basearam no score para estimar as taxas. <br/>
+<br/>Nesse gráfico ficou claro os ajustes do sistema de pontuação. No começo houveram poucas pontuações baixas, mas com o passar do tempo ele foi ajustando, até mesmo ocorrendo saltos maiores de taxas. 
+
+Um exemplo disso são as linhas horizontais na mesma cor de Score. Esse provavelmente foi o período que mais se basearam no score para estimar as taxas. <br/>
 Depois o algorítmo ficou mais uniforme, sem grandes saltos, só que ainda assim é evidente que pontuações baixas possuem maiores taxas.
 
 ```{r Densidade LoanOriginalAmount StatedMonthlyIncome e EmploymentStatus, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
@@ -763,6 +765,6 @@ Pensei que o tempo empregado iria ter algum peso na hora de solicitar um emprést
 
 Ao decorrer da análise pude ver que o Score tinha grande importância pois se relacionava fortemente com as taxas e um pouco com o valor do empréstimo, então meu foco mudou um pouco para ela.
 
-Os dados são limitados ao ano de 2014, então atualmente (2019) o sistema de Score deve ter muito mais peso do que antes, pois houve um claro ajuste desse sistema. Olhar para as variáveis que compõe o Score certamente ajudaria entender os perfís dos mutários e isso poderia talvez auxiliar ma criação de propostas ou propagandas direcionadas.
+Os dados são limitados ao ano de 2014, então atualmente (2019) o sistema de Score deve ter muito mais peso do que antes, pois houve um claro ajuste desse sistema. Olhar para as variáveis que compõe o Score certamente ajudaria entender os perfís dos mutários e isso poderia talvez auxiliar na criação de propostas ou propagandas direcionadas.
 
 Não possuia muito conhecimento prévio sobre o tipo de dados desse conjunto. Ficou claro que o conhecimento sobre o negócio e saber elaborar as perguntas certas é determinante para uma boa análise.
