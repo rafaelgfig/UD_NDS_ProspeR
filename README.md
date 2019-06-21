@@ -1,6 +1,6 @@
-# Explorando e resumindo dados de empréstimos da Prosper por Rafael G. Figueira
+# Explorando e resumindo dados de empréstimos da [Prosper](https://prosper.com)
 ------
-<p>Esse relatório explora um conjunto de dados de empréstimos da Prosper, possuindo 113.937 empréstimos com 81 variáveis em cada um, incluindo valor, taxa de juros, status do pagamento, receita do mutuário, seu emprego atual, histórico do cartão de crédito, informações sobre seu último pagamento, entre outras.</p>
+Esse relatório explora um conjunto de dados (fornecidos pela [Udacity](https://www.udacity.com/)) de empréstimos da Prosper, possuindo 113.937 empréstimos com 81 variáveis em cada um, incluindo valor, taxa de juros, status do pagamento, receita do mutuário, seu emprego atual, histórico do cartão de crédito, informações sobre seu último pagamento, entre outras.
 
 ##### Bibliotecas
 * dplyr
@@ -12,7 +12,9 @@
 * GGally
 
 ##### Carregamento dos dados
+```r
 df <- read.csv('prosperLoanData.csv')
+```
 
 ## Seção de Gráficos Univariados
 <p>O conjunto de dados original possui 113937 linhas e 81 colunas.</p>
