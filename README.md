@@ -482,7 +482,7 @@ A linha 1 (consolidação de dívida) segue sobressalente no gráfico de valor d
 
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Boxplot_APR_StatedMonthlyIncome.bucket_e_Score-1.png" width="960"><br/>
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Boxplot_LoanOriginalAmount_StatedMonthlyIncome.bucket_e_Score-1.png" width="960	"><br/>
-Esse ficou interessante, pois as taxas pelo score seguem a mesma tendência ao longo das faixas de rendas, mas isso não ocorre com o valor do empréstimo. Por mais que já tenha sido visto que a renda tenha correlação com o valor solicitado, não esperava que o score tivesse essa tendencia nas rendas de até 2.500.<br/>
+Esse ficou interessante, pois as taxas pelo score seguem a mesma tendência ao longo das faixas de rendas, mas isso não ocorre com o valor do empréstimo. Por mais que já tenha sido visto que a renda tenha correlação com o valor solicitado, não esperava que o score tivesse essa tendência nas rendas de até 2.500.<br/>
 Ao que pude interpretar do gráfico, mutuários com renda baixa dificilmente têm empréstimos acima de 7.000, independente do score, ou seja, mutuários com grande pontuação tendem a fazer grandes empréstimos, salvo aqueles com renda inferior à 2.500.<br/>
 Conforme a renda vai subindo, o score tende a se relacionar mais com o valor do empréstimo.
 
