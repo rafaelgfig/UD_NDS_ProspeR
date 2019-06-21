@@ -16,9 +16,11 @@ df <- read.csv('prosperLoanData.csv')
 
 ## Seção de Gráficos Univariados
 <p>O conjunto de dados original possui 113937 linhas e 81 colunas.</p>
+
 ```
 ## [1] 113937     81
 ```
+
 <p>Foram escolhidas 15 variáveis julgadas mais interessantes para a minha análise.<br/> Sendo elas:</p>
 
 * MemberKey
