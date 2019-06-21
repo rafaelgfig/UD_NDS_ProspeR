@@ -16,11 +16,9 @@ df <- read.csv('prosperLoanData.csv')
 
 ## Seção de Gráficos Univariados
 <p>O conjunto de dados original possui 113937 linhas e 81 colunas.</p>
-
 ```
 ## [1] 113937     81
 ```
-
 <p>Foram escolhidas 15 variáveis julgadas mais interessantes para a minha análise.<br/> Sendo elas:</p>
 
 * MemberKey
@@ -40,7 +38,6 @@ df <- read.csv('prosperLoanData.csv')
 * MonthlyLoanPayment
 
 Abaixo seguem algumas informações úteis sobre os dados.<br/>
-
 ```
 ## 'data.frame':    113937 obs. of  15 variables:
 ##  $ MemberKey                : Factor w/ 90831 levels "00003397697413387CAF966",..: 11071 10302 33781 54939 19465 48037 60448 40951 26129 26129 ...
@@ -59,7 +56,6 @@ Abaixo seguem algumas informações úteis sobre os dados.<br/>
 ##  $ LoanOriginationDate      : Factor w/ 1873 levels "2005-11-15 00:00:00",..: 426 1866 260 1535 1757 1821 1649 1666 1813 1813 ...
 ##  $ MonthlyLoanPayment       : num  330 319 123 321 564 ...
 ```
-
 ```
 ##                    MemberKey                         LoanKey      
 ##  63CA34120866140639431C9:     9   CB1B37030986463208432A1:     6  
@@ -110,7 +106,6 @@ Abaixo seguem algumas informações úteis sobre os dados.<br/>
 ##  2013-09-24 00:00:00:   316   Max.   :2251.5    
 ##  (Other)            :111428
 ```
-
 <br/>Quantidade de NA's:
 ```
 ##                 MemberKey                   LoanKey 
