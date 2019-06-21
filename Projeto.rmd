@@ -93,7 +93,7 @@ dff %>%
 ```
 
 <p>É possível ver que o histograma da variável *StatedMonthlyIncome* está totalmente concentrado em zero.</p>
-Analizando o resumo estatístico é possível ver que a variável contém alguns dados discrepantes.
+Analisando o resumo estatístico é possível ver que a variável contém alguns dados discrepantes.
 ```{r Resumo estatistico StatedMonthlyIncome, echo=FALSE}
 # Verificando que plotagem da renda mensal está enviesada por conta de outlier
 summary(dff$StatedMonthlyIncome)
@@ -166,7 +166,7 @@ round(sum(dff$EmploymentStatus == 'Not employed')/length(dff$EmploymentStatus),d
 A grande maioria dos solicitantes de empréstimos está atualmente empregado de alguma forma. Apenas 0.7% dos mutuários são declaradamente desempregados.
 
 <br/>
-O histograma da duração do empréstimo ficou muito espaçado por conta da coluna estar como tipo de valor inteiro, e como só há 3 variações de duração (12, 36 ou 60) dentro dessa coluna, é possível assumí-la como dado categórico e plotar como tal. <br/>
+O histograma da duração do empréstimo ficou muito espaçado por conta da coluna estar como tipo de valor inteiro, e como só há 3 variações de duração (12, 36 ou 60) dentro dessa coluna, é possível assumi-la como dado categórico e plotar como tal. <br/>
 ```{r Alterado Term para categorico e plotado, echo=FALSE, fig.height=4, fig.width=2, message=FALSE, warning=FALSE}
 # Alterando variável para o tipo categórica, já que só há 3 tipos de valores
 dff$Term <- factor(dff$Term)
@@ -291,7 +291,7 @@ Visando uma exploração mais sucinta, foram escolhidas 15 variáveis de interesse,
 * Uma variável cronológica (LoanOriginationDate);
 * E cinco variáveis categóricas (Term, LoanStatus, ListingCategory..numeric., Occupation e EmploymentStatus)
 
-A variável *ListingCategory..numeric.* está representada numéricamente, com a seguinte relação:
+A variável *ListingCategory..numeric.* está representada numericamente, com a seguinte relação:
 
 0. Não disponível
 1. Consolidação da dívida
@@ -326,7 +326,7 @@ Outras observações:
 * Não há registros de empréstimos no final de 2008 e começo de 2009.
 
 ### Quais são os principais atributos de interesse deste conjunto de dados?
-Os principais atributos de interesse são o montante original do empréstimo, renda declarada e razão pela qual solicitou o empréstimo. Quero entender quais são os perfís mais comuns de mutuários e suas motivações para solicitar os respectivos valores. Imagino que há uma correlação positiva de valor solicitado com a renda declarada ou talvez tempo de serviço.
+Os principais atributos de interesse são o montante original do empréstimo, renda declarada e razão pela qual solicitou o empréstimo. Quero entender quais são os perfis mais comuns de mutuários e suas motivações para solicitar os respectivos valores. Imagino que há uma correlação positiva de valor solicitado com a renda declarada ou talvez tempo de serviço.
 
 ### Quais outros atributos você acha que podem lhe auxiliar na investigação destes atributos de interesse?
 Acho que todos os atributos selecionados apresentam certa importância, talvez as taxas de juros nem tanto, mas os demais certamente possuem valor para a análise, por conta disso que foram selecionados dentre os 81 possíveis.
@@ -337,7 +337,7 @@ Realizei apenas a criação de faixas de renda para conseguir expressar categorica
 ### Dos atributos investigados, distribuições incomuns foram encontradas? Você aplicou operações nos dados para limpá-los, ajustá-los ou mudar a forma dos dados? Se sim, por quê?
 <p>As distribuições das variáveis *EmploymentStatusDuration*, *MonthlyLoanPayment* e *StatedMonthlyIncome* são assimétricas positivas com longas caudas.</p>
 <p>Para *StatedMonthlyIncome* só foram omitidos os valores mais altos (0.5% à 5%) para que a distribuição ficasse mais normal. Na análise bivariada foram removidos os 0.5% por distorcer muito as correlações e dispersões.</p>
-<p>A *MonthlyLoanPayment* mesmo omitido os valores mais altos ainda continua bastante assimétrica, ainda assim não achei necessário redimenssioná-la, já que estava interessado em ver a concentração incomum dos dados próximos ao 175.</p>
+<p>A *MonthlyLoanPayment* mesmo omitido os valores mais altos ainda continua bastante assimétrica, ainda assim não achei necessário redimensioná-la, já que estava interessado em ver a concentração incomum dos dados próximos ao 175.</p>
 <p>Já *EmploymentStatusDuration* é uma distribuição totalmente assimétrica positivamente. Com uma escala logarítmica ou de raiz ela normalizaria, mas não julguei necessário normalizá-la, apenas omiti 5% dos maiores valores para conseguir visualizar melhor os dados, e por ser um dado de tempo preferi que cada coluna representasse 1 mês ou 1 ano.<p/>
 <p>Na *ListingCategory* há uma grande concentração dos dados da categoria 1, seguida da 0 e 7, ficando muito assimétrica a direita. Nessa distribuição foi usada uma escala logarítmica com base 10 no eixo *Y* para visualizar melhor os dados. Por mais que eles tenham se aproximado, a distribuição ainda segue assimétrica, uma vez que foi escalonado o eixo *Y* e não o *X*, já que está sendo contado os dados categóricos e não numéricos de fato.</p>
 <p>Os dados da *LoanOriginationDate* criam duas distribuições assimétricas negativamente por conta de terem dados faltantes em certo período, ainda que houvessem esses dados a distribuição certamente permaneceria assimétrica para a esquerda. Nesse caso também não foi escalonado por se tratar de dados cronológicos, então preferi manter a escala normal para visualizar melhor.
@@ -451,7 +451,7 @@ ggplot(subset(dff, !is.na(StatedMonthlyIncome.bucket)), aes(x = StatedMonthlyInc
 # Resumo estatístico
 by(dff$LoanOriginalAmount, dff$StatedMonthlyIncome.bucket, summary)
 ```
-<br/> Com o gráfico de dispersão é possível ver a correlação entre a renda declarada e o valor do empréstimo, mas ainda é muito poluido, por conta disso optei pelo boxplot com fatiamento de 2.500 das rendas, assim ficou muito mais claro a relação das duas e como rendas baixas de fato têm em sua maioria empréstimos menores.
+<br/> Com o gráfico de dispersão é possível ver a correlação entre a renda declarada e o valor do empréstimo, mas ainda é muito poluído, por conta disso optei pelo boxplot com fatiamento de 2.500 das rendas, assim ficou muito mais claro a relação das duas e como rendas baixas de fato têm em sua maioria empréstimos menores.
 
 Através dos resumos estatísticos observamos que rendas inferiores à 7.500 realizaram empréstimos de no máximo 25.000. A média também vai aumentando gradativamente conforme a renda sobe, demonstrando assim a relação entre as duas variáveis.
 
@@ -519,7 +519,7 @@ ggplot(dff, aes(x = LoanOriginationDate, y = LoanOriginalAmount)) +
 ```
 <br/> Vemos que o tempo não é um fator determinante para o valor do empréstimo, todavia, a partir de 2011 não foram mais realizados empréstimos menores que 2000, e somente depois de 2013 que foram realizados empréstimos acima de 25000.<br/> 
 É interessante visualizar as linhas horizontais, demonstrando que realizam mais empréstimos com valores redondos do que quebrados, nesse caso sendo mais comum de 500 em 500. <br>
-Além disso ainda é ver novamente o período curiosiamente sem empréstimos.
+Além disso ainda é ver novamente o período curiosamente sem empréstimos.
 
 ```{r Boxplot LoanOriginalAmount por Term, echo=FALSE, message=FALSE, warning=FALSE}
 # Boxplot de LoanOriginalAmount por Term
@@ -531,9 +531,9 @@ ggplot(dff, aes(x = Term, y = LoanOriginalAmount)) +
 # Análise Bivariada
 
 ### Discuta sobre alguns dos relacionamentos observados nesta parte da investigação. Como os atributos de interesse variaram no conjunto de dados?
-Um dos pontos mais importante - se não o mais importante - é a pontuaçao do mutuário. Mutuários com alta pontuação conseguem empréstimos com menores juros, e menores juros possibilitam empréstimos maiores.
+Um dos pontos mais importante - se não o mais importante - é a pontuação do mutuário. Mutuários com alta pontuação conseguem empréstimos com menores juros, e menores juros possibilitam empréstimos maiores.
 
-Pessoas com rendas maiores tendem a ter empréstimos maiores, assim como pessoas desempregadas, apostentadas ou com trabalho parcial tendem a ter empréstimos menores, isso é algo intuitivo, mas que se mostrou ser verdade através da análise gráfica.
+Pessoas com rendas maiores tendem a ter empréstimos maiores, assim como pessoas desempregadas, aposentadas ou com trabalho parcial tendem a ter empréstimos menores, isso é algo intuitivo, mas que se mostrou ser verdade através da análise gráfica.
 
 Os estudantes são os que conseguem os menores empréstimos, porque também são os que têm as menores rendas. Vida de estudante não é fácil.
 
@@ -542,7 +542,7 @@ Existe um furo nos dados ao redor do começo de 2009 em que não foram realizados 
 Achava que o tempo empregado iria se relacionar com alguma outra variável, mas analisando graficamente e pela correlação de pearson, o tempo de serviço não tem peso para entender os perfis dos mutuários.
 
 ### Você observou algum relacionamento interessante entre os outros atributos (os que não são de interesse)?
-Não tinha tanto interesse nas taxas do empréstimo, mas foi demonstrado que ela se relaciona bem com as outras variáveis, o que faz sentido, uma vez que os mutuários não vão solicitar grandes empréstimos com altas taxas, a tendencia é que se tiverem boas taxas eles vão solicitar valores maiores.
+Não tinha tanto interesse nas taxas do empréstimo, mas foi demonstrado que ela se relaciona bem com as outras variáveis, o que faz sentido, uma vez que os mutuários não vão solicitar grandes empréstimos com altas taxas, a tendência é que se tiverem boas taxas eles vão solicitar valores maiores.
 
 ### Qual foi o relacionamento mais forte encontrado?
 O relacionamento mais forte - tirando é claro o valor das parcelas com o valor do empréstimo - foi o da pontuação com as taxas APR. Entendo que pessoas com baixa pontuação são um investimento mais arriscado, o que acaba elevando as taxas para compensar o risco, o que não ocorre com pessoas de alta pontuação. Pessoas com 11 de pontuação conseguem empréstimos com taxas de 0.1, enquanto que os que tem 1 de pontuação conseguem empréstimos na faixa de 0.35 de taxa.
@@ -579,7 +579,7 @@ ggplot(dff, aes(x = LoanOriginationDate, y = LoanOriginalAmount, color = factor(
   scale_color_manual(values = cc, na.value = 'dark gray') +
   theme_dark()
 ```
-<br/>Aqui temos um gráfico curioso que mostra o período em que foi implementado o sistema de Score, talvez essa lacuna seja o intervalo necessário para implementar o novo mecanismo. É possível ver um pequeno ajuste do algorítmo em relação as pontuações,os scores mais baixos se concentraram na parte mais baixa.
+<br/>Aqui temos um gráfico curioso que mostra o período em que foi implementado o sistema de Score, talvez essa lacuna seja o intervalo necessário para implementar o novo mecanismo. É possível ver um pequeno ajuste do algoritmo em relação as pontuações, os scores mais baixos se concentraram na parte mais baixa.
 
 ```{r Distribuicao LoanDate APR e Score, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
 # Scatterplot da data do empréstimo pelas taxas com coloração do score
@@ -593,7 +593,7 @@ ggplot(dff, aes(x = LoanOriginationDate, y = BorrowerAPR, color = factor(Prosper
 <br/>Nesse gráfico ficou claro os ajustes do sistema de pontuação. No começo houveram poucas pontuações baixas, mas com o passar do tempo ele foi ajustando, até mesmo ocorrendo saltos maiores de taxas. 
 
 Um exemplo disso são as linhas horizontais na mesma cor de Score. Esse provavelmente foi o período que mais se basearam no score para estimar as taxas. <br/>
-Depois o algorítmo ficou mais uniforme, sem grandes saltos, só que ainda assim é evidente que pontuações baixas possuem maiores taxas.
+Depois o algoritmo ficou mais uniforme, sem grandes saltos, só que ainda assim é evidente que pontuações baixas possuem maiores taxas.
 
 ```{r Densidade LoanOriginalAmount StatedMonthlyIncome e EmploymentStatus, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
 # Density LoanOriginalAmount, StatedMonthlyIncome e colorido pelo EmploymentStatus
@@ -615,7 +615,7 @@ ggplot(dff, aes(x = StatedMonthlyIncome, y = LoanOriginalAmount, color = Employm
   scale_y_continuous(trans = 'sqrt', breaks = c(1000, 2500, 5000, 10000, 15000, 20000, 30000)) +
   scale_x_continuous(trans = 'sqrt', breaks = c(100, 1000, 2500, 5000, 10000, 15000, 20000))
 ```
-<br/>Intuitivamente o gráfico mostra - apesar de muito poluido - que mutuários normalmente possuem rendas altas e grandes empréstimos quando estão empregados, seja o tempo todo ou meio período. Ainda assim vemos que mutuários com baixa renda ainda conseguem realizar empréstimos relativamente alto, obtendo um gráfico de densidade mais uniforme do que em comparação com o das rendas.
+<br/>Intuitivamente o gráfico mostra - apesar de muito poluído - que mutuários normalmente possuem rendas altas e grandes empréstimos quando estão empregados, seja o tempo todo ou meio período. Ainda assim vemos que mutuários com baixa renda ainda conseguem realizar empréstimos relativamente alto, obtendo um gráfico de densidade mais uniforme do que em comparação com o das rendas.
 
 ```{r Facet LoanOriginalAmount StatedMonthlyIncome EmploymentStatus e Score, echo=FALSE, message=FALSE, warning=FALSE, fig.height=8, fig.width=12}
 # Scatterplot LoanOriginalAmount, StatedMonthlyIncome e colorido pelo EmploymentStatus
@@ -639,7 +639,7 @@ ggplot(subset(dff, !(EmploymentStatus %in% c('Employed','Full-time','','Not avai
   theme_dark() -> g2
 grid.arrange(g1, g2, ncol=1)
 ```
-<br/>Com o gráfico dividido em score dá pra ver que existem muitos casos sem Score. Como já tinha visto anteriormente que o Score foi implementado após a lacuna, decidi ver como está distribuido os status do emprego ao longo do tempo. Para minha surpresa vi que houve período sem categoria, outro indisponível e depois o uso do termo "Full-time" que posteriormente foi substituido pelo "Employed". O termo "Other" também parece ter sido utilizado de fato só após 2011.
+<br/>Com o gráfico dividido em score dá pra ver que existem muitos casos sem Score. Como já tinha visto anteriormente que o Score foi implementado após a lacuna, decidi ver como está distribuído os status do emprego ao longo do tempo. Para minha surpresa vi que houve período sem categoria, outro indisponível e depois o uso do termo "Full-time" que posteriormente foi substituido pelo "Employed". O termo "Other" também parece ter sido utilizado de fato só após 2011.
 
 ```{r Densidade LoanOriginalAmount StatedMonthlyIncome e ListingCategory, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
 # Density LoanOriginalAmount, StatedMonthlyIncome e colorido pelo ListingCategory..numeric.
@@ -653,7 +653,7 @@ ggplot(dff, aes(x = LoanOriginalAmount, colour = ListingCategory..numeric.)) +
   scale_x_continuous(trans = 'sqrt', breaks = c(1000, 2500, 5000, 10000, 15000, 20000, 30000)) -> g2
 grid.arrange(g1, g2, ncol = 1)
 ```
-<br/>A linha 5 está mais a esquerda do que as demais, o que faz sentido uma vez que corresponda aos empréstimos dos estudantes - anteriormente verificados como menores rendas -, os valores dos empréstimos dessa categoria também estão concentrados nos valores mais baixos, não seguindo a tendencia das outras categorias. Mais uma vez vemos a tendencia dos dados demonstrando que vida de estudante não é fácil.<br/>
+<br/>A linha 5 está mais a esquerda do que as demais, o que faz sentido uma vez que corresponda aos empréstimos dos estudantes - anteriormente verificados como menores rendas -, os valores dos empréstimos dessa categoria também estão concentrados nos valores mais baixos, não seguindo a tendência das outras categorias. Mais uma vez vemos a tendência dos dados demonstrando que vida de estudante não é fácil.<br/>
 A linha 1 (consolidação de dívida) segue sobressalente no gráfico de valor do empréstimos, pois é a categoria mais popular para empréstimos altos, com a concentração nos valores redondos.
 
 ```{r Boxplot APR StatedMonthlyIncome.bucket e Score, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=10}
@@ -670,8 +670,8 @@ ggplot(subset(dff, !is.na(StatedMonthlyIncome.bucket) & !is.na(ProsperScore) ), 
   scale_fill_manual(values = cc) +
   facet_wrap(~StatedMonthlyIncome.bucket)
 ```
-<br/>Esse ficou interessante, pois as taxas pelo score seguem a mesma tendência ao longo das faixas de rendas, mas isso não ocorre com o valor do empréstimo. Por mais que já tenha sido visto que a renda tenha correlação com o valor solicitado, não esperava que o score tivesse essa tendencia nas rendas de até 2.500.<br/>
-Ao que pude interpretar do gráfico, mutuários com renda baixa dificilmente têm empréstimos acima de 7.000, independente do score, ou seja, mutuários com grande pontuação tendem a fazer grandes empréstimos, salvo aqueles com renda inferiror à 2.500.<br/>
+<br/>Esse ficou interessante, pois as taxas pelo score seguem a mesma tendência ao longo das faixas de rendas, mas isso não ocorre com o valor do empréstimo. Por mais que já tenha sido visto que a renda tenha correlação com o valor solicitado, não esperava que o score tivesse essa tendência nas rendas de até 2.500.<br/>
+Ao que pude interpretar do gráfico, mutuários com renda baixa dificilmente têm empréstimos acima de 7.000, independente do score, ou seja, mutuários com grande pontuação tendem a fazer grandes empréstimos, salvo aqueles com renda inferior à 2.500.<br/>
 Conforme a renda vai subindo, o score tende a se relacionar mais com o valor do empréstimo.
 
 # Análise Multivariada
@@ -720,7 +720,7 @@ ggplot(subset(dff, !is.na(StatedMonthlyIncome.bucket) & !is.na(ProsperScore) ), 
 ### Descrição do Primeiro Gráfico
 Existe uma clara relação entre o Score e o valor solicitado, sendo possível observar que empréstimos altos normalmente são obtidos pelos scores mais altos. <br/>
 Na primeira faixa de renda o score não se relaciona com o valor solicitado, mas também não há grandes empréstimos nessa faixa, na medida em que a renda e o valor do empréstimo aumentam, o score se relaciona mais.<br/>
-Ainda que sutíl, nesse gráfico é possível ver os valores dos quartis concentrados nos empréstimos redondos, normalmente de 5.000 em 5.000. Também há concentração incomum nos valores de 4.000, principalmente na primeira faixa de renda.
+Ainda que sutil, nesse gráfico é possível ver os valores dos quartis concentrados nos empréstimos redondos, normalmente de 5.000 em 5.000. Também há concentração incomum nos valores de 4.000, principalmente na primeira faixa de renda.
 
 ### Segundo Gráfico
 ```{r Segundo Grafico, echo=FALSE, message=FALSE, warning=FALSE, fig.height=8, fig.width=10}
@@ -787,7 +787,7 @@ Mutuários desempregados possuem uma concentração bem maior nas rendas baixas - o
 
 # Reflexão
 Comecei selecionando 15 das 81 colunas disponíveis dentro do conjunto de dados originais, pois é relativamente grande se comparado com os outros disponibilizados pela Udacity. Para conseguir analizar dentro do tempo hábil, foi necessário realizar esse filtro inicial. <br/>
-Selecionei as colunas que achei mais interessantes para tentar entender os perfís das pessoas que solicitam empréstimos, mas ao longo da análise algunas delas não foram utilizadas. <br/>
+Selecionei as colunas que achei mais interessantes para tentar entender os perfis das pessoas que solicitam empréstimos, mas ao longo da análise algunas delas não foram utilizadas. <br/>
 As variáveis identificadores foram úteis apenas para verificar alguma inconsistência nos dados relacionado ao mesmo mutuário ou empréstimo. <br/>
 A taxa APR engloba a outra taxa, por conta disso acabei me baseando só na APR ao invés de olhar as duas, não precisaria ter selecionado a outra.<br/>
 Por fim, só fui observar as relações das variáveis ao longo do tempo no final, acho que isolando as variáveis em faixas de anos eu poderia ter uma correlação mais clara delas, pois sofreram ajustes ao longo dos anos e isso atrapalha algumas análises gerais.
@@ -796,6 +796,6 @@ Pensei que o tempo empregado iria ter algum peso na hora de solicitar um emprést
 
 Ao decorrer da análise pude ver que o Score tinha grande importância pois se relacionava fortemente com as taxas e um pouco com o valor do empréstimo, então meu foco mudou um pouco para ela.
 
-Os dados são limitados ao ano de 2014, então atualmente (2019) o sistema de Score deve ter muito mais peso do que antes, pois houve um claro ajuste desse sistema. Olhar para as variáveis que compõe o Score certamente ajudaria entender os perfís dos mutários e isso poderia talvez auxiliar na criação de propostas ou propagandas direcionadas.
+Os dados são limitados ao ano de 2014, então atualmente (2019) o sistema de Score deve ter muito mais peso do que antes, pois houve um claro ajuste desse sistema. Olhar para as variáveis que compõe o Score certamente ajudaria entender os perfis dos mutários e isso poderia talvez auxiliar na criação de propostas ou propagandas direcionadas.
 
-Não possuia muito conhecimento prévio sobre o tipo de dados desse conjunto. Ficou claro que o conhecimento sobre o negócio e saber elaborar as perguntas certas é determinante para uma boa análise.
+Não possuía muito conhecimento prévio sobre o tipo de dados desse conjunto. Ficou claro que o conhecimento sobre o negócio e saber elaborar as perguntas certas é determinante para uma boa análise.
