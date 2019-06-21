@@ -17,7 +17,9 @@ df <- read.csv('prosperLoanData.csv')
 ## Seção de Gráficos Univariados
 <p>O conjunto de dados original possui 113937 linhas e 81 colunas.</p>
 
-'''{r Dimensao dos dados}'''
+```
+## [1] 113937     81
+```
 
 <p>Foram escolhidas 15 variáveis julgadas mais interessantes para a minha análise.<br/> Sendo elas:</p>
 
@@ -39,22 +41,111 @@ df <- read.csv('prosperLoanData.csv')
 
 Abaixo seguem algumas informações úteis sobre os dados.<br/>
 
-'''{r Tipos dos dados}'''
+```
+## 'data.frame':    113937 obs. of  15 variables:
+##  $ MemberKey                : Factor w/ 90831 levels "00003397697413387CAF966",..: 11071 10302 33781 54939 19465 48037 60448 40951 26129 26129 ...
+##  $ LoanKey                  : Factor w/ 113066 levels "00003683605746079487FF7",..: 100337 69837 46303 70776 71387 86505 91250 5425 908 908 ...
+##  $ Term                     : int  36 36 36 36 36 60 36 36 36 36 ...
+##  $ LoanStatus               : Factor w/ 12 levels "Cancelled","Chargedoff",..: 3 4 3 4 4 4 4 4 4 4 ...
+##  $ BorrowerAPR              : num  0.165 0.12 0.283 0.125 0.246 ...
+##  $ BorrowerRate             : num  0.158 0.092 0.275 0.0974 0.2085 ...
+##  $ ProsperScore             : num  NA 7 NA 9 4 10 2 4 9 11 ...
+##  $ ListingCategory..numeric.: int  0 2 0 16 2 1 1 2 7 7 ...
+##  $ Occupation               : Factor w/ 68 levels "","Accountant/CPA",..: 37 43 37 52 21 43 50 29 24 24 ...
+##  $ EmploymentStatus         : Factor w/ 9 levels "","Employed",..: 9 2 4 2 2 2 2 2 2 2 ...
+##  $ EmploymentStatusDuration : int  2 44 NA 113 44 82 172 103 269 269 ...
+##  $ StatedMonthlyIncome      : num  3083 6125 2083 2875 9583 ...
+##  $ LoanOriginalAmount       : int  9425 10000 3001 10000 15000 15000 3000 10000 10000 10000 ...
+##  $ LoanOriginationDate      : Factor w/ 1873 levels "2005-11-15 00:00:00",..: 426 1866 260 1535 1757 1821 1649 1666 1813 1813 ...
+##  $ MonthlyLoanPayment       : num  330 319 123 321 564 ...
+```
 
-'''{r Resumo estatistico}'''
+```
+##                    MemberKey                         LoanKey      
+##  63CA34120866140639431C9:     9   CB1B37030986463208432A1:     6  
+##  16083364744933457E57FB9:     8   2DEE3698211017519D7333F:     4  
+##  3A2F3380477699707C81385:     8   9F4B37043517554537C364C:     4  
+##  4D9C3403302047712AD0CDD:     8   D895370150591392337ED6D:     4  
+##  739C338135235294782AE75:     8   E6FB37073953690388BC56D:     4  
+##  7E1733653050264822FAA3D:     8   0D8F37036734373301ED419:     3  
+##  (Other)                :113888   (Other)                :113912  
+##       Term                       LoanStatus     BorrowerAPR     
+##  Min.   :12.00   Current              :56576   Min.   :0.00653  
+##  1st Qu.:36.00   Completed            :38074   1st Qu.:0.15629  
+##  Median :36.00   Chargedoff           :11992   Median :0.20976  
+##  Mean   :40.83   Defaulted            : 5018   Mean   :0.21883  
+##  3rd Qu.:36.00   Past Due (1-15 days) :  806   3rd Qu.:0.28381  
+##  Max.   :60.00   Past Due (31-60 days):  363   Max.   :0.51229  
+##                  (Other)              : 1108   NA's   :25       
+##   BorrowerRate     ProsperScore   ListingCategory..numeric.
+##  Min.   :0.0000   Min.   : 1.00   Min.   : 0.000           
+##  1st Qu.:0.1340   1st Qu.: 4.00   1st Qu.: 1.000           
+##  Median :0.1840   Median : 6.00   Median : 1.000           
+##  Mean   :0.1928   Mean   : 5.95   Mean   : 2.774           
+##  3rd Qu.:0.2500   3rd Qu.: 8.00   3rd Qu.: 3.000           
+##  Max.   :0.4975   Max.   :11.00   Max.   :20.000           
+##                   NA's   :29084                            
+##                     Occupation         EmploymentStatus
+##  Other                   :28617   Employed     :67322  
+##  Professional            :13628   Full-time    :26355  
+##  Computer Programmer     : 4478   Self-employed: 6134  
+##  Executive               : 4311   Not available: 5347  
+##  Teacher                 : 3759   Other        : 3806  
+##  Administrative Assistant: 3688                : 2255  
+##  (Other)                 :55456   (Other)      : 2718  
+##  EmploymentStatusDuration StatedMonthlyIncome LoanOriginalAmount
+##  Min.   :  0.00           Min.   :      0     Min.   : 1000     
+##  1st Qu.: 26.00           1st Qu.:   3200     1st Qu.: 4000     
+##  Median : 67.00           Median :   4667     Median : 6500     
+##  Mean   : 96.07           Mean   :   5608     Mean   : 8337     
+##  3rd Qu.:137.00           3rd Qu.:   6825     3rd Qu.:12000     
+##  Max.   :755.00           Max.   :1750003     Max.   :35000     
+##  NA's   :7625                                                   
+##           LoanOriginationDate MonthlyLoanPayment
+##  2014-01-22 00:00:00:   491   Min.   :   0.0    
+##  2013-11-13 00:00:00:   490   1st Qu.: 131.6    
+##  2014-02-19 00:00:00:   439   Median : 217.7    
+##  2013-10-16 00:00:00:   434   Mean   : 272.5    
+##  2014-01-28 00:00:00:   339   3rd Qu.: 371.6    
+##  2013-09-24 00:00:00:   316   Max.   :2251.5    
+##  (Other)            :111428
+```
 
 <br/>Quantidade de NA's:
-'''{r Verificando quantidade de NAs}'''
+```
+##                 MemberKey                   LoanKey 
+##                         0                         0 
+##                      Term                LoanStatus 
+##                         0                         0 
+##               BorrowerAPR              BorrowerRate 
+##                        25                         0 
+##              ProsperScore ListingCategory..numeric. 
+##                     29084                         0 
+##                Occupation          EmploymentStatus 
+##                         0                         0 
+##  EmploymentStatusDuration       StatedMonthlyIncome 
+##                      7625                         0 
+##        LoanOriginalAmount       LoanOriginationDate 
+##                         0                         0 
+##        MonthlyLoanPayment 
+##                         0
+```
 
 Visualizando distribuição das variáveis selecionadas.<br/>
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Histograma_basico_das_colunas-1.png" width="672"><br/>
 É possível ver que o histograma da variável *StatedMonthlyIncome* está totalmente concentrado em zero.
 
 Analizando o resumo estatístico é possível ver que a variável contém alguns dados discrepantes.<br/>
-'''{r Resumo estatistico StatedMonthlyIncome}'''
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##       0    3200    4667    5608    6825 1750003
+```
 
 Os 10 valores mais altos da variável são:<br/>
-'''{r Top 10 StatedMonthlyIncome}'''
+```
+##  [1] 1750002.9  618547.8  483333.3  466666.7  416666.7  394400.0  250000.0
+##  [8]  208333.3  185081.8  185081.8
+```
 
 Visualizando os dados sem 0.5% dos maiores valores.<br/>
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Histograma_StatedMonthlyIncome_sem_0.5_porcento-1.png" width="672">
@@ -75,7 +166,9 @@ Tempo em anos:<br/>
 
 Distribuição dos status do emprego:<br/>
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Distribuicao_EmploymentStatus-1.png" width="672"><br/>
-'''Porporcao'''<br/>
+```
+## [1] 0.7
+```
 A grande maioria dos solicitantes de empréstimos está atualmente empregado de alguma forma. Apenas 0.7% dos mutuários são declaradamente desempregados.
 
 O histograma da duração do empréstimo ficou muito espaçado por conta da coluna estar como tipo de valor inteiro, e como só há 3 variações de duração (12, 36 ou 60) dentro dessa coluna, é possível assumí-la como dado categórico e plotar como tal. <br/>
@@ -116,17 +209,57 @@ Distribuição dos valores das parcelas:<br/>
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Histogramas_MonthlyLoanPayment-1.png" width="672"><br/>
 Vemos uma frequência altíssima de mutuários com valor de parcela próximo da casa dos 175, mas pelo gráfico não é possível ter muita precisão, por mais que seja determinado 1 de binwidth.
 
-'''{r Top 3 MonthlyLoanPayment}'''<br/>
-'''{r Proporcao}'''<br/>
+```
+## 
+## 173.71      0 172.76 
+##   2423    935    536
+```
+```
+## [1] 2.13
+```
 Verificado que 2423 parcelas de mutuários têm exatamente 173.71 como valor. Representando 2.13% de todos os dados.
 
-'''{r Resumo estatistico das parcelas 173.71}'''<br/>
+```
+##                    MemberKey    Term      LoanOriginalAmount
+##  06073532013923975E1F5E9:   2   12:   0   Min.   :4000      
+##  42C03538695988575110CD0:   2   36:2423   1st Qu.:4000      
+##  5F4935392768928226DAFD5:   2   60:   0   Median :4000      
+##  75CD3533177254609B34993:   2             Mean   :4000      
+##  895E354259942221779F82E:   2             3rd Qu.:4000      
+##  8F413535844034063FE3CBB:   2             Max.   :4000      
+##  (Other)                :2411                               
+##  MonthlyLoanPayment  BorrowerAPR     ProsperScore  
+##  Min.   :173.7      Min.   :0.358   Min.   :1.000  
+##  1st Qu.:173.7      1st Qu.:0.358   1st Qu.:3.000  
+##  Median :173.7      Median :0.358   Median :4.000  
+##  Mean   :173.7      Mean   :0.358   Mean   :3.882  
+##  3rd Qu.:173.7      3rd Qu.:0.358   3rd Qu.:5.000  
+##  Max.   :173.7      Max.   :0.358   Max.   :6.000  
+## 
+```
 Todos aqueles que solicitaram empréstimo de 4.000 para ser pago em 36 meses com APR de 0.358 tem o mesmo valor de parcela.<br/>
 Foi verificado anteiormente que o valor mais solicitado é de 4.000 e a duração mais popular também é a de 36 meses, justificando a concentração anormal do valor da parcela com essa APR.
 
 Foi verificado também alguns empréstimos com pagamento mensal programado com valor zerado, podendo ser erro no conjunto de dados ou existe a possibilidade do mutuário simplesmente não programar um valor para o pagamento mensal, obtendo assim o valor zero.<br/>
 Nesse caso foi considerado a segunda possibilidade e os dados foram mantidos.<br/>
-'''{r Resumo estatistico das parcelas 0}'''
+```
+##                    MemberKey   Term     LoanOriginalAmount
+##  0C40336528326496677D207:  2   12:161   Min.   : 1000     
+##  21F933831411450828A58E0:  2   36:774   1st Qu.: 1500     
+##  2CF73483688997133F901DC:  2   60:  0   Median : 2500     
+##  446B337799857636706EC56:  2            Mean   : 3381     
+##  5E72337040713566643827F:  2            3rd Qu.: 4000     
+##  69823409596332058B0A99A:  2            Max.   :25000     
+##  (Other)                :923                              
+##  MonthlyLoanPayment  BorrowerAPR       ProsperScore   
+##  Min.   :0          Min.   :0.06327   Min.   : 1.000  
+##  1st Qu.:0          1st Qu.:0.15488   1st Qu.: 6.000  
+##  Median :0          Median :0.21857   Median : 8.000  
+##  Mean   :0          Mean   :0.22140   Mean   : 7.605  
+##  3rd Qu.:0          3rd Qu.:0.29770   3rd Qu.: 9.000  
+##  Max.   :0          Max.   :0.41355   Max.   :10.000  
+##                     NA's   :2         NA's   :451
+```
 
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Alterado_LoanOriginationDate_para_data_e_plotado-1.png" width="672"><br/>
 Ocorreu um aumento considerável de empréstimo a partir de 2013 e por alguma razão não há registros no começo de 2009 e final de 2008.
@@ -232,7 +365,47 @@ A correlação entre a taxa APR e o Score fica clara no boxplot, mutuários com 
 
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Boxplot_StatedMonthlyIncome_por_LoanOriginalAmount-1.png" width="1152">
 
-'''Resumo_estatistico_StatedMonthlyIncome_por_LoanOriginalAmount-1.png'''<br/>
+```
+## dff$StatedMonthlyIncome.bucket: (0,2.5]
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1000    2200    4000    4326    5000   25000 
+## -------------------------------------------------------- 
+## dff$StatedMonthlyIncome.bucket: (2.5,5]
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1000    3500    5600    7022   10000   25000 
+## -------------------------------------------------------- 
+## dff$StatedMonthlyIncome.bucket: (5,7.5]
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1000    4000    8500    9605   15000   25000 
+## -------------------------------------------------------- 
+## dff$StatedMonthlyIncome.bucket: (7.5,10]
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1000    5000   10000   11521   15000   35000 
+## -------------------------------------------------------- 
+## dff$StatedMonthlyIncome.bucket: (10,12.5]
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1000    6000   12500   13301   20000   35000 
+## -------------------------------------------------------- 
+## dff$StatedMonthlyIncome.bucket: (12.5,15]
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1000    7000   13500   13978   20000   35000 
+## -------------------------------------------------------- 
+## dff$StatedMonthlyIncome.bucket: (15,17.5]
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1000    7000   15000   14008   20000   35000 
+## -------------------------------------------------------- 
+## dff$StatedMonthlyIncome.bucket: (17.5,20]
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1000    7500   14000   14004   20000   35000 
+## -------------------------------------------------------- 
+## dff$StatedMonthlyIncome.bucket: (20,22.5]
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1000    8000   15000   15320   21000   35000 
+## -------------------------------------------------------- 
+## dff$StatedMonthlyIncome.bucket: (22.5,25]
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1000    8444   15000   15455   25000   35000
+```
 Com o gráfico de dispersão é possível ver a correlação entre a renda declarada e o valor do empréstimo, mas ainda é muito poluido, por conta disso optei pelo boxplot com fatiamento de 2.500 das rendas, assim ficou muito mais claro a relação das duas e como rendas baixas de fato têm em sua maioria empréstimos menores.
 
 Através dos resumos estatísticos observamos que rendas inferiores à 7.500 realizaram empréstimos de no máximo 25.000. A média também vai aumentando gradativamente conforme a renda sobe, demonstrando assim a relação entre as duas variáveis.
