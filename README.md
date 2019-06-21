@@ -134,7 +134,7 @@ Visualizando distribuição das variáveis selecionadas.<br/>
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Histograma_basico_das_colunas-1.png" width="672"><br/>
 É possível ver que o histograma da variável *StatedMonthlyIncome* está totalmente concentrado em zero.
 
-Analizando o resumo estatístico é possível ver que a variável contém alguns dados discrepantes.<br/>
+Analisando o resumo estatístico é possível ver que a variável contém alguns dados discrepantes.<br/>
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##       0    3200    4667    5608    6825 1750003
@@ -170,7 +170,7 @@ Distribuição dos status do emprego:<br/>
 ```
 A grande maioria dos solicitantes de empréstimos está atualmente empregado de alguma forma. Apenas 0.7% dos mutuários são declaradamente desempregados.
 
-O histograma da duração do empréstimo ficou muito espaçado por conta da coluna estar como tipo de valor inteiro, e como só há 3 variações de duração (12, 36 ou 60) dentro dessa coluna, é possível assumí-la como dado categórico e plotar como tal. <br/>
+O histograma da duração do empréstimo ficou muito espaçado por conta da coluna estar como tipo de valor inteiro, e como só há 3 variações de duração (12, 36 ou 60) dentro dessa coluna, é possível assumi-la como dado categórico e plotar como tal. <br/>
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Alterado_Term_para_categorico_e_plotado-1.png" width="192">
 
 Categorias mais selecionadas pelo mutuário:<br/>
@@ -274,7 +274,7 @@ Visando uma exploração mais sucinta, foram escolhidas 15 variáveis de interes
 * Uma variável cronológica (LoanOriginationDate);
 * E cinco variáveis categóricas (Term, LoanStatus, ListingCategory..numeric., Occupation e EmploymentStatus)
 
-A variável *ListingCategory..numeric.* está representada numéricamente, com a seguinte relação:
+A variável *ListingCategory..numeric.* está representada numericamente, com a seguinte relação:
 
 0. Não disponível
 1. Consolidação da dívida
@@ -309,7 +309,7 @@ Outras observações:
 * Não há registros de empréstimos no final de 2008 e começo de 2009.
 
 ### Quais são os principais atributos de interesse deste conjunto de dados?
-Os principais atributos de interesse são o montante original do empréstimo, renda declarada e razão pela qual solicitou o empréstimo. Quero entender quais são os perfís mais comuns de mutuários e suas motivações para solicitar os respectivos valores. Imagino que há uma correlação positiva de valor solicitado com a renda declarada ou talvez tempo de serviço.
+Os principais atributos de interesse são o montante original do empréstimo, renda declarada e razão pela qual solicitou o empréstimo. Quero entender quais são os perfis mais comuns de mutuários e suas motivações para solicitar os respectivos valores. Imagino que há uma correlação positiva de valor solicitado com a renda declarada ou talvez tempo de serviço.
 
 ### Quais outros atributos você acha que podem lhe auxiliar na investigação destes atributos de interesse?
 Acho que todos os atributos selecionados apresentam certa importância, talvez as taxas de juros nem tanto, mas os demais certamente possuem valor para a análise, por conta disso que foram selecionados dentre os 81 possíveis.
@@ -322,7 +322,7 @@ As distribuições das variáveis _EmploymentStatusDuration_, _MonthlyLoanPaymen
 
 Para _StatedMonthlyIncome_ só foram omitidos os valores mais altos (0.5% à 5%) para que a distribuição ficasse mais normal. Na análise bivariada foram removidos os 0.5% por distorcer muito as correlações e dispersões.
 
-A _MonthlyLoanPayment_ mesmo omitido os valores mais altos ainda continua bastante assimétrica, ainda assim não achei necessário redimenssioná-la, já que estava interessado em ver a concentração incomum dos dados próximos ao 175.
+A _MonthlyLoanPayment_ mesmo omitido os valores mais altos ainda continua bastante assimétrica, ainda assim não achei necessário redimensioná-la, já que estava interessado em ver a concentração incomum dos dados próximos ao 175.
 
 Já _EmploymentStatusDuration_ é uma distribuição totalmente assimétrica positivamente. Com uma escala logarítmica ou de raiz ela normalizaria, mas não julguei necessário normalizá-la, apenas omiti 5% dos maiores valores para conseguir visualizar melhor os dados, e por ser um dado de tempo preferi que cada coluna representasse 1 mês ou 1 ano.
 
@@ -405,7 +405,7 @@ A correlação entre a taxa APR e o Score fica clara no boxplot, mutuários com 
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    1000    8444   15000   15455   25000   35000
 ```
-Com o gráfico de dispersão é possível ver a correlação entre a renda declarada e o valor do empréstimo, mas ainda é muito poluido, por conta disso optei pelo boxplot com fatiamento de 2.500 das rendas, assim ficou muito mais claro a relação das duas e como rendas baixas de fato têm em sua maioria empréstimos menores.
+Com o gráfico de dispersão é possível ver a correlação entre a renda declarada e o valor do empréstimo, mas ainda é muito poluído, por conta disso optei pelo boxplot com fatiamento de 2.500 das rendas, assim ficou muito mais claro a relação das duas e como rendas baixas de fato têm em sua maioria empréstimos menores.
 
 Através dos resumos estatísticos observamos que rendas inferiores à 7.500 realizaram empréstimos de no máximo 25.000. A média também vai aumentando gradativamente conforme a renda sobe, demonstrando assim a relação entre as duas variáveis.
 
@@ -427,7 +427,7 @@ Como demonstrado acima, pessoas que ganham mais tendem a solicitar um valor maio
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Dispersao_LoanOriginationDate_por_LoanOriginalAmount_c_corte_baixo-1.png" width="672"><br/>
 Vemos que o tempo não é um fator determinante para o valor do empréstimo, todavia, a partir de 2011 não foram mais realizados empréstimos menores que 2000, e somente depois de 2013 que foram realizados empréstimos acima de 25000.<br/> 
 É interessante visualizar as linhas horizontais, demonstrando que realizam mais empréstimos com valores redondos do que quebrados, nesse caso sendo mais comum de 500 em 500. <br>
-Além disso ainda é ver novamente o período curiosiamente sem empréstimos.
+Além disso ainda é ver novamente o período curiosamente sem empréstimos.
 
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Boxplot_LoanOriginalAmount_por_Term-1.png" width="672"><br/>
 Por último um boxplot da quantidade de parcelas com o valor solicitado para confirmar que mais parcelas são para os empréstimos maiores e o inverso para empréstimos menores.
@@ -435,9 +435,9 @@ Por último um boxplot da quantidade de parcelas com o valor solicitado para con
 # Análise Bivariada
 
 ### Discuta sobre alguns dos relacionamentos observados nesta parte da investigação. Como os atributos de interesse variaram no conjunto de dados?
-Um dos pontos mais importante - se não o mais importante - é a pontuaçao do mutuário. Mutuários com alta pontuação conseguem empréstimos com menores juros, e menores juros possibilitam empréstimos maiores.
+Um dos pontos mais importante - se não o mais importante - é a pontuação do mutuário. Mutuários com alta pontuação conseguem empréstimos com menores juros, e menores juros possibilitam empréstimos maiores.
 
-Pessoas com rendas maiores tendem a ter empréstimos maiores, assim como pessoas desempregadas, apostentadas ou com trabalho parcial tendem a ter empréstimos menores, isso é algo intuitivo, mas que se mostrou ser verdade através da análise gráfica.
+Pessoas com rendas maiores tendem a ter empréstimos maiores, assim como pessoas desempregadas, aposentadas ou com trabalho parcial tendem a ter empréstimos menores, isso é algo intuitivo, mas que se mostrou ser verdade através da análise gráfica.
 
 Os estudantes são os que conseguem os menores empréstimos, porque também são os que têm as menores rendas. Vida de estudante não é fácil.
 
@@ -446,7 +446,7 @@ Existe um furo nos dados ao redor do começo de 2009 em que não foram realizado
 Achava que o tempo empregado iria se relacionar com alguma outra variável, mas analisando graficamente e pela correlação de pearson, o tempo de serviço não tem peso para entender os perfis dos mutuários.
 
 ### Você observou algum relacionamento interessante entre os outros atributos (os que não são de interesse)?
-Não tinha tanto interesse nas taxas do empréstimo, mas foi demonstrado que ela se relaciona bem com as outras variáveis, o que faz sentido, uma vez que os mutuários não vão solicitar grandes empréstimos com altas taxas, a tendencia é que se tiverem boas taxas eles vão solicitar valores maiores.
+Não tinha tanto interesse nas taxas do empréstimo, mas foi demonstrado que ela se relaciona bem com as outras variáveis, o que faz sentido, uma vez que os mutuários não vão solicitar grandes empréstimos com altas taxas, a tendência é que se tiverem boas taxas eles vão solicitar valores maiores.
 
 ### Qual foi o relacionamento mais forte encontrado?
 O relacionamento mais forte - tirando é claro o valor das parcelas com o valor do empréstimo - foi o da pontuação com as taxas APR. Entendo que pessoas com baixa pontuação são um investimento mais arriscado, o que acaba elevando as taxas para compensar o risco, o que não ocorre com pessoas de alta pontuação. Pessoas com 11 de pontuação conseguem empréstimos com taxas de 0.1, enquanto que os que tem 1 de pontuação conseguem empréstimos na faixa de 0.35 de taxa.
@@ -460,30 +460,30 @@ Podemos ver a distribuição do Score baixo nas taxas mais altas, enquanto que n
 Interessante visualizar que pessoas com rendas altas não necessariamente solicitam empréstimos altos, mas as com rendas baixas certamente não solicitam altos empréstimos.
 
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Distribuicao_LoanDate_LoanAmount_e_Score-1.png" width="960"><br/>
-Aqui temos um gráfico curioso que mostra o período em que foi implementado o sistema de Score, talvez essa lacuna seja o intervalo necessário para implementar o novo mecanismo. É possível ver um pequeno ajuste do algorítmo em relação as pontuações,os scores mais baixos se concentraram na parte mais baixa.
+Aqui temos um gráfico curioso que mostra o período em que foi implementado o sistema de Score, talvez essa lacuna seja o intervalo necessário para implementar o novo mecanismo. É possível ver um pequeno ajuste do algoritmo em relação as pontuações, os scores mais baixos se concentraram na parte mais baixa.
 
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Distribuicao_LoanDate_APR_e_Score-1.png" width="960"><br/>
 Nesse gráfico ficou claro os ajustes do sistema de pontuação. No começo houveram poucas pontuações baixas, mas com o passar do tempo ele foi ajustando, até mesmo ocorrendo saltos maiores de taxas. 
 
 Um exemplo disso são as linhas horizontais na mesma cor de Score. Esse provavelmente foi o período que mais se basearam no score para estimar as taxas. <br/>
-Depois o algorítmo ficou mais uniforme, sem grandes saltos, só que ainda assim é evidente que pontuações baixas possuem maiores taxas.
+Depois o algoritmo ficou mais uniforme, sem grandes saltos, só que ainda assim é evidente que pontuações baixas possuem maiores taxas.
 
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Densidade_LoanOriginalAmount_StatedMonthlyIncome_e_EmploymentStatus-1.png" width="960"><br/>
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Distribuicao_LoanOriginalAmount_StatedMonthlyIncome_e_EmploymentStatus-1.png" width="960"><br/>
-Intuitivamente o gráfico mostra - apesar de muito poluido - que mutuários normalmente possuem rendas altas e grandes empréstimos quando estão empregados, seja o tempo todo ou meio período. Ainda assim vemos que mutuários com baixa renda ainda conseguem realizar empréstimos relativamente alto, obtendo um gráfico de densidade mais uniforme do que em comparação com o das rendas.
+Intuitivamente o gráfico mostra - apesar de muito poluído - que mutuários normalmente possuem rendas altas e grandes empréstimos quando estão empregados, seja o tempo todo ou meio período. Ainda assim vemos que mutuários com baixa renda ainda conseguem realizar empréstimos relativamente alto, obtendo um gráfico de densidade mais uniforme do que em comparação com o das rendas.
 
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Facet_LoanOriginalAmount_StatedMonthlyIncome_EmploymentStatus_e_Score-1.png" width="1152"><br/>
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Distribuicao_LoanDate_LoanAmount_e_EmploymentStatus-1.png" width="960"><br/>
-Com o gráfico dividido em score dá pra ver que existem muitos casos sem Score. Como já tinha visto anteriormente que o Score foi implementado após a lacuna, decidi ver como está distribuido os status do emprego ao longo do tempo. Para minha surpresa vi que houve período sem categoria, outro indisponível e depois o uso do termo "Full-time" que posteriormente foi substituido pelo "Employed". O termo "Other" também parece ter sido utilizado de fato só após 2011.
+Com o gráfico dividido em score dá pra ver que existem muitos casos sem Score. Como já tinha visto anteriormente que o Score foi implementado após a lacuna, decidi ver como está distribuído os status do emprego ao longo do tempo. Para minha surpresa vi que houve período sem categoria, outro indisponível e depois o uso do termo "Full-time" que posteriormente foi substituído pelo "Employed". O termo "Other" também parece ter sido utilizado de fato só após 2011.
 
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Densidade_LoanOriginalAmount_StatedMonthlyIncome_e_ListingCategory-1.png" width="960"><br/>
-A linha 5 está mais a esquerda do que as demais, o que faz sentido uma vez que corresponda aos empréstimos dos estudantes - anteriormente verificados como menores rendas -, os valores dos empréstimos dessa categoria também estão concentrados nos valores mais baixos, não seguindo a tendencia das outras categorias. Mais uma vez vemos a tendencia dos dados demonstrando que vida de estudante não é fácil.<br/>
-A linha 1 (consolidação de dívida) segue sobressalente no gráfico de valor do empréstimos, pois é a categoria mais popular para empréstimos altos, com a concentração nos valores redondos.
+A linha 5 está mais a esquerda do que as demais, o que faz sentido uma vez que corresponda aos empréstimos dos estudantes - anteriormente verificados como menores rendas -, os valores dos empréstimos dessa categoria também estão concentrados nos valores mais baixos, não seguindo a tendência das outras categorias. Mais uma vez vemos a tendência dos dados demonstrando que vida de estudante não é fácil.<br/>
+A linha 1 (consolidação de dívida) segue sobressalente no gráfico de valor dos empréstimos, pois é a categoria mais popular para empréstimos altos, com a concentração nos valores redondos.
 
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Boxplot_APR_StatedMonthlyIncome.bucket_e_Score-1.png" width="960"><br/>
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Boxplot_LoanOriginalAmount_StatedMonthlyIncome.bucket_e_Score-1.png" width="960	"><br/>
 Esse ficou interessante, pois as taxas pelo score seguem a mesma tendência ao longo das faixas de rendas, mas isso não ocorre com o valor do empréstimo. Por mais que já tenha sido visto que a renda tenha correlação com o valor solicitado, não esperava que o score tivesse essa tendencia nas rendas de até 2.500.<br/>
-Ao que pude interpretar do gráfico, mutuários com renda baixa dificilmente têm empréstimos acima de 7.000, independente do score, ou seja, mutuários com grande pontuação tendem a fazer grandes empréstimos, salvo aqueles com renda inferiror à 2.500.<br/>
+Ao que pude interpretar do gráfico, mutuários com renda baixa dificilmente têm empréstimos acima de 7.000, independente do score, ou seja, mutuários com grande pontuação tendem a fazer grandes empréstimos, salvo aqueles com renda inferior à 2.500.<br/>
 Conforme a renda vai subindo, o score tende a se relacionar mais com o valor do empréstimo.
 
 # Análise Multivariada
@@ -513,7 +513,7 @@ Não realizei criação de modelo até o momento, talvez no futuro o faça, aind
 ### Descrição do Primeiro Gráfico
 Existe uma clara relação entre o Score e o valor solicitado, sendo possível observar que empréstimos altos normalmente são obtidos pelos scores mais altos. <br/>
 Na primeira faixa de renda o score não se relaciona com o valor solicitado, mas também não há grandes empréstimos nessa faixa, na medida em que a renda e o valor do empréstimo aumentam, o score se relaciona mais.<br/>
-Ainda que sutíl, nesse gráfico é possível ver os valores dos quartis concentrados nos empréstimos redondos, normalmente de 5.000 em 5.000. Também há concentração incomum nos valores de 4.000, principalmente na primeira faixa de renda.
+Ainda que sutil, nesse gráfico é possível ver os valores dos quartis concentrados nos empréstimos redondos, normalmente de 5.000 em 5.000. Também há concentração incomum nos valores de 4.000, principalmente na primeira faixa de renda.
 
 ### Segundo Gráfico
 <img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Segundo_Grafico-1.png" width="960">
@@ -531,9 +531,9 @@ Mutuários desempregados possuem uma concentração bem maior nas rendas baixas 
 ------
 
 # Reflexão
-Comecei selecionando 15 das 81 colunas disponíveis dentro do conjunto de dados originais, pois é relativamente grande se comparado com os outros disponibilizados pela Udacity. Para conseguir analizar dentro do tempo hábil, foi necessário realizar esse filtro inicial. <br/>
-Selecionei as colunas que achei mais interessantes para tentar entender os perfís das pessoas que solicitam empréstimos, mas ao longo da análise algunas delas não foram utilizadas. <br/>
-As variáveis identificadores foram úteis apenas para verificar alguma inconsistência nos dados relacionado ao mesmo mutuário ou empréstimo. <br/>
+Comecei selecionando 15 das 81 colunas disponíveis dentro do conjunto de dados originais, pois é relativamente grande se comparado com os outros disponibilizados pela Udacity. Para conseguir analisar dentro do tempo hábil, foi necessário realizar esse filtro inicial. <br/>
+Selecionei as colunas que achei mais interessantes para tentar entender os perfis das pessoas que solicitam empréstimos, mas ao longo da análise algumas delas não foram utilizadas. <br/>
+As variáveis identificadoras foram úteis apenas para verificar alguma inconsistência nos dados relacionado ao mesmo mutuário ou empréstimo. <br/>
 A taxa APR engloba a outra taxa, por conta disso acabei me baseando só na APR ao invés de olhar as duas, não precisaria ter selecionado a outra.<br/>
 Por fim, só fui observar as relações das variáveis ao longo do tempo no final, acho que isolando as variáveis em faixas de anos eu poderia ter uma correlação mais clara delas, pois sofreram ajustes ao longo dos anos e isso atrapalha algumas análises gerais.
 
@@ -541,6 +541,6 @@ Pensei que o tempo empregado iria ter algum peso na hora de solicitar um emprés
 
 Ao decorrer da análise pude ver que o Score tinha grande importância pois se relacionava fortemente com as taxas e um pouco com o valor do empréstimo, então meu foco mudou um pouco para ela.
 
-Os dados são limitados ao ano de 2014, então atualmente (2019) o sistema de Score deve ter muito mais peso do que antes, pois houve um claro ajuste desse sistema. Olhar para as variáveis que compõe o Score certamente ajudaria entender os perfís dos mutários e isso poderia talvez auxiliar na criação de propostas ou propagandas direcionadas.
+Os dados são limitados ao ano de 2014, então atualmente (2019) o sistema de Score deve ter muito mais peso do que antes, pois houve um claro ajuste desse sistema. Olhar para as variáveis que compõe o Score certamente ajudaria entender os perfis dos mutuários e isso poderia talvez auxiliar na criação de propostas ou propagandas direcionadas.
 
-Não possuia muito conhecimento prévio sobre o tipo de dados desse conjunto. Ficou claro que o conhecimento sobre o negócio e saber elaborar as perguntas certas é determinante para uma boa análise.
+Não possuía muito conhecimento prévio sobre o tipo de dados desse conjunto. Ficou claro que o conhecimento sobre o negócio e saber elaborar as perguntas certas é determinante para uma boa análise.
