@@ -47,7 +47,7 @@ Abaixo seguem algumas informações úteis sobre os dados.<br/>
 '''{r Verificando quantidade de NAs}'''
 
 Visualizando distribuição das variáveis selecionadas.<br/>
-![image01](./plots/Histograma_basico_das_colunas-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Histograma_basico_das_colunas-1.png" width="672"><br/>
 É possível ver que o histograma da variável *StatedMonthlyIncome* está totalmente concentrado em zero.
 
 Analizando o resumo estatístico é possível ver que a variável contém alguns dados discrepantes.<br/>
@@ -57,32 +57,32 @@ Os 10 valores mais altos da variável são:<br/>
 '''{r Top 10 StatedMonthlyIncome}'''
 
 Visualizando os dados sem 0.5% dos maiores valores.<br/>
-![image02](./plots/Histograma_StatedMonthlyIncome_sem_0.5_porcento-1.png)
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Histograma_StatedMonthlyIncome_sem_0.5_porcento-1.png" width="672">
 
 Omitindo 5% dos maiores valores:<br/>
-![image03](./plots/Histograma_StatedMonthlyIncome_sem_5_porcento-1.png)
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Histograma_StatedMonthlyIncome_sem_5_porcento-1.png" width="672">
 
 Nos gráficos abaixo podemos ver que a maioria dos empréstimo possuem valores arredondados, dando ênfase para empréstimos de 4.000, os posteriores tendem a ser múltiplos de 5.000.<br/>
-![image04](./plots/Histogramas_LoanOriginalAmount-1.png)
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Histogramas_LoanOriginalAmount-1.png" width="672">
 
 <p>Abaixo é possível observar que é mais comum encontrar pessoas com poucos meses de emprego solicitando empréstimo do que em comparação com aqueles com muito tempo.</p>
 
 Tempo em meses:<br/>
-![image05](./plots/Histograma_EmploymentStatusDuration_sem_5_porcento-1.png)
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Histograma_EmploymentStatusDuration_sem_5_porcento-1.png" width="672">
 
 Tempo em anos:<br/>
-![image06](./plots/Histograma_EmploymentStatusDuration_sem_5_porcento_em_anos-1.png)
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Histograma_EmploymentStatusDuration_sem_5_porcento_em_anos-1.png" width="672">
 
 Distribuição dos status do emprego:<br/>
-![image07](./plots/Distribuicao_EmploymentStatus-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Distribuicao_EmploymentStatus-1.png" width="672"><br/>
 '''Porporcao'''<br/>
 A grande maioria dos solicitantes de empréstimos está atualmente empregado de alguma forma. Apenas 0.7% dos mutuários são declaradamente desempregados.
 
 O histograma da duração do empréstimo ficou muito espaçado por conta da coluna estar como tipo de valor inteiro, e como só há 3 variações de duração (12, 36 ou 60) dentro dessa coluna, é possível assumí-la como dado categórico e plotar como tal. <br/>
-![image08](./plots/Alterado_Term_para_categorico_e_plotado-1.png)
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Alterado_Term_para_categorico_e_plotado-1.png" width="192">
 
 Categorias mais selecionadas pelo mutuário:<br/>
-![image09](./plots/Alterado_ListingCategory_para_categorico_e_plotado-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Alterado_ListingCategory_para_categorico_e_plotado-1.png" width="672"><br/>
 Legenda das categorias:
 
 0. Não disponível
@@ -109,11 +109,11 @@ Legenda das categorias:
 
 
 Distribuição das ocupações declaradas: <br/>
-![image10](./plots/Distribuicao_Occupation-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Distribuicao_Occupation-1.png" width="672"><br/>
 A grande maioria declarou como "Outra" a ocupação ou declarou apenas como ocupação profissional, não sendo possível afirmar corretamente qual a ocupação mais comum. Das ocupações especificamente declaradas o programador de computador ficou em destaque.<br/>
 
 Distribuição dos valores das parcelas:<br/>
-![image11](./plots/Histogramas_MonthlyLoanPayment-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Histogramas_MonthlyLoanPayment-1.png" width="672"><br/>
 Vemos uma frequência altíssima de mutuários com valor de parcela próximo da casa dos 175, mas pelo gráfico não é possível ter muita precisão, por mais que seja determinado 1 de binwidth.
 
 '''{r Top 3 MonthlyLoanPayment}'''<br/>
@@ -128,7 +128,7 @@ Foi verificado também alguns empréstimos com pagamento mensal programado com v
 Nesse caso foi considerado a segunda possibilidade e os dados foram mantidos.<br/>
 '''{r Resumo estatistico das parcelas 0}'''
 
-![image12](./plots/Alterado_LoanOriginationDate_para_data_e_plotado-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Alterado_LoanOriginationDate_para_data_e_plotado-1.png" width="672"><br/>
 Ocorreu um aumento considerável de empréstimo a partir de 2013 e por alguma razão não há registros no começo de 2009 e final de 2008.
 
 # Análise Univariada
@@ -199,7 +199,7 @@ Na _ListingCategory_ há uma grande concentração dos dados da categoria 1, seg
 Os dados da _LoanOriginationDate_ criam duas distribuições assimétricas negativamente por conta de terem dados faltantes em certo período, ainda que houvessem esses dados a distribuição certamente permaneceria assimétrica para a esquerda. Nesse caso também não foi escalonado por se tratar de dados cronológicos, então preferi manter a escala normal para visualizar melhor.
 
 # Seção de Gráficos Bivariados
-![image13](./plots/Removido_0.5_porcento_do_StatedMonthlyIncome_e_criado_heatmap_de_corr-1.png)
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Removido_0.5_porcento_do_StatedMonthlyIncome_e_criado_heatmap_de_corr-1.png" width="672">
 
 Vemos que a *taxa APR* se relaciona com as demais colunas, salvo o *tempo empregado*. Ao que tudo indica, quanto maior o *Score*, menores são as *taxas APR*, e o mesmo ocorre com o *valor original do empréstimo*.
 
@@ -209,55 +209,55 @@ O *valor original do empréstimo* tem forte relação com o *valor pago mensalme
 
 Por fim o *tempo empregado* não se relaciona com praticamente nenhum das demais, apenas possuindo uma relação muito fraca com a *renda declarada*.
 
-![image14](./plots/Pairsplot_das_variaveis_numericas-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Pairsplot_das_variaveis_numericas-1.png" width="1152"><br/>
 Os gráficos de dispersão estão em geral bem poluídos, menos do valor original do empréstimo com o valor pago mensalmente por terem forte correlação.<br/> É necessário olhar mais de perto para tentar entender as relações.
 
-![image15](./plots/Densidade_LoanOriginalAmount_por_Score-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Densidade_LoanOriginalAmount_por_Score-1.png" width="1152"><br/>
 
-![image16](./plots/Boxplot_LoanOriginalAmount_por_Score-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Boxplot_LoanOriginalAmount_por_Score-1.png" width="1152"><br/>
 Com os gráficos de densidade e boxplot é possível ver com mais clareza a relação do Score com o valor original do empréstimo. <br/>
 Mutuários com pouca pontuação dificilmente conseguem solicitar empréstimos com valores mais altos, se concentrando nos valores mais baixos, na medida que a pontuação aumenta, a distribuição fica mais uniforme, indicando que mutuários com alto Score conseguem solicitar com mais facilidade valores altos. Por mais que o valor mediano oscile, é possível observar que a maioria dos valores solicitados cresce junto ao Score.
 
-![image17](./plots/Boxplot_LoanOriginalAmount_por_EmploymentStatus-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Boxplot_LoanOriginalAmount_por_EmploymentStatus-1.png" width="1152"><br/>
 Como esperado pessoas empregadas tendem a ter maiores valores de empréstimo, já as aposentadas, desempregadas, não declaradas e que trabalham parcialmente, tendem a ter empréstimos menores.
 
-![image18](./plots/Dispersao_LoanOriginalAmount_por_BorrowerAPR-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Dispersao_LoanOriginalAmount_por_BorrowerAPR-1.png" width="672"><br/>
 Empréstimos mais altos normalmente tem taxa APR menor, acho que ninguém quer pedir um valor alto com altas taxas ainda.
 
-![image19](./plots/Dispersao_ProsperScore_por_BorrowerAPR-1.png)<br/>
-![image20](./plots/Boxplot_ProsperScore_por_BorrowerAPR-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Dispersao_ProsperScore_por_BorrowerAPR-1.png" width="672"><br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Boxplot_ProsperScore_por_BorrowerAPR-1.png" width="672"><br/>
 A correlação entre a taxa APR e o Score fica clara no boxplot, mutuários com baixa pontuação precisam de taxas maiores para compensar o risco do empréstimo, o que não ocorre com quem tem alta pontuação, obtendo assim as melhores taxas.  
 
-![image21](./plots/Dispersao_StatedMonthlyIncome_por_LoanOriginalAmount-1.png)
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Dispersao_StatedMonthlyIncome_por_LoanOriginalAmount-1.png" width="672">
 
-![image22](./plots/Boxplot_StatedMonthlyIncome_por_LoanOriginalAmount-1.png)
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Boxplot_StatedMonthlyIncome_por_LoanOriginalAmount-1.png" width="1152">
 
 '''Resumo_estatistico_StatedMonthlyIncome_por_LoanOriginalAmount-1.png'''<br/>
 Com o gráfico de dispersão é possível ver a correlação entre a renda declarada e o valor do empréstimo, mas ainda é muito poluido, por conta disso optei pelo boxplot com fatiamento de 2.500 das rendas, assim ficou muito mais claro a relação das duas e como rendas baixas de fato têm em sua maioria empréstimos menores.
 
 Através dos resumos estatísticos observamos que rendas inferiores à 7.500 realizaram empréstimos de no máximo 25.000. A média também vai aumentando gradativamente conforme a renda sobe, demonstrando assim a relação entre as duas variáveis.
 
-![image23](./plots/Distribuicao_EmploymentStatusDuration_por_StatedMonthlyIncome-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Distribuicao_EmploymentStatusDuration_por_StatedMonthlyIncome-1.png" width="672"><br/>
 Achei que houvesse uma leve correlação entre o tempo de serviço e a renda mensal, mas vendo a dispersão desses dados não parece haver. <br/>
 A correlação de Pearson entre as duas variáveis resultou em 0.11, o que já seria bem fraco, agora com o gráfico é visível que o tempo de serviço não se relaciona com ela.
 
-![image24](./plots/Boxplot_ListingCategory..numeric._por_LoanOriginalAmount_COUNT-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Boxplot_ListingCategory..numeric._por_LoanOriginalAmount_COUNT-1.png" width="1152"><br/>
 Vemos que algumas categorias contêm empréstimos menores do que outras, como por exemplo a 13 (gastos domésticos) em comparação com a 1 (consolidação de dívida). Empréstimos com procedimentos cosméticos (número 10) além de serem poucos, não ultrapassam 15 mil.
 
-![image25](./plots/Boxplot_Occupation_por_LoanOriginalAmount-1.png)
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Boxplot_Occupation_por_LoanOriginalAmount-1.png" width="576">
 
-![image26](./plots/Boxplot_Occupation_por_StatedMonthlyIncome-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Boxplot_Occupation_por_StatedMonthlyIncome-1.png" width="576"><br/>
 Fiquei curioso quanto a distribuição de salários e valor do empréstimo solicitado das profissões declaradas.<br/>
 Como demonstrado acima, pessoas que ganham mais tendem a solicitar um valor maior de empréstimo, e agora podemos ver também que estudantes normalmente são os que têm as menores rendas mensais e consequentemente os menores empréstimos.
 
-![image27](./plots/Dispersao_LoanOriginationDate_por_LoanOriginalAmount-1.png)<br/>
-![image28](./plots/Diespersao_LoanOriginationDate_por_LoanOriginalAmount_c_corte_alto-1.png)<br/>
-![image29](./plots/Dispersao_LoanOriginationDate_por_LoanOriginalAmount_c_corte_baixo-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Dispersao_LoanOriginationDate_por_LoanOriginalAmount-1.png" width="672"><br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Diespersao_LoanOriginationDate_por_LoanOriginalAmount_c_corte_alto-1.png" width="672"><br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Dispersao_LoanOriginationDate_por_LoanOriginalAmount_c_corte_baixo-1.png" width="672"><br/>
 Vemos que o tempo não é um fator determinante para o valor do empréstimo, todavia, a partir de 2011 não foram mais realizados empréstimos menores que 2000, e somente depois de 2013 que foram realizados empréstimos acima de 25000.<br/> 
 É interessante visualizar as linhas horizontais, demonstrando que realizam mais empréstimos com valores redondos do que quebrados, nesse caso sendo mais comum de 500 em 500. <br>
 Além disso ainda é ver novamente o período curiosiamente sem empréstimos.
 
-![image30](./plots/Boxplot_LoanOriginalAmount_por_Term-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Boxplot_LoanOriginalAmount_por_Term-1.png" width="672"><br/>
 Por último um boxplot da quantidade de parcelas com o valor solicitado para confirmar que mais parcelas são para os empréstimos maiores e o inverso para empréstimos menores.
 
 # Análise Bivariada
@@ -281,35 +281,35 @@ O relacionamento mais forte - tirando é claro o valor das parcelas com o valor 
 
 # Seção de Gráficos Multivariados
 
-![image31](./plots/Distribuicao_LoanAmount_APR_e_Score-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Distribuicao_LoanAmount_APR_e_Score-1.png" width="960"><br/>
 Podemos ver a distribuição do Score baixo nas taxas mais altas, enquanto que no eixo do valor isso não ocorre, mas na medida que os juros ficam mais altos, o valor tende a diminuir.
 
-![image32](./plots/Distribuicao_LoanAmount_APR_e_MonthlyIncome-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Distribuicao_LoanAmount_APR_e_MonthlyIncome-1.png" width="960"><br/>
 Interessante visualizar que pessoas com rendas altas não necessariamente solicitam empréstimos altos, mas as com rendas baixas certamente não solicitam altos empréstimos.
 
-![image33](./plots/Distribuicao_LoanDate_LoanAmount_e_Score-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Distribuicao_LoanDate_LoanAmount_e_Score-1.png" width="960"><br/>
 Aqui temos um gráfico curioso que mostra o período em que foi implementado o sistema de Score, talvez essa lacuna seja o intervalo necessário para implementar o novo mecanismo. É possível ver um pequeno ajuste do algorítmo em relação as pontuações,os scores mais baixos se concentraram na parte mais baixa.
 
-![image34](./plots/Distribuicao_LoanDate_APR_e_Score-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Distribuicao_LoanDate_APR_e_Score-1.png" width="960"><br/>
 Nesse gráfico ficou claro os ajustes do sistema de pontuação. No começo houveram poucas pontuações baixas, mas com o passar do tempo ele foi ajustando, até mesmo ocorrendo saltos maiores de taxas. 
 
 Um exemplo disso são as linhas horizontais na mesma cor de Score. Esse provavelmente foi o período que mais se basearam no score para estimar as taxas. <br/>
 Depois o algorítmo ficou mais uniforme, sem grandes saltos, só que ainda assim é evidente que pontuações baixas possuem maiores taxas.
 
-![image35](./plots/Densidade_LoanOriginalAmount_StatedMonthlyIncome_e_EmploymentStatus-1.png)<br/>
-![image36](./plots/Distribuicao_LoanOriginalAmount_StatedMonthlyIncome_e_EmploymentStatus-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Densidade_LoanOriginalAmount_StatedMonthlyIncome_e_EmploymentStatus-1.png" width="960"><br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Distribuicao_LoanOriginalAmount_StatedMonthlyIncome_e_EmploymentStatus-1.png" width="960"><br/>
 Intuitivamente o gráfico mostra - apesar de muito poluido - que mutuários normalmente possuem rendas altas e grandes empréstimos quando estão empregados, seja o tempo todo ou meio período. Ainda assim vemos que mutuários com baixa renda ainda conseguem realizar empréstimos relativamente alto, obtendo um gráfico de densidade mais uniforme do que em comparação com o das rendas.
 
-![image37](./plots/Facet_LoanOriginalAmount_StatedMonthlyIncome_EmploymentStatus_e_Score-1.png)<br/>
-![image38](./plots/Distribuicao_LoanDate_LoanAmount_e_EmploymentStatus-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Facet_LoanOriginalAmount_StatedMonthlyIncome_EmploymentStatus_e_Score-1.png" width="1152"><br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Distribuicao_LoanDate_LoanAmount_e_EmploymentStatus-1.png" width="960"><br/>
 Com o gráfico dividido em score dá pra ver que existem muitos casos sem Score. Como já tinha visto anteriormente que o Score foi implementado após a lacuna, decidi ver como está distribuido os status do emprego ao longo do tempo. Para minha surpresa vi que houve período sem categoria, outro indisponível e depois o uso do termo "Full-time" que posteriormente foi substituido pelo "Employed". O termo "Other" também parece ter sido utilizado de fato só após 2011.
 
-![image39](./plots/Densidade_LoanOriginalAmount_StatedMonthlyIncome_e_ListingCategory-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Densidade_LoanOriginalAmount_StatedMonthlyIncome_e_ListingCategory-1.png" width="960"><br/>
 A linha 5 está mais a esquerda do que as demais, o que faz sentido uma vez que corresponda aos empréstimos dos estudantes - anteriormente verificados como menores rendas -, os valores dos empréstimos dessa categoria também estão concentrados nos valores mais baixos, não seguindo a tendencia das outras categorias. Mais uma vez vemos a tendencia dos dados demonstrando que vida de estudante não é fácil.<br/>
 A linha 1 (consolidação de dívida) segue sobressalente no gráfico de valor do empréstimos, pois é a categoria mais popular para empréstimos altos, com a concentração nos valores redondos.
 
-![image40](./plots/Boxplot_APR_StatedMonthlyIncome.bucket_e_Score-1.png)<br/>
-![image41](./plots/Boxplot_LoanOriginalAmount_StatedMonthlyIncome.bucket_e_Score-1.png)<br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Boxplot_APR_StatedMonthlyIncome.bucket_e_Score-1.png" width="960"><br/>
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Boxplot_LoanOriginalAmount_StatedMonthlyIncome.bucket_e_Score-1.png" width="960	"><br/>
 Esse ficou interessante, pois as taxas pelo score seguem a mesma tendência ao longo das faixas de rendas, mas isso não ocorre com o valor do empréstimo. Por mais que já tenha sido visto que a renda tenha correlação com o valor solicitado, não esperava que o score tivesse essa tendencia nas rendas de até 2.500.<br/>
 Ao que pude interpretar do gráfico, mutuários com renda baixa dificilmente têm empréstimos acima de 7.000, independente do score, ou seja, mutuários com grande pontuação tendem a fazer grandes empréstimos, salvo aqueles com renda inferiror à 2.500.<br/>
 Conforme a renda vai subindo, o score tende a se relacionar mais com o valor do empréstimo.
@@ -336,7 +336,7 @@ Não realizei criação de modelo até o momento, talvez no futuro o faça, aind
 # Gráficos Finais e Sumário
 
 ### Primeiro Gráfico
-![image42](./plots/Primeiro_Grafico-1.png)
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Primeiro_Grafico-1.png" width="960">
 
 ### Descrição do Primeiro Gráfico
 Existe uma clara relação entre o Score e o valor solicitado, sendo possível observar que empréstimos altos normalmente são obtidos pelos scores mais altos. <br/>
@@ -344,14 +344,14 @@ Na primeira faixa de renda o score não se relaciona com o valor solicitado, mas
 Ainda que sutíl, nesse gráfico é possível ver os valores dos quartis concentrados nos empréstimos redondos, normalmente de 5.000 em 5.000. Também há concentração incomum nos valores de 4.000, principalmente na primeira faixa de renda.
 
 ### Segundo Gráfico
-![image43](./plots/Segundo_Grafico-1.png)
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Segundo_Grafico-1.png" width="960">
 
 ### Descrição do Segundo Gráfico
 Existe o período sem o sistema de Score, a lacuna sem empréstimos seguida de alguns pouquíssimos e depois a implementação inicial do sistema. Fica claro os ajustes realizados ao longo do tempo, chegando a 2014 com uma relação mais suave entre os scores e as taxas. <br/>
 Após esses ajustes, o valor do empréstimo ficou mais relacionado com o score e também foram permitidos os empréstimos acima de 25.000 no mesmo período.
 
 ### Terceiro Gráfico
-![image44](./plots/Terceiro_Grafico-1.png)
+<img src="https://raw.githubusercontent.com/rafaelgfig/UD_NDS_ProspeR/master/plots/Terceiro_Grafico-1.png" width="960">
 
 ### Descrição do Terceiro Gráfico
 Mutuários desempregados possuem uma concentração bem maior nas rendas baixas - o que é esperado - mas isso não os impede de realizar empréstimos como os demais, ainda que eles fiquem concentrados nos empréstimos inferiores à 7.500.
